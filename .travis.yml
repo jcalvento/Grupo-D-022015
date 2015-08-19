@@ -1,2 +1,2 @@
 language: java
-script: cd SuperGol/ | mvn test
+script: cd SuperGol/ && mvn test
