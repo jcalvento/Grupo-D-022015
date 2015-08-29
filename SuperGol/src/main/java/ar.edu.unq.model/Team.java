@@ -60,4 +60,11 @@ public class Team {
         else
             return 1;
     }
+
+    public void assignAsCaptain(Player aPlayer) throws Exception {
+        if(!players.contains(aPlayer))
+            throw new Exception(aPlayer.getName() + "doesn't belong to this team");
+
+        aPlayer.assignAsCaptain();
+    }
 }

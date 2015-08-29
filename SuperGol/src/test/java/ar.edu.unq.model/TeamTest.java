@@ -103,7 +103,7 @@ public class TeamTest {
     public void itShouldFailIfAddsAGoalKeeperWhenThereIsOneAlready() throws Exception {
         makeTeam();
         String position = "GK";
-        Player goalKeeper = new Player("Palermo", position);
+        Player goalKeeper = new Player("Gato Sessa", position);
         addPlayersWithSamePositionTo(1, team, position);
 
         try {
@@ -113,5 +113,35 @@ public class TeamTest {
                     "You should remove a " + position + " before adding another one");
         }
         assertFalse(team.getPlayers().contains(goalKeeper));
+    }
+
+    @Test
+    public void itShouldAssignACaptain() throws Exception {
+        makeTeam();
+        Player goalKeeper = getGk();
+        team.addPlayer(goalKeeper);
+
+        team.assignAsCaptain(goalKeeper);
+
+        assertTrue(goalKeeper.isCaptain());
+    }
+
+    @Test
+    public void itShouldFailWhenAssigningAPlayerAsCaptainWhenHeDoesNotBelongToTheTeam() {
+        makeTeam();
+        Player goalKeeper = getGk();
+
+        try {
+            team.assignAsCaptain(goalKeeper);
+        } catch (Exception e) {
+            assertEquals(e.getMessage(),
+                    goalKeeper.getName() + "doesn't belong to this team");
+        }
+
+        assertFalse(goalKeeper.isCaptain());
+    }
+
+    private Player getGk() {
+        return new Player("Gato Sessa", "GK");
     }
 }
