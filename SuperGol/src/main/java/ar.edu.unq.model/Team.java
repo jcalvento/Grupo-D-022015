@@ -20,4 +20,8 @@ public class Team {
     public void addPlayer(FutbolPlayer aFutbolPlayer) { //throws positionisFullEx
         formation.addNewTeamPleayer(teamMembers, aFutbolPlayer);
     }
+
+    public String getName(){
+        return fantasyName;
+    }
 }
