@@ -1,33 +1,34 @@
 package ar.edu.unq.model;
 
+import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table(name = "team", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "NAME")
+})
 public class Team {
 
+    private Integer id;
     private String name;
     private User owner;
-    private ArrayList<Player> players;
+    private Set<Player> players;
     private String logo;
 
 
     public Team(String aName, User aUser){
         name = aName;
         owner = aUser;
-        players = new ArrayList<Player>();
+        players = new HashSet<Player>();
     }
 
     public Team(String aName, User aUser, String teamLogo) {
         this(aName, aUser);
         logo = teamLogo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLogo() {
-        return logo;
     }
 
     public void addPlayer(Player aPlayer) throws Exception {
@@ -38,10 +39,62 @@ public class Team {
         players.add(aPlayer);
     }
 
-    public List<Player> getPlayers() {
+    public void assignAsCaptain(Player aPlayer) throws Exception {
+        if(!players.contains(aPlayer))
+            throw new Exception(aPlayer.getName() + "doesn't belong to this team");
+        removeCurrentCaptain();
+
+        aPlayer.assignAsCaptain();
+    }
+
+    //Getters - Setters
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Column(name = "NAME", unique = true, nullable = false)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String aName) {
+        name = aName;
+    }
+
+    @Column(name = "LOGO", unique = true, nullable = true)
+    public String getLogo() {
+        return logo;
+    }
+    public void setLogo(String aLogo) {
+        logo = aLogo;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
+    public Set<Player> getPlayers() {
         return players;
     }
 
+    public void setPlayers(Set<Player> aSetOfPlayers) {
+        players = aSetOfPlayers;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "team", cascade = CascadeType.ALL)
+    public void setOwner(User aUser) {
+        owner = aUser;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    //Private
     private List<Player> getPlayersWithPosition(String aPosition) {
         List<Player> playersWithPosition = new ArrayList<Player>();
         for (Player player : players) {
@@ -59,14 +112,6 @@ public class Team {
             return 4;
         else
             return 1;
-    }
-
-    public void assignAsCaptain(Player aPlayer) throws Exception {
-        if(!players.contains(aPlayer))
-            throw new Exception(aPlayer.getName() + "doesn't belong to this team");
-        removeCurrentCaptain();
-
-        aPlayer.assignAsCaptain();
     }
 
     private void removeCurrentCaptain() {
