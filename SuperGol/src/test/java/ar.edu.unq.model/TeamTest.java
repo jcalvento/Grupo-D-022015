@@ -48,7 +48,7 @@ public class TeamTest {
 
     public void addPlayersWithSamePositionTo(Integer numberOfPlayers, Team aTeam, String aPosition) throws Exception {
         for (int i = 0; i < numberOfPlayers; i ++)
-            aTeam.addPlayer(new Player("midfieldPlayer" + i, aPosition));
+            aTeam.addPlayer(new Player("Player" + i, aPosition));
     }
 
     @Test
@@ -143,5 +143,20 @@ public class TeamTest {
 
     private Player getGk() {
         return new Player("Gato Sessa", "GK");
+    }
+
+    @Test
+    public void itShouldReassignTheCaptainWhenTheTeamHasAlreadyOne() throws Exception {
+        makeTeam();
+        Player goalKeeper = getGk();
+        Player defender = new Player("Cristian Castro", "DEF");
+        team.addPlayer(goalKeeper);
+        team.addPlayer(defender);
+        team.assignAsCaptain(goalKeeper);
+
+        team.assignAsCaptain(defender);
+
+        assertTrue(defender.isCaptain());
+        assertFalse(goalKeeper.isCaptain());
     }
 }

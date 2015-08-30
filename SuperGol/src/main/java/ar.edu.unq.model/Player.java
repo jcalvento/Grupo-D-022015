@@ -20,6 +20,10 @@ public class Player {
         captain = true;
     }
 
+    public void removeCaptainWristband() {
+        captain = false;
+    }
+
     public boolean isCaptain() {
         return captain;
     }

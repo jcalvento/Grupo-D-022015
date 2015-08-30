@@ -64,7 +64,15 @@ public class Team {
     public void assignAsCaptain(Player aPlayer) throws Exception {
         if(!players.contains(aPlayer))
             throw new Exception(aPlayer.getName() + "doesn't belong to this team");
+        removeCurrentCaptain();
 
         aPlayer.assignAsCaptain();
+    }
+
+    private void removeCurrentCaptain() {
+        for(Player player : players) {
+            if(player.isCaptain())
+                player.removeCaptainWristband();
+        }
     }
 }
