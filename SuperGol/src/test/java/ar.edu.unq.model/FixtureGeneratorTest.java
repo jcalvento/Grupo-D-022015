@@ -34,11 +34,8 @@ public class FixtureGeneratorTest {
 
     @Test
     public void itShouldCreateAListOfMatchesOnCreation(){
-        assertTrue(!fixture.getMatches().isEmpty());
-        //for(Match match : fixture.getMatches()){
-        //    System.out.println(match.getMatchFormat());
-        //} visual test ;)
 
+        assertFalse(fixture.getMatches().isEmpty());
     }
 
     @Test
