@@ -2,6 +2,8 @@ package ar.edu.unq.model;
 
 import javax.persistence.*;
 
+import java.util.GregorianCalendar;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -13,9 +15,14 @@ public class User {
     private Integer id;
     private String userName;
     private Team team;
+    private Tournament tournament;
 
     public User (String name){
         userName = name;
+    }
+
+    public void createTournament (int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate){
+        tournament = new Tournament(aMinimumAmountOfTeams,aMaximumAmountOfTeams,aDate,this);
     }
 
     public void createTeam (String teamsName){
@@ -31,6 +38,7 @@ public class User {
         this.userName = userName;
     }
 
+
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.ALL)
     public Team getTeam() {
         return team;
@@ -38,6 +46,15 @@ public class User {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.ALL)
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     @Id
