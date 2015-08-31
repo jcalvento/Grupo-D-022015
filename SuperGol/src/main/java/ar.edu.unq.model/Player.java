@@ -9,12 +9,19 @@ public class Player {
 
     private Integer id;
     private String name;
-    private String position;
+    private Position position;
     private boolean captain;
 
-    public Player(String aName, String aPosition){
+    public enum Position {
+        GK,
+        DEF,
+        MED,
+        FWD
+    }
+
+    public Player(String aName, Position aPosition){
         name = aName;
-        position = aPosition.toUpperCase();
+        position = aPosition;
         captain = false;
     }
 
@@ -36,11 +43,11 @@ public class Player {
     }
 
     @Column(name = "POSITION")
-    public String getPosition(){
+    public Position getPosition(){
         return position;
     }
 
-    public void setPosition(String aPosition) {
+    public void setPosition(Position aPosition) {
         position = aPosition;
     }
 

@@ -39,14 +39,14 @@ public class TeamTest {
     @Test
     public void itShouldAddAForward() throws Exception {
         makeTeam();
-        Player forward = new Player("Palermo", "FWD");
+        Player forward = new Player("Palermo", Player.Position.FWD);
 
         team.addPlayer(forward);
 
         assertTrue(team.getPlayers().contains(forward));
     }
 
-    public void addPlayersWithSamePositionTo(Integer numberOfPlayers, Team aTeam, String aPosition) throws Exception {
+    public void addPlayersWithSamePositionTo(Integer numberOfPlayers, Team aTeam, Player.Position aPosition) throws Exception {
         for (int i = 0; i < numberOfPlayers; i ++)
             aTeam.addPlayer(new Player("Player" + i, aPosition));
     }
@@ -54,7 +54,7 @@ public class TeamTest {
     @Test
     public void itShouldFailIfAddsAMidfieldPlayerWhenThereAreFourAlready() throws Exception {
         makeTeam();
-        String position = "MED";
+        Player.Position position = Player.Position.MED;
         Player midfieldPlayer = new Player("Chicho Serna", position);
         addPlayersWithSamePositionTo(4, team, position);
 
@@ -70,7 +70,7 @@ public class TeamTest {
     @Test
     public void itShouldFailIfAddsAForwardPlayerWhenThereAreThreeAlready() throws Exception {
         makeTeam();
-        String position = "FWD";
+        Player.Position position = Player.Position.FWD;
         Player forward = new Player("Palermo", position);
         addPlayersWithSamePositionTo(3, team, position);
 
@@ -86,7 +86,7 @@ public class TeamTest {
     @Test
     public void itShouldFailIfAddsADefenderWhenThereAreThreeAlready() throws Exception {
         makeTeam();
-        String position = "DEF";
+        Player.Position position = Player.Position.DEF;
         Player defender = new Player("Defender", position);
         addPlayersWithSamePositionTo(3, team, position);
 
@@ -102,7 +102,7 @@ public class TeamTest {
     @Test
     public void itShouldFailIfAddsAGoalKeeperWhenThereIsOneAlready() throws Exception {
         makeTeam();
-        String position = "GK";
+        Player.Position position = Player.Position.GK;
         Player goalKeeper = new Player("Gato Sessa", position);
         addPlayersWithSamePositionTo(1, team, position);
 
@@ -142,14 +142,14 @@ public class TeamTest {
     }
 
     private Player getGk() {
-        return new Player("Gato Sessa", "GK");
+        return new Player("Gato Sessa", Player.Position.GK);
     }
 
     @Test
     public void itShouldReassignTheCaptainWhenTheTeamHasAlreadyOne() throws Exception {
         makeTeam();
         Player goalKeeper = getGk();
-        Player defender = new Player("Cristian Castro", "DEF");
+        Player defender = new Player("Cristian Castro", Player.Position.DEF);
         team.addPlayer(goalKeeper);
         team.addPlayer(defender);
         team.assignAsCaptain(goalKeeper);

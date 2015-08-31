@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "team", uniqueConstraints = {
@@ -23,7 +24,7 @@ public class Team {
     public Team(String aName, User aUser){
         name = aName;
         owner = aUser;
-        players = new HashSet<Player>();
+        players = new HashSet<>();
     }
 
     public Team(String aName, User aUser, String teamLogo) {
@@ -32,7 +33,7 @@ public class Team {
     }
 
     public void addPlayer(Player aPlayer) throws Exception {
-        String position = aPlayer.getPosition();
+        Player.Position position = aPlayer.getPosition();
         if(getPlayersWithPosition(position).size() == (getLimitFor(position)))
             throw new Exception("You should remove a " + position + " before adding another one");
 
@@ -95,29 +96,25 @@ public class Team {
     }
 
     //Private
-    private List<Player> getPlayersWithPosition(String aPosition) {
-        List<Player> playersWithPosition = new ArrayList<Player>();
-        for (Player player : players) {
-            if(player.getPosition().equals(aPosition))
-                playersWithPosition.add(player);
-        }
-
-        return playersWithPosition;
+    private List<Player> getPlayersWithPosition(Player.Position aPosition) {
+        return players.stream()
+                .filter(player -> player.getPosition().equals(aPosition))
+                .collect(Collectors.toList());
     }
 
-    private Integer getLimitFor(String aPosition) {
-        if(aPosition.equals("FWD") || aPosition.equals("DEF"))
+    private Integer getLimitFor(Player.Position aPosition) {
+        if(aPosition.equals(Player.Position.FWD) || aPosition.equals(Player.Position.DEF))
             return 3;
-        else if(aPosition.equals("MED"))
+        else if(aPosition.equals(Player.Position.MED))
             return 4;
         else
             return 1;
     }
 
     private void removeCurrentCaptain() {
-        for(Player player : players) {
+        players.forEach(player -> {
             if(player.isCaptain())
                 player.removeCaptainWristband();
-        }
+        });
     }
 }
