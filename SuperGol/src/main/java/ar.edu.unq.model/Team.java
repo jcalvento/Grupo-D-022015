@@ -120,4 +120,8 @@ public class Team {
                 player.removeCaptainWristband();
         }
     }
+
+    public String getName(){
+        return fantasyName;
+    }
 }
