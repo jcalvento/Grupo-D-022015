@@ -24,3 +24,6 @@ buildNumber.properties
 
 # Intellij IDEa
 .idea
+.metadata/
+SuperGol/SuperGol.iml
+
