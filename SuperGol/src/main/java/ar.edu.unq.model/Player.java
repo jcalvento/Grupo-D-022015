@@ -1,6 +1,9 @@
 package ar.edu.unq.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -11,18 +14,24 @@ public class Player {
     private String name;
     private Position position;
     private boolean captain;
+    private Set<Goal> goals;
 
-    public enum Position {
-        GK,
-        DEF,
-        MED,
-        FWD
+    public Integer pointsMadeIn(Match aMatch) {
+        return goals.stream()
+                .filter(goal -> goal.wasScoredIn(aMatch))
+                .mapToInt(goal -> goal.getPoints())
+                .reduce(0, (a, b) -> a + b);
+    }
+
+    public Integer getPointsPerGoal() {
+        return position.getPointsPerGoal();
     }
 
     public Player(String aName, Position aPosition){
         name = aName;
         position = aPosition;
         captain = false;
+        goals = new HashSet<>();
     }
 
     public void assignAsCaptain() {
@@ -31,6 +40,10 @@ public class Player {
 
     public void removeCaptainWristband() {
         setCaptain(false);
+    }
+
+    public void addGoalIn(Match aMatch) {
+        goals.add(new Goal(this, aMatch));
     }
 
     @Column(name = "NAME", nullable = false)
