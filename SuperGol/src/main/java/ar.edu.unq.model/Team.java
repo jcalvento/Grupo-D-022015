@@ -2,7 +2,7 @@ package ar.edu.unq.model;
 
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,19 +33,24 @@ public class Team {
     }
 
     public void addPlayer(Player aPlayer) throws Exception {
-        Player.Position position = aPlayer.getPosition();
-        if(getPlayersWithPosition(position).size() == (getLimitFor(position)))
+        Position position = aPlayer.getPosition();
+        if(getPlayersWithPosition(position).size() == (position.getMaxNumberOfPlayersInATeam()))
             throw new Exception("You should remove a " + position + " before adding another one");
 
         players.add(aPlayer);
     }
 
     public void assignAsCaptain(Player aPlayer) throws Exception {
-        if(!players.contains(aPlayer))
-            throw new Exception(aPlayer.getName() + "doesn't belong to this team");
+        validatePlayerIsInTheTeam(aPlayer);
         removeCurrentCaptain();
 
         aPlayer.assignAsCaptain();
+    }
+
+    public void addGoalOf(Player aPlayer, Match aMatch) throws Exception {
+        validatePlayerIsInTheTeam(aPlayer);
+
+        aPlayer.addGoalIn(aMatch);
     }
 
     //Getters - Setters
@@ -96,19 +101,10 @@ public class Team {
     }
 
     //Private
-    private List<Player> getPlayersWithPosition(Player.Position aPosition) {
+    private List<Player> getPlayersWithPosition(Position aPosition) {
         return players.stream()
                 .filter(player -> player.getPosition().equals(aPosition))
                 .collect(Collectors.toList());
-    }
-
-    private Integer getLimitFor(Player.Position aPosition) {
-        if(aPosition.equals(Player.Position.FWD) || aPosition.equals(Player.Position.DEF))
-            return 3;
-        else if(aPosition.equals(Player.Position.MED))
-            return 4;
-        else
-            return 1;
     }
 
     private void removeCurrentCaptain() {
@@ -116,5 +112,16 @@ public class Team {
             if(player.isCaptain())
                 player.removeCaptainWristband();
         });
+    }
+
+    private void validatePlayerIsInTheTeam(Player aPlayer) throws Exception {
+        if(!players.contains(aPlayer))
+            throw new Exception(aPlayer.getName() + "doesn't belong to this team");
+    }
+
+    public Integer pointsMadeIn(Match aMatch) {
+        return players.stream()
+                .map(player -> player.pointsMadeIn(aMatch))
+                .reduce(0, (a, b) -> a + b);
     }
 }

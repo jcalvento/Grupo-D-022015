@@ -7,10 +7,10 @@ public class Match {
     private Team local;
     private Team visitor;
 
-    public Match (int aRound, Team aLocalTeam, Team aVisitorTeam){
+    public Match (int aRound, Team aTeam, Team anotherTeam){
         round = aRound;
-        local = aLocalTeam;
-        visitor = aVisitorTeam;
+        local = aTeam;
+        visitor = anotherTeam;
     }
 
     public String getMatchFormat(){
@@ -27,5 +27,13 @@ public class Match {
 
     public Team getVisitor(){
         return visitor;
+    }
+
+    public void addGoal(Team aTeam, Player aPlayer) throws Exception {
+        aTeam.addGoalOf(aPlayer, this);
+    }
+
+    public Integer pointsOf(Team aTeam) {
+        return aTeam.pointsMadeIn(this);
     }
 }
