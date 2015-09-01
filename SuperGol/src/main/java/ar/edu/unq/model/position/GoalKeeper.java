@@ -1,4 +1,4 @@
-package ar.edu.unq.model;
+package ar.edu.unq.model.position;
 
 public class GoalKeeper extends Position {
 

@@ -1,7 +1,6 @@
-package ar.edu.unq.model;
+package ar.edu.unq.model.position;
 
-public class Midfield extends Position {
-
+public class Forward extends Position {
     @Override
     public Integer getPointsPerGoal() {
         return 1;
@@ -9,6 +8,6 @@ public class Midfield extends Position {
 
     @Override
     public Integer getMaxNumberOfPlayersInATeam() {
-        return 4;
+        return 3;
     }
 }

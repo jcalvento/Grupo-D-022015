@@ -1,16 +1,13 @@
 package ar.edu.unq.model;
 
-import javax.persistence.*;
+import ar.edu.unq.model.position.Position;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
-@Table(name = "player")
 public class Player {
 
-    private Integer id;
     private String name;
     private Position position;
     private boolean captain;
@@ -46,7 +43,6 @@ public class Player {
         goals.add(new Goal(this, aMatch));
     }
 
-    @Column(name = "NAME", nullable = false)
     public String getName() {
         return name;
     }
@@ -55,7 +51,6 @@ public class Player {
         name = aName;
     }
 
-    @Column(name = "POSITION")
     public Position getPosition(){
         return position;
     }
@@ -64,7 +59,6 @@ public class Player {
         position = aPosition;
     }
 
-    @Column(name = "CAPTAIN")
     public boolean isCaptain() {
         return captain;
     }
@@ -73,14 +67,4 @@ public class Player {
         captain = aBool;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    public Integer getId() {
-        return id;
-    }
-
-    private void setId(Integer id) {
-        this.id = id;
-    }
 }

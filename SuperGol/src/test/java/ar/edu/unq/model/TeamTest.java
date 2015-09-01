@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import ar.edu.unq.model.position.Position;
 import org.junit.Before;
 import org.junit.Test;
 

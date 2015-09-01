@@ -1,20 +1,15 @@
 package ar.edu.unq.model;
 
-import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
+import ar.edu.unq.model.position.Position;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Entity
-@Table(name = "team", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "NAME")
-})
+
 public class Team {
 
-    private Integer id;
     private String name;
     private User owner;
     private Set<Player> players;
@@ -54,18 +49,6 @@ public class Team {
     }
 
     //Getters - Setters
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Column(name = "NAME", unique = true, nullable = false)
     public String getName() {
         return name;
     }
@@ -74,15 +57,14 @@ public class Team {
         name = aName;
     }
 
-    @Column(name = "LOGO", unique = true, nullable = true)
     public String getLogo() {
         return logo;
     }
+
     public void setLogo(String aLogo) {
         logo = aLogo;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
     public Set<Player> getPlayers() {
         return players;
     }
@@ -91,7 +73,6 @@ public class Team {
         players = aSetOfPlayers;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "team", cascade = CascadeType.ALL)
     public void setOwner(User aUser) {
         owner = aUser;
     }

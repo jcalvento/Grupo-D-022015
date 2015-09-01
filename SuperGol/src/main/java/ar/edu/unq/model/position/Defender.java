@@ -1,9 +1,10 @@
-package ar.edu.unq.model;
+package ar.edu.unq.model.position;
 
-public class Forward extends Position {
+public class Defender extends Position {
+
     @Override
     public Integer getPointsPerGoal() {
-        return 1;
+        return 3;
     }
 
     @Override

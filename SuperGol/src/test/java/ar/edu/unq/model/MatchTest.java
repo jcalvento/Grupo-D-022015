@@ -1,5 +1,6 @@
 package ar.edu.unq.model;
 
+import ar.edu.unq.model.position.Position;
 import org.junit.Before;
 import org.junit.Test;
 

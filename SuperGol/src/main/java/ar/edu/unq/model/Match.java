@@ -21,10 +21,6 @@ public class Match {
         scorer.put(visitor, 0);
     }
 
-    public String getMatchFormat(){
-        return "Round: "+ round +"=> " + local.getName() + " VS "+ visitor.getName();
-    }
-
     public int getRound(){
         return round;
     }
