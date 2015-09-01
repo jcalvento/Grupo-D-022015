@@ -14,12 +14,14 @@ public class Tournament {
     private int minimumAmountOfTeams;
     private int maximumAmountOfTeams;
     private GregorianCalendar applicationDeadline;
+    private User owner;
 
-    public Tournament(int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate){
+    public Tournament(int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate, User aUser){
         teamList = new ArrayList<Team>();
         minimumAmountOfTeams = aMinimumAmountOfTeams;
         maximumAmountOfTeams = aMaximumAmountOfTeams;
         applicationDeadline = aDate;
+        owner = aUser;
     }
 
     public void addTeam(Team aTeam) throws Exception{
