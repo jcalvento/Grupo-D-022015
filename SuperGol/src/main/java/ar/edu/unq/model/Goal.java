@@ -4,10 +4,12 @@ public class Goal {
 
     private final Player player;
     private final Match match;
+    private final Team team;
 
-    public Goal(Player aPlayer, Match aMatch) {
+    public Goal(Player aPlayer, Match aMatch, Team aTeam) {
         player = aPlayer;
         match = aMatch;
+        team = aTeam;
     }
 
     public Player getPlayer() {

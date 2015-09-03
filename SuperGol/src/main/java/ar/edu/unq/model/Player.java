@@ -12,11 +12,12 @@ public class Player {
     private Position position;
     private boolean captain;
     private Set<Goal> goals;
+    private Team team;
 
     public Integer pointsMadeIn(Match aMatch) {
         return goals.stream()
                 .filter(goal -> goal.wasScoredIn(aMatch))
-                .mapToInt(goal -> goal.getPoints())
+                .mapToInt(Goal::getPoints)
                 .reduce(0, (a, b) -> a + b);
     }
 
@@ -40,7 +41,7 @@ public class Player {
     }
 
     public void addGoalIn(Match aMatch) {
-        goals.add(new Goal(this, aMatch));
+        goals.add(new Goal(this, aMatch, team));
     }
 
     public String getName() {
@@ -67,4 +68,11 @@ public class Player {
         captain = aBool;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 }
