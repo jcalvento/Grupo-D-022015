@@ -31,7 +31,7 @@ public abstract class Position {
 
     private static Position getInstanceOf(Position anInstance) {
         List<Position> results = instances.stream()
-                .filter(instance -> instance.getClass().isInstance(anInstance.getClass()))
+                .filter(instance -> instance.getClass().equals(anInstance.getClass()))
                 .collect(Collectors.toList());
         Position result;
 
