@@ -16,13 +16,14 @@ public class TeamTest {
     @Before
     public void setUp() {
         user = new User("user");
+        makeTeam();
     }
 
     @Test
     public void itShouldCreateATeamWithTheGivenName() {
-        makeTeam();
+        Team team = new Team("All Stars team", user);
 
-        assertEquals(team.getName(), "All Stars");
+        assertEquals(team.getName(), "All Stars team");
     }
 
     @Test
@@ -33,13 +34,26 @@ public class TeamTest {
         assertEquals(team.getLogo(), "http://team_image.com");
     }
 
+    @Test
+    public void itShouldUpdateTheTeamWithTheGivenName() {
+        team.setName("Modified team");
+
+        assertEquals(team.getName(), "Modified team");
+    }
+
+    @Test
+    public void itShouldUpdateTheTeamLogoWithTheGivenOne() {
+        team.setLogo("http://new_logo.com");
+
+        assertEquals(team.getLogo(), "http://new_logo.com");
+    }
+
     public void makeTeam() {
         team = new Team("All Stars", user);
     }
 
     @Test
     public void itShouldAddAForward() throws Exception {
-        makeTeam();
         Player forward = new Player("Palermo", Position.forward());
 
         team.addPlayer(forward);
@@ -54,7 +68,6 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsAMidfieldPlayerWhenThereAreFourAlready() throws Exception {
-        makeTeam();
         Position position = Position.midfield();
         Player midfieldPlayer = new Player("Chicho Serna", position);
         addPlayersWithSamePositionTo(4, team, position);
@@ -70,7 +83,6 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsAForwardPlayerWhenThereAreThreeAlready() throws Exception {
-        makeTeam();
         Position position = Position.forward();
         Player forward = new Player("Palermo", position);
         addPlayersWithSamePositionTo(3, team, position);
@@ -86,7 +98,6 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsADefenderWhenThereAreThreeAlready() throws Exception {
-        makeTeam();
         Position position = Position.defender();
         Player defender = new Player("Defender", position);
         addPlayersWithSamePositionTo(3, team, position);
@@ -102,7 +113,6 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsAGoalKeeperWhenThereIsOneAlready() throws Exception {
-        makeTeam();
         Position position = Position.goalKeeper();
         Player goalKeeper = new Player("Gato Sessa", position);
         addPlayersWithSamePositionTo(1, team, position);
@@ -118,7 +128,6 @@ public class TeamTest {
 
     @Test
     public void itShouldAssignACaptain() throws Exception {
-        makeTeam();
         Player goalKeeper = getGk();
         team.addPlayer(goalKeeper);
 
@@ -129,7 +138,6 @@ public class TeamTest {
 
     @Test
     public void itShouldFailWhenAssigningAPlayerAsCaptainWhenHeDoesNotBelongToTheTeam() {
-        makeTeam();
         Player goalKeeper = getGk();
 
         try {
@@ -148,7 +156,6 @@ public class TeamTest {
 
     @Test
     public void itShouldReassignTheCaptainWhenTheTeamHasAlreadyOne() throws Exception {
-        makeTeam();
         Player goalKeeper = getGk();
         Player defender = new Player("Cristian Castro", Position.defender());
         team.addPlayer(goalKeeper);

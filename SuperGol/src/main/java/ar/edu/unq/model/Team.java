@@ -69,14 +69,6 @@ public class Team {
         return players;
     }
 
-    public void setPlayers(Set<Player> aSetOfPlayers) {
-        players = aSetOfPlayers;
-    }
-
-    public void setOwner(User aUser) {
-        owner = aUser;
-    }
-
     public User getOwner() {
         return owner;
     }
