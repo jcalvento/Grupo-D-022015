@@ -33,7 +33,7 @@ public class UserTest {
 
     @Test
     public void itShouldCreateAnEmptyTournament(){
-        testUser.createTournament(2, 3, new GregorianCalendar(2015, 9, 10));
+        testUser.createTournament("tournamentTest", 2, 3, new GregorianCalendar(2015, 9, 10));
 
         assertTrue(testUser.getTournament().getTeamList().isEmpty());
     }

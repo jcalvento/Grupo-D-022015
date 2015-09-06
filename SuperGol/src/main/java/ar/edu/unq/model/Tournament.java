@@ -10,13 +10,15 @@ import java.util.List;
 
 public class Tournament {
 
+    private String name;
     private List<Team> teamList;
     private int minimumAmountOfTeams;
     private int maximumAmountOfTeams;
     private GregorianCalendar applicationDeadline;
     private User owner;
 
-    public Tournament(int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate, User aUser){
+    public Tournament(String aName, int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate, User aUser){
+        name = aName;
         teamList = new ArrayList<Team>();
         minimumAmountOfTeams = aMinimumAmountOfTeams;
         maximumAmountOfTeams = aMaximumAmountOfTeams;

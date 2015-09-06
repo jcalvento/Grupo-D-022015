@@ -17,8 +17,8 @@ public class User {
         team = new Team(teamsName,this);
     }
 
-    public void createTournament (int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate){
-        tournament = new Tournament(aMinimumAmountOfTeams,aMaximumAmountOfTeams,aDate,this);
+    public void createTournament (String aName, int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate){
+        tournament = new Tournament(aName,aMinimumAmountOfTeams,aMaximumAmountOfTeams,aDate,this);
     }
 
     public String getUserName() {

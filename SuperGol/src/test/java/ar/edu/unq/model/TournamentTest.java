@@ -28,7 +28,7 @@ public class TournamentTest {
         teamC = new Team("c", user);
         teamD = new Team("d", user);
         deadline = new GregorianCalendar(2015,8,31);
-        tournament = new Tournament(2,3,deadline,user);
+        tournament = new Tournament("tournamentTest",2,3,deadline,user);
     }
 
     @Test
