@@ -14,6 +14,7 @@ public class FixtureGeneratorTest {
     private Team teamB;
     private Team teamC;
     private Team teamD;
+    private Team teamEven;
     private User user;
     private ArrayList<Team> teams;
 
@@ -24,6 +25,7 @@ public class FixtureGeneratorTest {
         teamB = new Team("b", user);
         teamC = new Team("c", user);
         teamD = new Team("d", user);
+        teamEven = new Team("evenTeam",user);
         teams = new ArrayList<Team>();
         teams.add(teamA);
         teams.add(teamB);
@@ -71,5 +73,23 @@ public class FixtureGeneratorTest {
         }
         assertEquals(teamARoundMatches,3);
 
+    }
+
+    @Test
+    public void GivenAnEvenAmountOfTeamsItShouldCreateAFixtureWithADecoyTeam(){
+
+        teams.add(teamEven);
+        FixtureGenerator fixtureEven = new FixtureGenerator(teams);
+        int decoyTeamRoundMatches = 0;
+        int round = 1;
+        for(Match match : fixtureEven.getMatches()){
+            if(match.getLocal().getName().equals("DecoyTeam") ||
+                    match.getVisitor().getName().equals("DecoyTeam") &&
+                    match.getRound()==round){
+                decoyTeamRoundMatches++;
+                round++;
+            }
+        }
+        assertEquals(decoyTeamRoundMatches, 5);
     }
 }

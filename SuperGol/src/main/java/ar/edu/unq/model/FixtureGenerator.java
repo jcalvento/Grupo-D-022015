@@ -12,10 +12,10 @@ public class FixtureGenerator {
     }
 
     private void createFixture(ArrayList<Team> teams) {
-        //if (teams.size() % 2 == 1) {
-            // Number of teams uneven ->  add the decoy team for a free round
-            //teams.add(new Team("DecoyTeam", nil));//needs review
-        //}
+        if (teams.size() % 2 == 1) {
+             //Number of teams uneven ->  add the decoy team for a free round
+            teams.add(new Team("DecoyTeam", new User("DecoyUser")));//needs review
+        }
 
         for (int i = 1; i < teams.size(); i++) {
             createOneRound(i, teams);
