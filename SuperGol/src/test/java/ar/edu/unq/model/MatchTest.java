@@ -70,4 +70,9 @@ public class MatchTest {
 
         assertFalse(match.pointsOf(local).equals(2));
     }
+
+    @Test
+    public void givenTheGoalsOfTheRealTorunamentItShouldGiveTheFinalResultOfTheMach(){
+
+    }
 }

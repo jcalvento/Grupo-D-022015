@@ -97,4 +97,8 @@ public class Team {
                 .map(player -> player.pointsMadeIn(aMatch))
                 .reduce(0, (a, b) -> a + b);
     }
+
+    public boolean isComplete() {
+        return players.size() == 11;
+    }
 }

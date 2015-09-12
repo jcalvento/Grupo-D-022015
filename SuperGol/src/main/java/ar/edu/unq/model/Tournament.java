@@ -27,7 +27,7 @@ public class Tournament {
     }
 
     public void addTeam(Team aTeam) throws Exception{
-        if(canSubscribeATeam()){
+        if(canSubscribeATeam(aTeam)){
             teamList.add(aTeam);
         }else{
             throw new Exception("You can´t add more Teams");
@@ -42,8 +42,9 @@ public class Tournament {
         applicationDeadline = new GregorianCalendar(year, month, day);
     }
 
-    private boolean canSubscribeATeam(){
+    private boolean canSubscribeATeam(Team aTeam){
         return teamList.size()<maximumAmountOfTeams &&
+                aTeam.isComplete() &&
                 applicationDeadline.after(
                         GregorianCalendar.from(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault())));
     }

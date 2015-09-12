@@ -21,12 +21,12 @@ public class TournamentTest {
     private GregorianCalendar deadline;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         user = new User("TestUser");
-        teamA = new Team("a", user);
-        teamB = new Team("b", user);
-        teamC = new Team("c", user);
-        teamD = new Team("d", user);
+        teamA = ModelsFactory.creatBasicTeam("a",user);
+        teamB = ModelsFactory.creatBasicTeam("b",user);
+        teamC = ModelsFactory.creatBasicTeam("c",user);
+        teamD = ModelsFactory.creatBasicTeam("d",user);
         deadline = new GregorianCalendar(2015,8,31);
         tournament = new Tournament("tournamentTest",2,3,deadline,user);
     }
