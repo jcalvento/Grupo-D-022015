@@ -3,6 +3,8 @@ package ar.edu.unq.model;
 
 import ar.edu.unq.model.position.Position;
 
+import java.util.ArrayList;
+
 public class ModelsFactory {
 
     public static Team creatBasicTeam(String teamsName, User aUser) throws Exception {
@@ -37,5 +39,39 @@ public class ModelsFactory {
         aBasicTeam.addPlayer(aFW3);
 
         return  aBasicTeam;
+    }
+
+    public static ArrayList<RealTournamentGoal> createTestGoalsPerRoundData(){
+
+        ArrayList<RealTournamentGoal> roundScoredGoals = new ArrayList<RealTournamentGoal>();
+
+        RealTournamentGoal playerA = new RealTournamentGoal("a",Position.goalKeeper(),1);
+        RealTournamentGoal playerB = new RealTournamentGoal("a",Position.defender(),0);
+        RealTournamentGoal playerC = new RealTournamentGoal("a",Position.defender(),1);
+        RealTournamentGoal playerD = new RealTournamentGoal("a",Position.defender(),0);
+        RealTournamentGoal playerE = new RealTournamentGoal("a",Position.midfield(),0);
+        RealTournamentGoal playerF = new RealTournamentGoal("a",Position.midfield(),2);
+        RealTournamentGoal playerG = new RealTournamentGoal("a",Position.midfield(),0);
+        RealTournamentGoal playerH = new RealTournamentGoal("a",Position.midfield(),1);
+        RealTournamentGoal playerI = new RealTournamentGoal("a",Position.forward(),3);
+        RealTournamentGoal playerJ = new RealTournamentGoal("a",Position.forward(),2);
+        RealTournamentGoal playerK = new RealTournamentGoal("a",Position.forward(),1);
+
+        roundScoredGoals.add(playerA);
+        roundScoredGoals.add(playerB);
+        roundScoredGoals.add(playerC);
+        roundScoredGoals.add(playerD);
+        roundScoredGoals.add(playerE);
+        roundScoredGoals.add(playerF);
+        roundScoredGoals.add(playerG);
+        roundScoredGoals.add(playerH);
+        roundScoredGoals.add(playerI);
+        roundScoredGoals.add(playerJ);
+        roundScoredGoals.add(playerK);
+
+        return roundScoredGoals;
+
+
+
     }
 }

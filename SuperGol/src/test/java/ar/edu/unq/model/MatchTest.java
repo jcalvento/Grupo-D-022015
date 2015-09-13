@@ -4,15 +4,18 @@ import ar.edu.unq.model.position.Position;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class MatchTest {
 
-    Match match;
-    Team local, visitor;
+    Match match, match2;
+    Team local, visitor, local2, visitor2;
     Player forward, defender, goalkeeper, midfield, rivalDefender;
+    ArrayList<RealTournamentGoal> scoredGoals;
 
     public void makeMatchWithTeams() throws Exception {
         local = new Team("Local", new User("Johnny Bravo"));
@@ -28,6 +31,10 @@ public class MatchTest {
         local.addPlayer(midfield);
         visitor.addPlayer(rivalDefender);
         match = new Match(1, local, visitor);
+        local2= ModelsFactory.creatBasicTeam("local2",new User("testUserLocal"));
+        visitor2= ModelsFactory.creatBasicTeam("visitor2", new User("testUserVisitor"));
+        scoredGoals = ModelsFactory.createTestGoalsPerRoundData();
+        match2 = new Match(1,local2,visitor2);
     }
 
     @Before
@@ -37,24 +44,24 @@ public class MatchTest {
 
     @Test
     public void itShouldAddOneGoalOfAForwardToTheLocalTeamAndEqualOnePoint() throws Exception {
-        match.addGoal(visitor, rivalDefender);
-        match.addGoal(local, forward);
+        match.addGoal(visitor, "DefenderR");
+        match.addGoal(local, "Forward");
 
         assertTrue(match.pointsOf(local).equals(1));
     }
 
     @Test
     public void itShouldAddOneGoalOfADefenderToTheLocalTeamAndEqualOnePoint() throws Exception {
-        match.addGoal(visitor, rivalDefender);
-        match.addGoal(local, midfield);
+        match.addGoal(visitor, "DefenderR");
+        match.addGoal(local, "Midfield");
 
         assertTrue(match.pointsOf(local).equals(1));
     }
 
     @Test
     public void itShouldAddOneGoalOfADefenderToTheLocalTeamAndEqualThreePoints() throws Exception {
-        match.addGoal(visitor, rivalDefender);
-        match.addGoal(local, defender);
+        match.addGoal(visitor, "DefenderR");
+        match.addGoal(local, "Defender");
 
         assertTrue(match.pointsOf(local).equals(3));
     }
@@ -66,13 +73,25 @@ public class MatchTest {
 
     @Test
     public void itShouldHaveNoPointsForTheGoalKeeperWhenTheRivalScoredAtLeastOneGoal() throws Exception {
-        match.addGoal(visitor, rivalDefender);
+        match.addGoal(visitor, "DefenderR");
 
         assertFalse(match.pointsOf(local).equals(2));
     }
 
     @Test
-    public void givenTheGoalsOfTheRealTorunamentItShouldGiveTheFinalResultOfTheMach(){
+    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheFinalResultOfTheMach() throws Exception {
+
+        for(RealTournamentGoal data : scoredGoals){
+            for(Integer i=0; i<data.getScoredGoals();i++){
+                match2.addGoal(local2, data.getPlayersName());
+                match2.addGoal(visitor2,data.getPlayersName());
+            }
+        }
+
+        //System.out.println("local2 metio"+ match2.pointsOf(local2));
+        //System.out.println("visitor2 metio" + match2.pointsOf(visitor2));
+        //assertTrue(match2.pointsOf(local2).equals(2));
+        //assertTrue(match2.pointsOf(visitor2).equals(2));
 
     }
 }

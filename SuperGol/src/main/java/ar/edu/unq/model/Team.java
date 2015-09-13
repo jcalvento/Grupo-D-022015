@@ -42,7 +42,8 @@ public class Team {
         aPlayer.assignAsCaptain();
     }
 
-    public void addGoalOf(Player aPlayer, Match aMatch) throws Exception {
+    public void addGoalOf(String aPlayersName, Match aMatch) throws Exception {
+        Player aPlayer = findPlayerWithName(aPlayersName);
         validatePlayerIsInTheTeam(aPlayer);
 
         aPlayer.addGoalIn(aMatch);
@@ -100,5 +101,22 @@ public class Team {
 
     public boolean isComplete() {
         return players.size() == 11;
+    }
+
+    public Player findPlayerWithName(String aPlayersName) throws Exception {
+        final Player[] thePlayer = new Player[1];
+        final boolean[] playerIsInTheTeam ={false};
+        players.forEach(player -> {
+            if(player.getName().equals(aPlayersName)){
+                thePlayer[0] = player;
+                playerIsInTheTeam[0] = true;
+            }
+        });
+        if (playerIsInTheTeam[0]){
+            return thePlayer[0];
+        }else {
+            throw new Exception(aPlayersName + "doesn't belong to this team");
+        }
+
     }
 }
