@@ -42,8 +42,7 @@ public class Team {
         aPlayer.assignAsCaptain();
     }
 
-    public void addGoalOf(String aPlayersName, Match aMatch) throws Exception {
-        Player aPlayer = findPlayerWithName(aPlayersName);
+    public void addGoalOf(Player aPlayer, Match aMatch) throws Exception {
         validatePlayerIsInTheTeam(aPlayer);
 
         aPlayer.addGoalIn(aMatch);

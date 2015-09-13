@@ -33,9 +33,9 @@ public class Match {
         return visitor;
     }
 
-    public void addGoal(Team aTeam, String aPlayersName) throws Exception {
+    public void addGoal(Team aTeam, Player aPlayer) throws Exception {
         scorer.replace(aTeam, scorer.get(aTeam) + 1);
-        aTeam.addGoalOf(aPlayersName, this);
+        aTeam.addGoalOf(aPlayer, this);
     }
 
     public Integer pointsOf(Team aTeam) {

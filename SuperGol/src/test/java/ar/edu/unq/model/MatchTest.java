@@ -44,24 +44,24 @@ public class MatchTest {
 
     @Test
     public void itShouldAddOneGoalOfAForwardToTheLocalTeamAndEqualOnePoint() throws Exception {
-        match.addGoal(visitor, "DefenderR");
-        match.addGoal(local, "Forward");
+        match.addGoal(visitor, rivalDefender);
+        match.addGoal(local, forward);
 
         assertTrue(match.pointsOf(local).equals(1));
     }
 
     @Test
     public void itShouldAddOneGoalOfADefenderToTheLocalTeamAndEqualOnePoint() throws Exception {
-        match.addGoal(visitor, "DefenderR");
-        match.addGoal(local, "Midfield");
+        match.addGoal(visitor, rivalDefender);
+        match.addGoal(local, midfield);
 
         assertTrue(match.pointsOf(local).equals(1));
     }
 
     @Test
     public void itShouldAddOneGoalOfADefenderToTheLocalTeamAndEqualThreePoints() throws Exception {
-        match.addGoal(visitor, "DefenderR");
-        match.addGoal(local, "Defender");
+        match.addGoal(visitor, rivalDefender);
+        match.addGoal(local, defender);
 
         assertTrue(match.pointsOf(local).equals(3));
     }
@@ -73,7 +73,7 @@ public class MatchTest {
 
     @Test
     public void itShouldHaveNoPointsForTheGoalKeeperWhenTheRivalScoredAtLeastOneGoal() throws Exception {
-        match.addGoal(visitor, "DefenderR");
+        match.addGoal(visitor, rivalDefender);
 
         assertFalse(match.pointsOf(local).equals(2));
     }
@@ -83,8 +83,8 @@ public class MatchTest {
 
         for(RealTournamentGoal data : scoredGoals){
             for(Integer i=0; i<data.getScoredGoals();i++){
-                match2.addGoal(local2, data.getPlayersName());
-                match2.addGoal(visitor2,data.getPlayersName());
+                match2.addGoal(local2, local2.findPlayerWithName(data.getPlayersName()));
+                match2.addGoal(visitor2,visitor2.findPlayerWithName(data.getPlayersName()));
             }
         }
 
@@ -98,8 +98,8 @@ public class MatchTest {
 
         for(RealTournamentGoal data : scoredGoals){
             for(Integer i=0; i<data.getScoredGoals();i++){
-                match2.addGoal(local2, data.getPlayersName());
-                match2.addGoal(visitor2,data.getPlayersName());
+                match2.addGoal(local2, local2.findPlayerWithName(data.getPlayersName()));
+                match2.addGoal(visitor2,visitor2.findPlayerWithName(data.getPlayersName()));
             }
         }
 
