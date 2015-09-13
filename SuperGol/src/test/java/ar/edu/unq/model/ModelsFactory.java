@@ -46,16 +46,16 @@ public class ModelsFactory {
         ArrayList<RealTournamentGoal> roundScoredGoals = new ArrayList<RealTournamentGoal>();
 
         RealTournamentGoal playerA = new RealTournamentGoal("a",Position.goalKeeper(),1);
-        RealTournamentGoal playerB = new RealTournamentGoal("a",Position.defender(),0);
-        RealTournamentGoal playerC = new RealTournamentGoal("a",Position.defender(),1);
-        RealTournamentGoal playerD = new RealTournamentGoal("a",Position.defender(),0);
-        RealTournamentGoal playerE = new RealTournamentGoal("a",Position.midfield(),0);
-        RealTournamentGoal playerF = new RealTournamentGoal("a",Position.midfield(),2);
-        RealTournamentGoal playerG = new RealTournamentGoal("a",Position.midfield(),0);
-        RealTournamentGoal playerH = new RealTournamentGoal("a",Position.midfield(),1);
-        RealTournamentGoal playerI = new RealTournamentGoal("a",Position.forward(),3);
-        RealTournamentGoal playerJ = new RealTournamentGoal("a",Position.forward(),2);
-        RealTournamentGoal playerK = new RealTournamentGoal("a",Position.forward(),1);
+        RealTournamentGoal playerB = new RealTournamentGoal("b",Position.defender(),0);
+        RealTournamentGoal playerC = new RealTournamentGoal("c",Position.defender(),1);
+        RealTournamentGoal playerD = new RealTournamentGoal("d",Position.defender(),0);
+        RealTournamentGoal playerE = new RealTournamentGoal("e",Position.midfield(),0);
+        RealTournamentGoal playerF = new RealTournamentGoal("f",Position.midfield(),2);
+        RealTournamentGoal playerG = new RealTournamentGoal("g",Position.midfield(),0);
+        RealTournamentGoal playerH = new RealTournamentGoal("h",Position.midfield(),1);
+        RealTournamentGoal playerI = new RealTournamentGoal("i",Position.forward(),3);
+        RealTournamentGoal playerJ = new RealTournamentGoal("j",Position.forward(),2);
+        RealTournamentGoal playerK = new RealTournamentGoal("k",Position.forward(),1);
 
         roundScoredGoals.add(playerA);
         roundScoredGoals.add(playerB);

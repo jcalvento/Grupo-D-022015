@@ -88,10 +88,8 @@ public class MatchTest {
             }
         }
 
-        //System.out.println("local2 metio"+ match2.pointsOf(local2));
-        //System.out.println("visitor2 metio" + match2.pointsOf(visitor2));
-        //assertTrue(match2.pointsOf(local2).equals(2));
-        //assertTrue(match2.pointsOf(visitor2).equals(2));
+        assertTrue(match2.pointsOf(local2).equals(12));
+        assertTrue(match2.pointsOf(visitor2).equals(12));
 
     }
 }
