@@ -79,7 +79,7 @@ public class MatchTest {
     }
 
     @Test
-    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheFinalResultOfTheMach() throws Exception {
+    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheTotalScoredForEachTeam() throws Exception {
 
         for(RealTournamentGoal data : scoredGoals){
             for(Integer i=0; i<data.getScoredGoals();i++){
@@ -91,5 +91,19 @@ public class MatchTest {
         assertTrue(match2.pointsOf(local2).equals(12));
         assertTrue(match2.pointsOf(visitor2).equals(12));
 
+    }
+
+    @Test
+    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheFinalResultOfTheMach() throws Exception {
+
+        for(RealTournamentGoal data : scoredGoals){
+            for(Integer i=0; i<data.getScoredGoals();i++){
+                match2.addGoal(local2, data.getPlayersName());
+                match2.addGoal(visitor2,data.getPlayersName());
+            }
+        }
+
+        assertTrue(match2.machtPointsOf(local2).equals(1));
+        assertTrue(match2.machtPointsOf(visitor2).equals(1));
     }
 }
