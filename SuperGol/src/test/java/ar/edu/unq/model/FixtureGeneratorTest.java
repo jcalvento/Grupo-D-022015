@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 public class FixtureGeneratorTest {
 
-    private FixtureGenerator fixture;
     private Team teamA;
     private Team teamB;
     private Team teamC;
@@ -33,7 +32,6 @@ public class FixtureGeneratorTest {
         teams.add(teamC);
         teams.add(teamD);
         matches = FixtureGenerator.createFixture(teams);
-        //fixture = new FixtureGenerator(teams);
     }
 
     @Test

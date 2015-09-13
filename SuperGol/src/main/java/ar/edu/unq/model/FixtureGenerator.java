@@ -5,11 +5,6 @@ import java.util.ArrayList;
 
 public class FixtureGenerator {
 
-    //private ArrayList<Match> matches = new ArrayList<Match>();
-
-    //public FixtureGenerator(ArrayList<Team> teams) {
-    //    createFixture(teams);
-    //}
 
     public static ArrayList<Match> createFixture(ArrayList<Team> teams) {
 
@@ -64,9 +59,5 @@ public class FixtureGenerator {
             matches.add(new Match(round, local, visitor));
         }
     }
-
-    //public ArrayList<Match> getMatches() {
-    //    return matches;
-    //}
 
 }
