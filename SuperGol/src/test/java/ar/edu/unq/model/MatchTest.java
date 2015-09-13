@@ -4,15 +4,18 @@ import ar.edu.unq.model.position.Position;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class MatchTest {
 
-    Match match;
-    Team local, visitor;
+    Match match, match2;
+    Team local, visitor, local2, visitor2;
     Player forward, defender, goalkeeper, midfield, rivalDefender;
+    ArrayList<RealTournamentGoal> scoredGoals;
 
     public void makeMatchWithTeams() throws Exception {
         local = new Team("Local", new User("Johnny Bravo"));
@@ -28,6 +31,10 @@ public class MatchTest {
         local.addPlayer(midfield);
         visitor.addPlayer(rivalDefender);
         match = new Match(1, local, visitor);
+        local2= ModelsFactory.creatBasicTeam("local2",new User("testUserLocal"));
+        visitor2= ModelsFactory.creatBasicTeam("visitor2", new User("testUserVisitor"));
+        scoredGoals = ModelsFactory.createTestGoalsPerRoundData();
+        match2 = new Match(1,local2,visitor2);
     }
 
     @Before
@@ -69,5 +76,34 @@ public class MatchTest {
         match.addGoal(visitor, rivalDefender);
 
         assertFalse(match.pointsOf(local).equals(2));
+    }
+
+    @Test
+    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheTotalScoredForEachTeam() throws Exception {
+
+        for(RealTournamentGoal data : scoredGoals){
+            for(Integer i=0; i<data.getScoredGoals();i++){
+                match2.addGoal(local2, local2.findPlayerWithName(data.getPlayersName()));
+                match2.addGoal(visitor2,visitor2.findPlayerWithName(data.getPlayersName()));
+            }
+        }
+
+        assertTrue(match2.pointsOf(local2).equals(12));
+        assertTrue(match2.pointsOf(visitor2).equals(12));
+
+    }
+
+    @Test
+    public void givenTheGoalsOfTheRealTournamentItShouldGiveTheFinalResultOfTheMach() throws Exception {
+
+        for(RealTournamentGoal data : scoredGoals){
+            for(Integer i=0; i<data.getScoredGoals();i++){
+                match2.addGoal(local2, local2.findPlayerWithName(data.getPlayersName()));
+                match2.addGoal(visitor2,visitor2.findPlayerWithName(data.getPlayersName()));
+            }
+        }
+
+        assertTrue(match2.machtPointsOf(local2).equals(1));
+        assertTrue(match2.machtPointsOf(visitor2).equals(1));
     }
 }

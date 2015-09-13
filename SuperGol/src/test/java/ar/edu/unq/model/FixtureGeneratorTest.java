@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 public class FixtureGeneratorTest {
 
-    private FixtureGenerator fixture;
     private Team teamA;
     private Team teamB;
     private Team teamC;
@@ -17,6 +16,7 @@ public class FixtureGeneratorTest {
     private Team teamEven;
     private User user;
     private ArrayList<Team> teams;
+    private ArrayList<Match> matches;
 
     @Before
     public void setUp(){
@@ -31,19 +31,19 @@ public class FixtureGeneratorTest {
         teams.add(teamB);
         teams.add(teamC);
         teams.add(teamD);
-        fixture = new FixtureGenerator(teams);
+        matches = FixtureGenerator.createFixture(teams);
     }
 
     @Test
     public void itShouldCreateAListOfMatchesOnCreation(){
 
-        assertFalse(fixture.getMatches().isEmpty());
+        assertFalse(matches.isEmpty());
     }
 
     @Test
     public void itShouldCreateTheCorrectNumberOfRoundsAcordingTheAmountOfTeams(){
-        int amountOfTeams = fixture.getMatches().size();
-        for(Match match : fixture.getMatches()){
+        int amountOfTeams = matches.size();
+        for(Match match : matches){
             assertTrue(match.getRound() <= (amountOfTeams / 2));
         }
     }
@@ -51,7 +51,7 @@ public class FixtureGeneratorTest {
     @Test
     public void itShouldNotRepeatTheSameMatchTwice(){
         int matchesThatIncludeTeamAVSTeamB = 0;
-        for(Match match : fixture.getMatches()){
+        for(Match match : matches){
             if(match.getLocal().equals(teamA)&&match.getVisitor().equals(teamB)||
                     match.getLocal().equals(teamB)&&match.getVisitor().equals(teamA)){
                 matchesThatIncludeTeamAVSTeamB++;
@@ -64,9 +64,9 @@ public class FixtureGeneratorTest {
     public void aTeamShouldBeIncludeInAllTheRounds(){
         int teamARoundMatches = 0;
         int round = 1;
-        for(Match match : fixture.getMatches()){
-            if(match.getLocal().equals(teamA)||match.getVisitor().equals(teamA)&&
-                match.getRound()==round){
+        for(Match match : matches){
+            if(match.getLocal().equals(teamA)|| match.getVisitor().equals(teamA) &&
+                    match.getRound()==round){
                 teamARoundMatches++;
                 round++;
             }
@@ -79,10 +79,10 @@ public class FixtureGeneratorTest {
     public void GivenAnEvenAmountOfTeamsItShouldCreateAFixtureWithADecoyTeam(){
 
         teams.add(teamEven);
-        FixtureGenerator fixtureEven = new FixtureGenerator(teams);
+        ArrayList<Match> fixtureEven = FixtureGenerator.createFixture(teams);
         int decoyTeamRoundMatches = 0;
         int round = 1;
-        for(Match match : fixtureEven.getMatches()){
+        for(Match match : fixtureEven){
             if(match.getLocal().getName().equals("DecoyTeam") ||
                     match.getVisitor().getName().equals("DecoyTeam") &&
                     match.getRound()==round){

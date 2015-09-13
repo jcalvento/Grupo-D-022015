@@ -35,6 +35,6 @@ public class UserTest {
     public void itShouldCreateAnEmptyTournament(){
         testUser.createTournament("tournamentTest", 2, 3, new GregorianCalendar(2015, 9, 10));
 
-        assertTrue(testUser.getTournament().getTeamList().isEmpty());
+        assertTrue(testUser.getTournament().getTeams().isEmpty());
     }
 }

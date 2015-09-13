@@ -8,12 +8,13 @@ import java.util.Set;
 
 public class Player {
 
+    private int id;
+
     private String name;
     private Position position;
     private boolean captain;
     private Set<Goal> goals;
     private Team team;
-
     public Integer pointsMadeIn(Match aMatch) {
         return goals.stream()
                 .filter(goal -> goal.wasScoredIn(aMatch))
@@ -75,4 +76,13 @@ public class Player {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

@@ -40,11 +40,22 @@ public class Match {
 
     public Integer pointsOf(Team aTeam) {
         Integer points = aTeam.pointsMadeIn(this);
-        Team rival = Arrays.asList(local, visitor).stream()
-                .filter(team -> !team.equals(aTeam)).findFirst().get();
+        Team rival = getRivalOf(aTeam);
         Integer rivalGoals = scorer.get(rival);
         if(rivalGoals.equals(0))
             points += 2;
         return points;
     }
+
+    public Integer machtPointsOf(Team aTeam) {
+
+        return scorer.get(aTeam)>scorer.get(getRivalOf(aTeam))? 3 :
+                scorer.get(aTeam)<scorer.get(getRivalOf(aTeam))? 0 : 1;
+
+    }
+    private Team getRivalOf(Team aTeam) {
+        return (Team) Arrays.asList(local, visitor).stream()
+                    .filter(team -> !team.equals(aTeam)).findFirst().get();
+    }
+
 }

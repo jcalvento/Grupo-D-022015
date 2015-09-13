@@ -5,28 +5,29 @@ import java.util.ArrayList;
 
 public class FixtureGenerator {
 
-    private ArrayList<Match> matches = new ArrayList<Match>();
 
-    public FixtureGenerator(ArrayList<Team> teams) {
-        createFixture(teams);
-    }
+    public static ArrayList<Match> createFixture(ArrayList<Team> teams) {
 
-    private void createFixture(ArrayList<Team> teams) {
+        ArrayList<Match> matches = new ArrayList<Match>();
+
         if (teams.size() % 2 == 1) {
              //Number of teams uneven ->  add the decoy team for a free round
             teams.add(new Team("DecoyTeam", new User("DecoyUser")));//needs review
         }
 
         for (int i = 1; i < teams.size(); i++) {
-            createOneRound(i, teams);
+            createOneRound(i, teams,matches);
             // Move last item to first
             teams.add(1, teams.get(teams.size() - 1));
             teams.remove(teams.size() - 1);
         }
 
+        return matches;
+
     }
 
-    private void createOneRound(int round, ArrayList<Team> teams) {
+    private static void createOneRound(int round, ArrayList<Team> teams, ArrayList<Match> matches) {
+
         int middle = teams.size() / 2;
         // Split list into two
 
@@ -57,10 +58,6 @@ public class FixtureGenerator {
 
             matches.add(new Match(round, local, visitor));
         }
-    }
-
-    public ArrayList<Match> getMatches() {
-        return matches;
     }
 
 }
