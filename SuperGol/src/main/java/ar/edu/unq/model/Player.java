@@ -10,38 +10,20 @@ public class Player {
 
     private String name;
     private Position position;
-    private boolean captain;
-    private Set<Goal> goals;
+    private Set<DateMatchGoalCounter> goals;
     private Team team;
 
-    public Integer pointsMadeIn(Match aMatch) {
+    public int pointsMadeIn(DateMatch aDateMatch) {
         return goals.stream()
-                .filter(goal -> goal.wasScoredIn(aMatch))
-                .mapToInt(Goal::getPoints)
+                .filter(goal -> goal.wasScoredIn(aDateMatch))
+                .mapToInt(DateMatchGoalCounter::getPoints)
                 .reduce(0, (a, b) -> a + b);
-    }
-
-    public Integer getPointsPerGoal() {
-        return position.getPointsPerGoal();
     }
 
     public Player(String aName, Position aPosition){
         name = aName;
         position = aPosition;
-        captain = false;
         goals = new HashSet<>();
-    }
-
-    public void assignAsCaptain() {
-        setCaptain(true);
-    }
-
-    public void removeCaptainWristband() {
-        setCaptain(false);
-    }
-
-    public void addGoalIn(Match aMatch) {
-        goals.add(new Goal(this, aMatch, team));
     }
 
     public String getName() {
@@ -60,19 +42,15 @@ public class Player {
         position = aPosition;
     }
 
-    public boolean isCaptain() {
-        return captain;
-    }
-
-    public void setCaptain(Boolean aBool) {
-        captain = aBool;
-    }
-
     public Team getTeam() {
         return team;
     }
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public void addGoalsInDateMatch(DateMatchGoalCounter dateMatchGoalCounter) {
+        goals.add(dateMatchGoalCounter);
     }
 }

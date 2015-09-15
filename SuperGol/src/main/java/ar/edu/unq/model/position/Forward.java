@@ -2,7 +2,7 @@ package ar.edu.unq.model.position;
 
 public class Forward extends Position {
     @Override
-    public Integer getPointsPerGoal() {
+    public int getPointsPerGoal() {
         return 1;
     }
 

@@ -3,7 +3,7 @@ package ar.edu.unq.model.position;
 public class Defender extends Position {
 
     @Override
-    public Integer getPointsPerGoal() {
+    public int getPointsPerGoal() {
         return 3;
     }
 

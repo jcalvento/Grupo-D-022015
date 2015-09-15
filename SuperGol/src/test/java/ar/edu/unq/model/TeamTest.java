@@ -1,12 +1,10 @@
 package ar.edu.unq.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import ar.edu.unq.model.position.Position;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TeamTest {
 
@@ -131,9 +129,9 @@ public class TeamTest {
         Player goalKeeper = getGk();
         team.addPlayer(goalKeeper);
 
-        team.assignAsCaptain(goalKeeper);
+        team.setCaptain(goalKeeper);
 
-        assertTrue(goalKeeper.isCaptain());
+        assertEquals(team.getCaptain(), goalKeeper);
     }
 
     @Test
@@ -141,13 +139,13 @@ public class TeamTest {
         Player goalKeeper = getGk();
 
         try {
-            team.assignAsCaptain(goalKeeper);
+            team.setCaptain(goalKeeper);
         } catch (Exception e) {
             assertEquals(e.getMessage(),
                     goalKeeper.getName() + "doesn't belong to this team");
         }
 
-        assertFalse(goalKeeper.isCaptain());
+        assertNotSame(team.getCaptain(), goalKeeper);
     }
 
     private Player getGk() {
@@ -160,11 +158,11 @@ public class TeamTest {
         Player defender = new Player("Cristian Castro", Position.defender());
         team.addPlayer(goalKeeper);
         team.addPlayer(defender);
-        team.assignAsCaptain(goalKeeper);
+        team.setCaptain(goalKeeper);
 
-        team.assignAsCaptain(defender);
+        team.setCaptain(defender);
 
-        assertTrue(defender.isCaptain());
-        assertFalse(goalKeeper.isCaptain());
+        assertTrue(team.getCaptain().equals(defender));
+        assertFalse(team.getCaptain().equals(goalKeeper));
     }
 }

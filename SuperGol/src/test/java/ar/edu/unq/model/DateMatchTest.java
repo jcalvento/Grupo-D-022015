@@ -5,12 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-
-public class MatchTest {
-
+public class DateMatchTest {
     Match match;
     Team local, visitor;
     Player forward, defender, goalkeeper, midfield, rivalDefender;
@@ -29,44 +26,28 @@ public class MatchTest {
         local.addPlayer(goalkeeper);
         local.addPlayer(midfield);
         visitor.addPlayer(rivalDefender);
-        dateMatch = new DateMatch(1);
         match = new Match(local, visitor);
-        dateMatch.addMatch(match);
     }
 
     @Before
     public void setUp() throws Exception {
         makeMatchWithTeams();
+        dateMatch = new DateMatch(1);
     }
 
     @Test
-    public void itShouldCreateAMatchWithTheGivenTeamsAsLocalAndVisitorRespectively() {
-        match = new Match(local, visitor);
+    public void itShouldAddAMatchToTheGivenDateMatch() {
+        dateMatch.addMatch(match);
 
-        assertEquals(match.getLocal(), local);
-        assertEquals(match.getVisitor(), visitor);
+        assertTrue(dateMatch.getMatches().contains(match));
     }
 
     @Test
-    public void theWinnerShouldHaveThreePointsAndTheLoserZero() throws Exception {
+    public void itShouldSetGoalsOfTheGivenPlayerInTheGivenDateMatch() {
+        dateMatch.addMatch(match);
+
         dateMatch.addGoalsOf(forward, Position.forward(), 2);
 
-        assertTrue(match.pointsOf(local).equals(3));
-        assertTrue(match.pointsOf(visitor).equals(0));
+        assertEquals(forward.pointsMadeIn(dateMatch), 2);
     }
-
-    @Test
-    public void whenTheMatchIsDeuceEachTeamShouldGetOnePoint() throws Exception {
-        assertTrue(match.pointsOf(local).equals(match.pointsOf(visitor)));
-        assertTrue(match.pointsOf(visitor).equals(1));
-    }
-
-    @Test
-    public void ifNoneOfTheTeamsScoresButTheLocalGoalKeeperReceivesNoGoalsThenTheLocalTeamWins() {
-        dateMatch.addGoalsOf(goalkeeper, Position.goalKeeper(), 0);
-
-        assertTrue(match.pointsOf(local).equals(3));
-        assertTrue(match.pointsOf(visitor).equals(0));
-    }
-
 }

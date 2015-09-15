@@ -14,6 +14,7 @@ public class Team {
     private User owner;
     private Set<Player> players;
     private String logo;
+    private Player captain;
 
 
     public Team(String aName, User aUser){
@@ -35,17 +36,10 @@ public class Team {
         players.add(aPlayer);
     }
 
-    public void assignAsCaptain(Player aPlayer) throws Exception {
-        validatePlayerIsInTheTeam(aPlayer);
-        removeCurrentCaptain();
-
-        aPlayer.assignAsCaptain();
-    }
-
-    public void addGoalOf(Player aPlayer, Match aMatch) throws Exception {
+    public void setCaptain(Player aPlayer) throws Exception {
         validatePlayerIsInTheTeam(aPlayer);
 
-        aPlayer.addGoalIn(aMatch);
+        captain = aPlayer;
     }
 
     //Getters - Setters
@@ -80,21 +74,18 @@ public class Team {
                 .collect(Collectors.toList());
     }
 
-    private void removeCurrentCaptain() {
-        players.forEach(player -> {
-            if(player.isCaptain())
-                player.removeCaptainWristband();
-        });
-    }
-
     private void validatePlayerIsInTheTeam(Player aPlayer) throws Exception {
         if(!players.contains(aPlayer))
             throw new Exception(aPlayer.getName() + "doesn't belong to this team");
     }
 
-    public Integer pointsMadeIn(Match aMatch) {
+    public Integer pointsMadeIn(DateMatch aDateMatch) {
         return players.stream()
-                .map(player -> player.pointsMadeIn(aMatch))
+                .map(player -> player.pointsMadeIn(aDateMatch))
                 .reduce(0, (a, b) -> a + b);
+    }
+
+    public Player getCaptain() {
+        return captain;
     }
 }

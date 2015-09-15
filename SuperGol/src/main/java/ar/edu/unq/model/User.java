@@ -1,7 +1,7 @@
 package ar.edu.unq.model;
 
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class User {
 
@@ -9,16 +9,16 @@ public class User {
     private Team team;
     private Tournament tournament;
 
-    public User (String name){
+    public User(String name) {
         userName = name;
     }
 
-    public void createTeam (String teamsName){
-        team = new Team(teamsName,this);
+    public void createTeam(String teamsName) {
+        team = new Team(teamsName, this);
     }
 
-    public void createTournament (String aName, int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, GregorianCalendar aDate){
-        tournament = new Tournament(aName,aMinimumAmountOfTeams,aMaximumAmountOfTeams,aDate,this);
+    public void createTournament(String aName, int aMinimumAmountOfTeams, int aMaximumAmountOfTeams, LocalDate aDate) {
+        tournament = new Tournament(aName, aMinimumAmountOfTeams, aMaximumAmountOfTeams, aDate, this);
     }
 
     public String getUserName() {
@@ -33,15 +33,7 @@ public class User {
         return team;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
     public Tournament getTournament() {
         return tournament;
-    }
-
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
     }
 }

@@ -9,7 +9,7 @@ public abstract class Position {
 
     private static Set<Position> instances = new HashSet<>();
 
-    public abstract Integer getPointsPerGoal();
+    public abstract int getPointsPerGoal();
 
     public abstract Integer getMaxNumberOfPlayersInATeam();
 
@@ -43,5 +43,9 @@ public abstract class Position {
         }
 
         return result;
+    }
+
+    public Integer pointsWhenScored(Integer aNumberOfGoals) {
+        return getPointsPerGoal() * aNumberOfGoals;
     }
 }

@@ -7,22 +7,17 @@ import java.util.Map;
 
 public class Match {
 
-    private int round;
+    private DateMatch dateMatch;
     private Team local;
     private Team visitor;
     private Map<Team, Integer> scorer;
 
-    public Match (int aRound, Team aTeam, Team anotherTeam){
-        round = aRound;
+    public Match(Team aTeam, Team anotherTeam){
         local = aTeam;
         visitor = anotherTeam;
         scorer = new HashMap<>();
         scorer.put(local, 0);
         scorer.put(visitor, 0);
-    }
-
-    public int getRound(){
-        return round;
     }
 
     public Team getLocal(){
@@ -33,18 +28,21 @@ public class Match {
         return visitor;
     }
 
-    public void addGoal(Team aTeam, Player aPlayer) throws Exception {
-        scorer.replace(aTeam, scorer.get(aTeam) + 1);
-        aTeam.addGoalOf(aPlayer, this);
+    public Integer pointsOf(Team aTeam) {
+        Integer points = aTeam.pointsMadeIn(dateMatch);
+        Team rival = getRivalOf(aTeam);
+        Integer rivalGoals = scorer.get(rival);
+        Integer rivalPoints = rival.pointsMadeIn(dateMatch);
+
+        return points > rivalGoals ? 3 : points.equals(rivalPoints) ? 1 : 0;
     }
 
-    public Integer pointsOf(Team aTeam) {
-        Integer points = aTeam.pointsMadeIn(this);
-        Team rival = Arrays.asList(local, visitor).stream()
-                .filter(team -> !team.equals(aTeam)).findFirst().get();
-        Integer rivalGoals = scorer.get(rival);
-        if(rivalGoals.equals(0))
-            points += 2;
-        return points;
+    private Team getRivalOf(Team aTeam) {
+        return Arrays.asList(local, visitor).stream()
+                    .filter(team -> !team.equals(aTeam)).findFirst().get();
+    }
+
+    public void setDateMatch(DateMatch aDateMatch) {
+        dateMatch = aDateMatch;
     }
 }
