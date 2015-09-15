@@ -10,22 +10,14 @@ import static org.junit.Assert.assertTrue;
 public class DateMatchTest {
     Match match;
     Team local, visitor;
-    Player forward, defender, goalkeeper, midfield, rivalDefender;
+    Player forward;
     DateMatch dateMatch;
 
     public void makeMatchWithTeams() throws Exception {
-        local = new Team("Local", new User("Johnny Bravo"));
-        visitor = new Team("Visitor", new User("Bugs Bunny"));
-        forward = new Player("Forward", Position.forward());
-        defender = new Player("Defender", Position.defender());
-        rivalDefender = new Player("DefenderR", Position.defender());
-        goalkeeper = new Player("GK", Position.goalKeeper());
-        midfield = new Player("Midfield", Position.midfield());
+        local = TestObjectsFactory.getTeam();
+        visitor = TestObjectsFactory.getTeam();
+        forward = TestObjectsFactory.getForward();
         local.addPlayer(forward);
-        local.addPlayer(defender);
-        local.addPlayer(goalkeeper);
-        local.addPlayer(midfield);
-        visitor.addPlayer(rivalDefender);
         match = new Match(local, visitor);
     }
 

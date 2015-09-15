@@ -13,22 +13,16 @@ public class MatchTest {
 
     Match match;
     Team local, visitor;
-    Player forward, defender, goalkeeper, midfield, rivalDefender;
+    Player forward, goalkeeper;
     DateMatch dateMatch;
 
     public void makeMatchWithTeams() throws Exception {
-        local = new Team("Local", new User("Johnny Bravo"));
-        visitor = new Team("Visitor", new User("Bugs Bunny"));
-        forward = new Player("Forward", Position.forward());
-        defender = new Player("Defender", Position.defender());
-        rivalDefender = new Player("DefenderR", Position.defender());
-        goalkeeper = new Player("GK", Position.goalKeeper());
-        midfield = new Player("Midfield", Position.midfield());
+        local = TestObjectsFactory.getTeam();
+        visitor = TestObjectsFactory.getTeam();
+        forward = TestObjectsFactory.getForward();
+        goalkeeper = TestObjectsFactory.getGoalKeeper();
         local.addPlayer(forward);
-        local.addPlayer(defender);
         local.addPlayer(goalkeeper);
-        local.addPlayer(midfield);
-        visitor.addPlayer(rivalDefender);
         dateMatch = new DateMatch(1);
         match = new Match(local, visitor);
         dateMatch.addMatch(match);

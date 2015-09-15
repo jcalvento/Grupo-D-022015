@@ -23,13 +23,12 @@ public class TournamentTest {
 
     @Before
     public void setUp() {
-        User user = new User("TestUser");
-        teamA = new Team("a", user);
-        teamB = new Team("b", user);
-        teamC = new Team("c", user);
-        teamD = new Team("d", user);
-        LocalDate deadline = LocalDate.of(2016, 8, 31);
-        tournament = new Tournament("tournamentTest", 2, 3, deadline, user);
+        User user = TestObjectsFactory.getUser();
+        teamA = TestObjectsFactory.getTeamFor(user);
+        teamB = TestObjectsFactory.getTeamFor(user);
+        teamC = TestObjectsFactory.getTeamFor(user);
+        teamD = TestObjectsFactory.getTeamFor(user);
+        tournament = new Tournament("tournamentTest", 2, 3, LocalDate.of(2016, 8, 31), user);
     }
 
     @Test

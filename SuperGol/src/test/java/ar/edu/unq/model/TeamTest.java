@@ -13,8 +13,8 @@ public class TeamTest {
 
     @Before
     public void setUp() {
-        user = new User("user");
-        makeTeam();
+        user = TestObjectsFactory.getUser();
+        team = TestObjectsFactory.getTeam();
     }
 
     @Test
@@ -46,13 +46,9 @@ public class TeamTest {
         assertEquals(team.getLogo(), "http://new_logo.com");
     }
 
-    public void makeTeam() {
-        team = new Team("All Stars", user);
-    }
-
     @Test
     public void itShouldAddAForward() throws Exception {
-        Player forward = new Player("Palermo", Position.forward());
+        Player forward = TestObjectsFactory.getForward();
 
         team.addPlayer(forward);
 
@@ -66,23 +62,22 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsAMidfieldPlayerWhenThereAreFourAlready() throws Exception {
-        Position position = Position.midfield();
-        Player midfieldPlayer = new Player("Chicho Serna", position);
-        addPlayersWithSamePositionTo(4, team, position);
+        Player midfieldPlayer = TestObjectsFactory.getMidfieldPlayer();
+        addPlayersWithSamePositionTo(4, team, midfieldPlayer.getPosition());
 
         try {
             team.addPlayer(midfieldPlayer);
         } catch (Exception e) {
             assertEquals(e.getMessage(),
-                    "You should remove a " + position + " before adding another one");
+                    "You should remove a " + midfieldPlayer.getPosition() + " before adding another one");
         }
         assertFalse(team.getPlayers().contains(midfieldPlayer));
     }
 
     @Test
     public void itShouldFailIfAddsAForwardPlayerWhenThereAreThreeAlready() throws Exception {
-        Position position = Position.forward();
-        Player forward = new Player("Palermo", position);
+        Player forward = TestObjectsFactory.getForward();
+        Position position = forward.getPosition();
         addPlayersWithSamePositionTo(3, team, position);
 
         try {
@@ -96,8 +91,8 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsADefenderWhenThereAreThreeAlready() throws Exception {
-        Position position = Position.defender();
-        Player defender = new Player("Defender", position);
+        Player defender = TestObjectsFactory.getDefender();
+        Position position = defender.getPosition();
         addPlayersWithSamePositionTo(3, team, position);
 
         try {
@@ -111,8 +106,8 @@ public class TeamTest {
 
     @Test
     public void itShouldFailIfAddsAGoalKeeperWhenThereIsOneAlready() throws Exception {
-        Position position = Position.goalKeeper();
-        Player goalKeeper = new Player("Gato Sessa", position);
+        Player goalKeeper = TestObjectsFactory.getGoalKeeper();
+        Position position = goalKeeper.getPosition();
         addPlayersWithSamePositionTo(1, team, position);
 
         try {
@@ -126,7 +121,7 @@ public class TeamTest {
 
     @Test
     public void itShouldAssignACaptain() throws Exception {
-        Player goalKeeper = getGk();
+        Player goalKeeper = TestObjectsFactory.getGoalKeeper();
         team.addPlayer(goalKeeper);
 
         team.setCaptain(goalKeeper);
@@ -136,7 +131,7 @@ public class TeamTest {
 
     @Test
     public void itShouldFailWhenAssigningAPlayerAsCaptainWhenHeDoesNotBelongToTheTeam() {
-        Player goalKeeper = getGk();
+        Player goalKeeper = TestObjectsFactory.getGoalKeeper();
 
         try {
             team.setCaptain(goalKeeper);
@@ -148,13 +143,9 @@ public class TeamTest {
         assertNotSame(team.getCaptain(), goalKeeper);
     }
 
-    private Player getGk() {
-        return new Player("Gato Sessa", Position.goalKeeper());
-    }
-
     @Test
     public void itShouldReassignTheCaptainWhenTheTeamHasAlreadyOne() throws Exception {
-        Player goalKeeper = getGk();
+        Player goalKeeper = TestObjectsFactory.getGoalKeeper();
         Player defender = new Player("Cristian Castro", Position.defender());
         team.addPlayer(goalKeeper);
         team.addPlayer(defender);
