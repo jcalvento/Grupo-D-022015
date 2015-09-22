@@ -82,10 +82,30 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.36</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>9.3.3.v20150827</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-core</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-api</artifactId>
+      <version>2.7.17</version>
+    </dependency>
   </dependencies>
 
   <properties>
-    <spring.version>4.2.0.RELEASE</spring.version>
+    <spring.version>4.2.1.RELEASE</spring.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <build>
