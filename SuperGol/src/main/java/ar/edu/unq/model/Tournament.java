@@ -1,16 +1,12 @@
 package ar.edu.unq.model;
 
-
-import org.springframework.cglib.core.Local;
-
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
+@Entity
+@Table(name = "tournament")
 public class Tournament {
 
     private String name;
@@ -38,6 +34,7 @@ public class Tournament {
         }
     }
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament", cascade = CascadeType.ALL)
     public List<Team> getTeams() {
         return teams;
     }

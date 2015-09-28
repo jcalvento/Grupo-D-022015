@@ -39,7 +39,7 @@ public class PlayerTest {
 
     @Test
     public void itShouldUpdateTheCurrentTeamOfThePlayer() {
-        Team team = new Team("Test Team", new User("Test User"));
+        String team = "Boca Juniors";
 
         player.setTeam(team);
 

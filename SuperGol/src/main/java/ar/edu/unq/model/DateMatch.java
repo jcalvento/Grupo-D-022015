@@ -2,9 +2,14 @@ package ar.edu.unq.model;
 
 import ar.edu.unq.model.position.Position;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "dateMatch") //No estoy seguro si se usa camelcase
 public class DateMatch {
 
     private List<Match> matches;
@@ -24,6 +29,7 @@ public class DateMatch {
         new DateMatchGoalCounter(aPlayer, playersPosition, this, numberOfGoals);
     }
 
+    @OneToMany
     public List<Match> getMatches() {
         return matches;
     }

@@ -1,10 +1,15 @@
 package ar.edu.unq.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+@Entity
+@Table(name = "match")
 public class Match {
 
     private DateMatch dateMatch;
@@ -20,10 +25,12 @@ public class Match {
         scorer.put(visitor, 0);
     }
 
+    @ManyToOne
     public Team getLocal(){
         return local;
     }
 
+    @ManyToOne
     public Team getVisitor(){
         return visitor;
     }

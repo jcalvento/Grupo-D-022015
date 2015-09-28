@@ -23,8 +23,6 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
         List<Long> list = (List<Long>) this.getHibernateTemplate().find(
                 "select count(*) from " + this.persistentClass.getName() + " o");
 
-//        this.getHibernateTemplate().execute(new HibernateCallBack<T>() {
-//        });
         Long count = list.get(0);
         return count.intValue();
     }

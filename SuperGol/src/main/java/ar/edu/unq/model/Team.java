@@ -2,12 +2,14 @@ package ar.edu.unq.model;
 
 import ar.edu.unq.model.position.Position;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+@Entity
+@Table(name = "team")
 public class Team {
 
     private String name;
@@ -36,13 +38,18 @@ public class Team {
         players.add(aPlayer);
     }
 
+    //Getters - Setters
+    @ManyToOne
+    public Player getCaptain() {
+        return captain;
+    }
+
     public void setCaptain(Player aPlayer) throws Exception {
         validatePlayerIsInTheTeam(aPlayer);
 
         captain = aPlayer;
     }
 
-    //Getters - Setters
     public String getName() {
         return name;
     }
@@ -59,10 +66,12 @@ public class Team {
         logo = aLogo;
     }
 
+    @ManyToMany
     public Set<Player> getPlayers() {
         return players;
     }
 
+    @OneToOne
     public User getOwner() {
         return owner;
     }
@@ -85,7 +94,4 @@ public class Team {
                 .reduce(0, (a, b) -> a + b);
     }
 
-    public Player getCaptain() {
-        return captain;
-    }
 }

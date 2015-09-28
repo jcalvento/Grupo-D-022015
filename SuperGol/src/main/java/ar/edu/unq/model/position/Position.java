@@ -1,10 +1,18 @@
 package ar.edu.unq.model.position;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Entity
+@Table(name = "position")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name="discriminator",
+        discriminatorType=DiscriminatorType.STRING
+)
 public abstract class Position {
 
     private static Set<Position> instances = new HashSet<>();

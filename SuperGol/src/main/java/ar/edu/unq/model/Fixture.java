@@ -1,9 +1,14 @@
 package ar.edu.unq.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "fixture")
 public class Fixture {
 
     private final Integer dateMatchesQuantity;
@@ -47,6 +52,7 @@ public class Fixture {
         }
     }
 
+    @ManyToMany
     public List<DateMatch> getDateMatches() {
         return dateMatches;
     }
