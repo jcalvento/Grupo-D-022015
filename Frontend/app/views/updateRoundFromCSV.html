@@ -1,0 +1,39 @@
+<div class="panel">
+  <form id="demo-bvd-notempty" action="forms-validation.html" class="form-horizontal bv-form" novalidate="novalidate"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+    <div class="panel-body">
+
+      <hr>
+      <h4 class="mar-btm text-thin">Update round from CSV</h4>
+      <hr>
+
+      <!--REGULAR EXPRESSION BASED VALIDATORS-->
+      <!--===================================================-->
+      <fieldset>
+        <div class="form-group has-feedback">
+          <label class="col-lg-3 control-label">Email address</label>
+          <div class="col-lg-7">
+            <input type="email" class="form-control" name="email" placeholder="email" data-bv-field="email" style="height:5%">
+            <i class="form-control-feedback" data-bv-icon-for="email" style="display: none;"></i>
+            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="email" data-bv-result="NOT_VALIDATED" style="display: none;">The email address is required and can't be empty</small><small class="help-block" data-bv-validator="emailAddress" data-bv-for="email" data-bv-result="NOT_VALIDATED" style="display: none;">The input is not a valid email address</small></div>
+        </div>
+        <div class="form-group has-feedback">
+          <label class="col-lg-3 control-label">File</label>
+          <div class="col-lg-7">
+            <input type="text" class="form-control" name="website" placeholder="http:// or user/home.." data-bv-field="website" style="height:5%">
+            <i class="form-control-feedback" data-bv-icon-for="website" style="display: none;"></i>
+            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="website" data-bv-result="NOT_VALIDATED" style="display: none;">The website address is required and can't be empty</small><small class="help-block" data-bv-validator="uri" data-bv-for="website" data-bv-result="NOT_VALIDATED" style="display: none;">The input is not a valid URL</small></div>
+        </div>
+
+      </fieldset>
+      <!--===================================================-->
+
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-3">
+          <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Update</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
