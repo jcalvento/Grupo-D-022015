@@ -28,13 +28,13 @@ angular
       })
       .when('/updateRoundManually', {
                     templateUrl: 'views/updateRoundManually.html',
-                    controller: 'UpdateRoundManuallyCtrl',
-                    controllerAs: 'updateRoundManually'
+                    controller: 'UpdateRoundCtrl',
+                    controllerAs: 'updateRound'
       })
       .when('/updateRoundFromCSV', {
                     templateUrl: 'views/updateRoundFromCSV.html',
-                    controller: 'UpdateRoundFromCSVCtrl',
-                    controllerAs: 'updateRoundFromCSV'
+                    controller: 'UpdateRoundCtrl',
+                    controllerAs: 'updateRound'
             })
       .when('/teams', {
         templateUrl: 'views/teams.html',
@@ -43,13 +43,13 @@ angular
       })
       .when('/createTeam', {
                     templateUrl: 'views/createTeam.html',
-                    controller: 'CreateTeamCtrl',
-                    controllerAs: 'createTeam'
+                    controller: 'TeamCtrl',
+                    controllerAs: 'team'
                   })
       .when('/editTeam', {
               templateUrl: 'views/editTeam.html',
-              controller: 'EditTeamCtrl',
-              controllerAs: 'editTeam'
+              controller: 'TeamCtrl',
+              controllerAs: 'team'
             })
       .otherwise({
         redirectTo: '/'

@@ -6,11 +6,11 @@
 
     <!--STYLESHEET-->
     <!--=================================================-->
-    <link rel="stylesheet" href="http://www.themeon.net/nifty/v2.2.1/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
+    <!--<link rel="stylesheet" href="http://www.themeon.net/nifty/v2.2.1/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">-->
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <!--<link rel="stylesheet" href="http://www.themeon.net/nifty/v2.2.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-v3.3.5.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="./styles/nifty-2.2.1.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <!--<link href="plugins/morris-js/morris.min.css" rel="stylesheet">-->
 
 
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-table.css">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-table.css">-->
     <!--Switchery [ OPTIONAL ]-->
     <!--<link href="plugins/switchery/switchery.min.css" rel="stylesheet">-->
 
@@ -325,9 +325,6 @@
                         <li><a ng-href="#/tournament">General</a></li>
                         <li><a href="#/createTeam">Create Team</a></li>
                         <li><a href="#/updateRound">Update Round</a></li>
-                        <!--<li><a href="forms-components.html">Components</a></li>-->
-                        <!--<li><a href="forms-validation.html">Validation</a></li>-->
-                        <!--<li><a href="forms-wizard.html">Wizard</a></li>-->
 
                       </ul></li>
 
@@ -344,10 +341,6 @@
                       <ul class="collapse" aria-expanded="false" style="height: 0px;">
                         <li><a href="#/teams">My Team</a></li>
                         <li><a href="#/editTeam">Edit</a></li>
-                        <!--<li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>-->
-                        <!--<li><a href="tables-datatable.html">Data Tables<span class="label label-info pull-right">New</span></a></li>-->
-                        <!--<li><a href="tables-footable.html">Foo Tables<span class="label label-info pull-right">New</span></a></li>-->
-
                       </ul></li>
                   </ul>
                 </div>
@@ -384,9 +377,9 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <!--<script src="http://www.themeon.net/nifty/v2.2.1/js/jquery-2.1.1.min.js"></script>-->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="scripts/nifty.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -394,7 +387,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <!--<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>-->
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -403,6 +396,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/tournament.js"></script>
     <script src="scripts/controllers/team.js"></script>
+    <script src="scripts/controllers/updateRound.js"></script>
     <!-- endbuild -->
 
   </body>
