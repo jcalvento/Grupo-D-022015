@@ -1,5 +1,7 @@
-language: java
-jdk:
-  - oraclejdk8
-install: cd SuperGol/ && mvn install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8 -DskipTests=true
-script: mvn test -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+language: ruby
+rvm:
+  - 2.2.3
+bundler_args: --without development staging production
+before_script:
+- sh -e /etc/init.d/xvfb start
+script: bundle exec rspec spec
