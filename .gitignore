@@ -27,3 +27,39 @@ buildNumber.properties
 .metadata/
 SuperGol/SuperGol.iml
 
+# Rails gitignore
+*.rbc
+capybara-*.html
+.rspec
+super_goal/log
+super_goal/tmp
+super_goal/db/*.sqlite3
+super_goal/db/*.sqlite3-journal
+super_goal/public/system
+super_goal/coverage/
+super_goal/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# TODO Comment out these rules if you are OK with secrets being uploaded to the repo
+super_goal/config/initializers/secret_token.rb
+super_goal/config/secrets.yml
+
+## Environment normalisation:
+super_goal/.bundle
+super_goal/vendor/bundle
+
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+super_goal/.rvmrc
+
+# if using bower-rails ignore default bower_components path bower.json files
+super_goal/vendor/assets/bower_components
+*.bowerrc
+bower.json
+
+# Ignore pow environment settings
+.powenv
