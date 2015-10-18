@@ -2,9 +2,9 @@ language: ruby
 rvm:
   - 2.2.3
 bundler_args: --without development staging production
-cache:
-  directories:
-  - super_goal/vendor/bundle
+cache: bundler
+env:
+  - DB=test
 before_script:
   - cd super_goal
   - bundle install
