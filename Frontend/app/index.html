@@ -1,92 +1,403 @@
-<!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperGoal</title>
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--<link rel="stylesheet" href="http://www.themeon.net/nifty/v2.2.1/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">-->
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <!--<link rel="stylesheet" href="http://www.themeon.net/nifty/v2.2.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="./styles/nifty-2.2.1.css" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <!--<link href="plugins/animate-css/animate.min.css" rel="stylesheet">-->
+
+
+    <!--Morris.js [ OPTIONAL ]-->
+    <!--<link href="plugins/morris-js/morris.min.css" rel="stylesheet">-->
+
+
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-table.css">-->
+    <!--Switchery [ OPTIONAL ]-->
+    <!--<link href="plugins/switchery/switchery.min.css" rel="stylesheet">-->
+
+
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <!--<link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">-->
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <!--<link href="css/demo/nifty-demo.min.css" rel="stylesheet">-->
+
+    <!--SCRIPT-->
+    <!--=================================================-->
+
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <!--<link href="plugins/pace/pace.min.css" rel="stylesheet">-->
+    <!--<script src="plugins/pace/pace.min.js"></script><style type="text/css"></style>-->
+
+    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background-color: #3a3f44;border-radius: 2px;color: white;text-align: right;white-space: nowrap;padding: 7px 14px;z-index: 10000;}.jqsfield { color: white;font-size: 14;text-align: right;}</style>
   </head>
-  <body ng-app="frontendApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <!--TIPS-->
+  <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+  <body class="nifty-ready pace-done" ng-app="frontendApp">
+    <div class="pace pace-inactive">
+      <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+        <div class="pace-progress-inner"></div>
+      </div>
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+      <div class="pace-activity"></div>
+    </div>
+    <div id="container" class="effect mainnav-in">
+      <header id="navbar" class="">
+        <div id="navbar-container" class="boxed">
+
           <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">frontend</a>
+            <a ng-href="#/" class="navbar-brand">
+              <img src="images/Soccer-icon.png" class="brand-icon">
+              <div class="brand-title">
+                <span class="brand-text"> SuperGoal</span>
+              </div>
+            </a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="navbar-content clearfix">
+            <ul class="nav navbar-top-links pull-left">
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li class="tgl-menu-btn">
+                <a class="mainnav-toggle" href="#">
+                  <i class="fa fa-navicon fa-lg"></i>
+                </a>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="fa fa-envelope fa-lg"></i>
+                  <span class="badge badge-header badge-warning">1</span>
+                </a>
+
+                <!--Message dropdown menu-->
+                <div class="dropdown-menu dropdown-menu-md with-arrow">
+                  <div class="pad-all bord-btm">
+                    <p class="text-lg text-muted text-thin mar-no">You have 1 messages.</p>
+                  </div>
+                  <div class="nano scrollable has-scrollbar" style="height: 0px;">
+                    <div class="nano-content" tabindex="0" style="right: -15px;">
+                      <ul class="head-list">
+
+
+                        <!-- Dropdown list-->
+                        <li>
+                          <a href="#" class="media">
+                            <div class="media-left">
+                              <img src="images/icon-user.png" alt="Profile Picture" class="img-circle img-sm">
+                            </div>
+                            <div class="media-body">
+                              <div class="text-nowrap">Thor sent you a message</div>
+                              <small class="text-muted">40 minutes ago</small>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nano-pane" style="display: none;">
+                      <div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div>
+                    </div>
+                  </div>
+
+                  <!--Dropdown footer-->
+                  <div class="pad-all bord-top">
+                    <a href="#" class="btn-link text-dark box-block">
+                      <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Messages
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <!--End message dropdown-->
+
+              <!--Notification dropdown-->
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="fa fa-bell fa-lg"></i>
+                  <span class="badge badge-header badge-danger">3</span>
+                </a>
+
+                <!--Notification dropdown menu-->
+                <div class="dropdown-menu dropdown-menu-md with-arrow">
+                  <div class="pad-all bord-btm">
+                    <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+                  </div>
+                  <div class="nano scrollable has-scrollbar" style="height: 0px;">
+                    <div class="nano-content" tabindex="0" style="right: -15px;">
+                      <ul class="head-list">
+
+                        <!-- Dropdown list-->
+                        <li>
+                          <a href="#" class="media">
+                            <div class="media-left">
+                              <span class="icon-wrap icon-circle bg-primary">
+                                  <i class="fa fa-comment fa-lg"></i>
+                              </span>
+                            </div>
+                            <div class="media-body">
+                              <div class="text-nowrap">New comments waiting approval</div>
+                              <small class="text-muted">15 minutes ago</small>
+                            </div>
+                          </a>
+                        </li>
+
+                        <!-- Dropdown list-->
+                        <li>
+                          <a href="#" class="media">
+                            <span class="label label-danger pull-right">New</span>
+                            <div class="media-left">
+                              <span class="icon-wrap bg-purple">
+                                  <i class="fa fa-comment fa-lg"></i>
+                              </span>
+                            </div>
+                            <div class="media-body">
+                              <div class="text-nowrap">Comment Sorting</div>
+                              <small class="text-muted">Last Update 8 hours ago</small>
+                            </div>
+                          </a>
+                        </li>
+
+                        <!-- Dropdown list-->
+                        <li>
+                          <a href="#" class="media">
+                            <div class="media-left">
+                              <span class="icon-wrap bg-success">
+                                  <i class="fa fa-user fa-lg"></i>
+                              </span>
+                            </div>
+                            <div class="media-body">
+                              <div class="text-nowrap">New User Registered</div>
+                              <small class="text-muted">4 minutes ago</small>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nano-pane" style="display: none;">
+                      <div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div>
+                    </div>
+                  </div>
+
+                  <!--Dropdown footer-->
+                  <div class="pad-all bord-top">
+                    <a href="#" class="btn-link text-dark box-block">
+                      <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <!--End notifications dropdown-->
+
+
+            </ul>
+            <ul class="nav navbar-top-links pull-right">
+
+              <!--Language selector-->
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <li class="dropdown">
+                <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                  <span class="lang-selected">
+                      <img class="lang-flag" src="images/united-kingdom.png" alt="English">
+                      <span class="lang-id">EN</span>
+                      <span class="lang-name">English</span>
+                  </span>
+                </a>
+
+                <!--Language selector menu-->
+                <ul class="head-list dropdown-menu with-arrow">
+                  <li>
+                    <!--English-->
+                    <a href="#" class="active">
+                      <img class="lang-flag" src="images/united-kingdom.png" alt="English">
+                      <span class="lang-id">EN</span>
+                      <span class="lang-name">English</span>
+                    </a>
+                  </li>
+                  <li>
+                    <!--Spain-->
+                    <a href="#">
+                      <img class="lang-flag" src="images/spain.png" alt="Spain">
+                      <span class="lang-id">ES</span>
+                      <span class="lang-name">Español</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <!--End language selector-->
+
+              <!--User dropdown-->
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <li id="dropdown-user" class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                  <span class="pull-right">
+                      <img class="img-circle img-user media-object" src="images/icon-user.png" alt="Profile Picture">
+                  </span>
+                  <div class="username hidden-xs">User</div>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                  <!-- User dropdown menu -->
+                  <ul class="head-list">
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="badge badge-danger pull-right">1</span>
+                        <i class="fa fa-envelope fa-fw fa-lg"></i> Messages
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="label label-success pull-right">New</span>
+                        <i class="fa fa-gear fa-fw fa-lg"></i> Settings
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- Dropdown footer -->
+                  <div class="pad-all text-right">
+                    <a href="pages-login.html" class="btn btn-primary">
+                      <i class="fa fa-sign-out fa-fw"></i> Logout
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+              <!--End user dropdown-->
+
             </ul>
           </div>
+          <!--================================-->
+          <!--End Navbar Dropdown-->
+
+        </div>
+      </header>
+      <!--===================================================-->
+      <!--END NAVBAR-->
+
+      <div class="boxed">
+
+        <!--MAIN NAVIGATION-->
+        <!--===================================================-->
+        <nav id="mainnav-container">
+          <div id="mainnav">
+
+            <!--Menu-->
+            <!--================================-->
+            <div id="mainnav-menu-wrap">
+              <div class="nano has-scrollbar">
+                <div class="nano-content" tabindex="0" style="right: -15px;">
+                  <ul id="mainnav-menu" class="list-group">
+
+                    <li class="list-divider"></li>
+                    <!--Menu list item-->
+                    <li class="">
+                      <a data-original-title="" title="">
+                        <i class="fa fa-edit"></i>
+                        <span class="menu-title">Tournament</span>
+                        <i class="arrow"></i>
+                      </a>
+                      <!--Submenu-->
+                      <ul class="collapse" aria-expanded="false" style="height: 0px;">
+                        <li><a ng-href="#/tournament">General</a></li>
+                        <li><a href="#/createTeam">Create Team</a></li>
+                        <li><a href="#/updateRound">Update Round</a></li>
+
+                      </ul></li>
+
+                    <!--Menu list item-->
+                    <li class="">
+                      <a data-original-title="" title="">
+                        <i class="fa fa-table"></i>
+                        <span class="menu-title">Team</span>
+                        <i class="arrow"></i>
+                      </a>
+
+                      <!--Submenu-->
+
+                      <ul class="collapse" aria-expanded="false" style="height: 0px;">
+                        <li><a href="#/teams">My Team</a></li>
+                        <li><a href="#/editTeam">Edit</a></li>
+                      </ul></li>
+                  </ul>
+                </div>
+                <div class="nano-pane" style="display: none;">
+                  <div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div>
+                </div>
+              </div>
+            </div>
+            <!--================================-->
+            <!--End menu-->
+
+          </div>
+        </nav>
+        <!--===================================================-->
+        <!--END MAIN NAVIGATION-->
+        <div class="container" style="padding-left: 221px; float: center; margin-top: 8%; margin-bottom: 8%; margin-right: 4%;">
+          TODO BACKGROUND IMAGE
+          <div ng-view=""></div>
         </div>
       </div>
+
+      <!-- FOOTER -->
+      <!--===================================================-->
+      <footer id="footer">
+
+        <div class="hide-fixed pull-right pad-rgt">Currently v0.1</div>
+
+        <p class="pad-lft">© Grupo D 02/2015</p>
+      </footer>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="scripts/nifty.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!--<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>-->
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
-</body>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/tournament.js"></script>
+    <script src="scripts/controllers/team.js"></script>
+    <script src="scripts/controllers/updateRound.js"></script>
+    <!-- endbuild -->
+
+  </body>
 </html>
