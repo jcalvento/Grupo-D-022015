@@ -1,5 +1,12 @@
-language: java
-jdk:
-  - oraclejdk8
-install: cd SuperGol/ && mvn install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8 -DskipTests=true
-script: mvn test -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+language: ruby
+rvm:
+  - 2.2.3
+cache: bundler
+before_install:
+  - cd super_goal
+bundler_args: --without development production
+before_script:
+  - rake db:migrate
+  - rake db:test:prepare
+script:
+  - bundle exec rspec spec
