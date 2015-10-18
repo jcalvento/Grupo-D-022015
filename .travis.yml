@@ -5,9 +5,11 @@ bundler_args: --without development staging production
 cache:
   directories:
   - super_goal/vendor/bundle
-script:
+before_script:
   - cd super_goal
   - bundle install
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
+  - rake db:setup
+  - rake db:migrate
+  - rake db:test:prepare
+script:
   - bundle exec rspec spec
