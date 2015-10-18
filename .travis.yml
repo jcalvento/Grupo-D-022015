@@ -4,4 +4,4 @@ rvm:
 bundler_args: --without development staging production
 before_script:
 - sh -e /etc/init.d/xvfb start
-script: cd super_goal && bundle install && bundle exec rspec spec
+script: cd super_goal && bundle install && rake db:migrate && rake db:test:prepare && bundle exec rspec spec
