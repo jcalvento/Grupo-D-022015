@@ -6,7 +6,6 @@ before_install:
   - cd super_goal
 bundler_args: --without development production
 before_script:
-  - cd super_goal
   - rake db:migrate
   - rake db:test:prepare
 script:
