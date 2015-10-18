@@ -14,6 +14,7 @@ require File.dirname(__FILE__) + '/../config/environment'
 require 'shoulda/matchers'
 require 'timecop'
 require 'webmock/rspec'
+require 'factory_girl_rails'
 
 RSpec.configure do |config|
   config.filter_run_excluding :broken => true
