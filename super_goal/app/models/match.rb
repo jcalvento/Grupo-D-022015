@@ -1,16 +1,13 @@
-class Match
+class Match < ActiveRecord::Base
 
-  attr_accessor :local, :visitor
-
-  def initialize(local_team=nil, visitor_team=nil)
-    @local = local_team
-    @visitor = visitor_team
-  end
+  belongs_to :date_match
+  has_one :local, class_name: 'Team'
+  has_one :visitor, class_name: 'Team'
 
   def points_of(a_team)
-    points = a_team.points_made_in(@date_match)
+    points = a_team.points_made_in(date_match)
     rival = rival_of(a_team)
-    rival_points = rival.points_made_in(@date_match)
+    rival_points = rival.points_made_in(date_match)
 
     if points > rival_points
       3
@@ -21,9 +18,5 @@ class Match
 
   def rival_of(a_team)
     [local, visitor].detect { |team| !team.equal? a_team }
-  end
-
-  def date_match=(a_date_match)
-    @date_match = a_date_match
   end
 end

@@ -15,7 +15,7 @@ describe 'Match' do
     local = build :team, name: 'Local Team'
     visitor = build :team, name: 'Visitor Team'
 
-    match = Match.new local, visitor
+    match = Match.new(local: local, visitor: visitor)
 
     expect(match.local).to eq local
     expect(match.visitor).to eq visitor

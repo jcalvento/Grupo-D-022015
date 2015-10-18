@@ -5,11 +5,11 @@ describe 'Team' do
   let(:team) { build :team }
 
   it 'should create a team with the given name' do
-    expect(Team.new('Da team').name).to eq 'Da team'
+    expect(Team.new(name: 'Da team').name).to eq 'Da team'
   end
 
   it 'should create a team with the given name and logo' do
-    team = Team.new('Da team', 'logo image')
+    team = Team.new(name: 'Da team', logo: 'logo image')
 
     expect(team.name).to eq 'Da team'
     expect(team.logo).to eq 'logo image'
@@ -58,7 +58,7 @@ describe 'Team' do
 
     def add_players_with_position(team, number_of_players, position)
       number_of_players.times do |i|
-        team.add_player Player.new "Player #{i}", position
+        team.add_player Player.new name: "Player #{i}", position: position
       end
     end
 

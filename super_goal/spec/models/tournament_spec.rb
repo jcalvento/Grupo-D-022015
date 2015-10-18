@@ -23,7 +23,7 @@ describe 'Tournament' do
 
     it 'should fail when adding a team after the application deadline date' do
       team = build :team
-      tournament = build :tournament, application_deadline_date: Date.yesterday
+      tournament = build :tournament, application_deadline: Date.yesterday - 7.days
 
       expect{
         tournament.add_team team

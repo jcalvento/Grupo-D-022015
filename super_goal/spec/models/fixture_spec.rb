@@ -12,7 +12,7 @@ describe 'Fixture' do
   }
 
   it 'should create as much date matches as requested' do
-    fixture = Fixture.new(teams, 5)
+    fixture = Fixture.for(teams, 5)
 
     expect(fixture.date_matches.size).to eq 5
   end

@@ -28,7 +28,7 @@ FactoryGirl.define do
   factory :tournament do
     name 'Test Tournament'
     max_amount_of_teams 6
-    application_deadline_date Date.today + 7.days
+    application_deadline Date.today + 7.days
   end
 
   factory :match do

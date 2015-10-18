@@ -1,4 +1,4 @@
-class Position
+class Position < ActiveRecord::Base
 
   def self.forward
     find_position_or_create Forward
@@ -36,7 +36,7 @@ class Position
 
   def self.find_position_or_create(a_position)
     descendant = self.all_instances.detect { |descendant| descendant.instance_of? a_position }
-    descendant.present? ? descendant : a_position.new
+    descendant || a_position.new
   end
 
   def self.all_instances

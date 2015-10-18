@@ -1,13 +1,12 @@
-class GoalsCounter
+class GoalsCounter < ActiveRecord::Base
 
   attr_accessor :player, :position, :date_match, :number_of_goals
+  belongs_to :player
+  has_one :position
+  belongs_to :date_match
 
-  def initialize(a_player, a_position, a_date_match, a_number_of_goals)
-    @player = a_player
-    @position = a_position
-    @date_match = a_date_match
-    @number_of_goals = a_number_of_goals
-
+  def initialize(attributes = nil, options = {})
+    super attributes, options
     player.add_goals_in_date_match self
   end
 
