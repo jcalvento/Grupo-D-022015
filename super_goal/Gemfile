@@ -50,7 +50,7 @@ group :test, :ide_test do
   gem 'shoulda-matchers'
   gem 'webmock'
   gem 'timecop'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'simplecov'
 end
 

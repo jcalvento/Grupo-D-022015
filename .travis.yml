@@ -1,14 +1,12 @@
 language: ruby
 rvm:
   - 2.2.3
-bundler_args: --without development staging production
 cache: bundler
 env:
   - DB=test
 before_script:
   - cd super_goal
-  - bundle install
-  - rake db:schema:load
+  - bundle install --without development staging production
   - rake db:setup
   - rake db:migrate
   - rake db:test:prepare
