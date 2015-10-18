@@ -2,9 +2,12 @@ language: ruby
 rvm:
   - 2.2.3
 bundler_args: --without development staging production
+cache:
+  directories:
+  - super_goal/vendor/bundle
 script:
-	- cd super_goal
-	- bundle install
-	- RAILS_ENV=test bundle exec rake db:migrate
-	- bundle exec rake db:test:prepare
-	- bundle exec rspec spec
+  - cd super_goal
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec
