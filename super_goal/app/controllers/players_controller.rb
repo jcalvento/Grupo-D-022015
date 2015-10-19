@@ -10,8 +10,17 @@ class PlayersController < ApplicationController
     render :json => { }
   end
 
-  def update
+  def edit
+    player = Player.find(params[:id])
 
+    render json: { player: player }
+  end
+
+  def update
+    player = Player.find(params[:id])
+    player.update!(name: player_params[:name], team: player_params[:team], position: position)
+
+    render json: { }
   end
 
   protected

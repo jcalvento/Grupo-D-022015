@@ -1,8 +1,8 @@
-<div class="panel">
+<div class="panel" ng-init="edit()">
   <form name="playerForm" novalidate>
     <div class="panel-body">
       <hr>
-        <h4 class="mar-btm text-thin">New Player</h4>
+      <h4 class="mar-btm text-thin">Edit Player</h4>
       <hr>
       <div class="form-group">
         <label for="name">Name</label>
@@ -22,7 +22,7 @@
     <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-primary" type="button" ng-click="createPlayer()">Create</button>
+          <button class="btn btn-primary" type="button" ng-click="update()">Update</button>
         </div>
       </div>
     </div>

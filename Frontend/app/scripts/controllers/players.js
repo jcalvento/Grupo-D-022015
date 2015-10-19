@@ -1,4 +1,4 @@
-function PlayersController($scope, ServerApi) {
+function PlayersController($scope, $location, $routeParams, ServerApi) {
 
   $scope.positions = ['Forward', 'Midfield', 'Defender', 'Goalkeeper'];
   $scope.player = {position: $scope.positions[0]};
@@ -10,15 +10,30 @@ function PlayersController($scope, ServerApi) {
   };
 
   $scope.createPlayer = function() {
-    var params = {
+    ServerApi.createPlayer(playerParams()).then(redirectToIndex())
+  };
+
+  $scope.edit = function() {
+    ServerApi.editPlayer($routeParams.id).then(function(response) {
+      $scope.player = response.data.player;
+    })
+  };
+
+  $scope.update = function() {
+    ServerApi.updatePlayer($scope.player.id, playerParams()).then(redirectToIndex())
+  };
+
+  function redirectToIndex() {
+    $location.path('/players')
+  }
+
+  function playerParams() {
+    return {
       player: {
         name: $scope.player.name,
         team: $scope.player.team,
         position: $scope.player.position
       }
-    };
-    ServerApi.createPlayer(params).then(function() {
-      window.location = '#/players'
-    })
+    }
   }
 }

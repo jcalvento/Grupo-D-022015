@@ -24,12 +24,16 @@ function configuration($httpProvider, $routeProvider) {
       templateUrl: 'views/teams/index.html',
       controller: 'TeamsController'
     })
-    .when('/createTeam', {
-      templateUrl: 'views/teams/create.html',
+    .when('/teams/new', {
+      templateUrl: 'views/teams/new.html',
       controller: 'TeamsController'
     })
-    .when('/editTeam', {
+    .when('/teams/:id/edit', {
       templateUrl: 'views/teams/edit.html',
+      controller: 'TeamsController'
+    })
+    .when('/teams/{{team.id}}/players', {
+      templateUrl: 'views/teams/players.html',
       controller: 'TeamsController'
     })
     .when('/players', {
@@ -38,6 +42,10 @@ function configuration($httpProvider, $routeProvider) {
     })
     .when('/players/new', {
       templateUrl: 'views/players/new.html',
+      controller: 'PlayersController'
+    })
+    .when('/players/:id/edit', {
+      templateUrl: 'views/players/edit.html',
       controller: 'PlayersController'
     })
     .otherwise({

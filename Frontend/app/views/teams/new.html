@@ -1,8 +1,8 @@
-<div class="panel" ng-init="editTeam()">
+<div class="panel">
   <form name="teamForm" novalidate>
     <div class="panel-body">
       <hr>
-      <h4 class="mar-btm text-thin">Edit Team</h4>
+      <h4 class="mar-btm text-thin">Create Team</h4>
       <hr>
       <div class="form-group">
         <label for="name">Name</label>
@@ -12,14 +12,11 @@
         <label for="logo">Logo</label>
         <input type="text" id="logo" name="logo" ng-model="team.logo">
       </div>
-      <div>
-        <a ng-href="#/team/{{team.id}}/players" class="btn-link">Add/Remove players</a>
-      </div>
     </div>
     <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-primary" type="button" ng-click="updateTeam()">Update</button>
+          <button class="btn btn-primary" type="button" ng-click="createTeam()">Create</button>
         </div>
       </div>
     </div>

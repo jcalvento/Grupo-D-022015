@@ -1,13 +1,15 @@
-<div class="panel">
+<div class="panel" ng-init="getTeams()">
   <div class="panel-heading">
-    <h3 class="panel-title">Team</h3>
+    <h3 class="panel-title">Teams</h3>
   </div>
   <div class="panel-body">
-
     <div class="bootstrap-table">
       <div class="fixed-table-toolbar">
         <div class="bars pull-left">
           <button class="btn btn-danger btn-labeled fa fa-times" disabled="">Delete</button>
+        </div>
+        <div class="bars pull-right">
+          <a ng-href="#/teams/new" class="btn btn-success">New</a>
         </div>
       </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
@@ -17,27 +19,14 @@
                  data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
                  data-search="true" data-show-refresh="true" data-show-toggle="true"
                  data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
-                       data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+                 data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
             <thead style="display: table-header-group;">
             <tr>
-              <th class="bs-checkbox " style="width: 36px; ">
-                <div class="th-inner ">
-                  <label class="form-checkbox form-icon">
-                    <input name="btSelectAll" type="checkbox">
+              <th class="bs-checkbox" style="width: 36px; ">
+                <div class="th-inner">
+                  <label>
+                    <input type="checkbox">
                   </label>
-                </div>
-                <div class="fht-cell">
-
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  Position
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
-
-                          </span>
-                            </span>
                 </div>
                 <div class="fht-cell">
 
@@ -53,7 +42,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Team
+                  Actions
                 </div>
                 <div class="fht-cell">
 
@@ -62,32 +51,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr data-index="0">
+            <tr ng-repeat="team in teams">
               <td class="bs-checkbox">
-                <label class="form-checkbox form-icon">
-                  <input data-index="0" name="btSelectItem" type="checkbox">
+                <label>
+                  <input type="checkbox">
                 </label>
               </td>
-              <td style="">
-                <a href="#" class="btn-link">Foward</a>
-              </td>
-              <td style="">Carlos Tevez</td>
-              <td style="">
-                <span class="text-muted">Boca Jrs.</span>
-              </td>
-            </tr>
-            <tr data-index="1">
-              <td class="bs-checkbox">
-                <label class="form-checkbox form-icon">
-                  <input data-index="0" name="btSelectItem" type="checkbox">
-                </label>
-              </td>
-              <td style="">
-                <a href="#" class="btn-link">Foward</a>
-              </td>
-              <td style="">Javier Saviola</td>
-              <td style="">
-                <span class="text-muted">River Plate</span>
+              <td>{{team.name}}</td>
+              <td>
+                <a class="btn btn-primary" ng-href="#/teams/{{team.id}}/edit">Edit</a>
               </td>
             </tr>
             </tbody>
@@ -100,3 +72,4 @@
     </div>
   </div>
 </div>
+

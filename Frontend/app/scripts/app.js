@@ -11,8 +11,8 @@ var app = angular.module('frontendApp', [
 
 //Controllers
 app.controller('MainController', ['$scope', MainController]);
-app.controller('PlayersController', ['$scope', 'ServerApi', PlayersController]);
-app.controller('TeamsController', ['$scope', 'ServerApi', TeamsController]);
+app.controller('PlayersController', ['$scope', '$location', '$routeParams', 'ServerApi', PlayersController]);
+app.controller('TeamsController', ['$scope', '$location', '$routeParams', 'ServerApi', TeamsController]);
 app.controller('TournamentsController', ['$scope', 'ServerApi', TournamentsController]);
 app.controller('RoundsController', ['$scope', 'ServerApi', RoundsController]);
 

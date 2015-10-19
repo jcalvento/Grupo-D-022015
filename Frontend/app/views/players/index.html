@@ -62,6 +62,14 @@
 
                 </div>
               </th>
+              <th style="">
+                <div class="th-inner sortable">
+                  Actions
+                </div>
+                <div class="fht-cell">
+
+                </div>
+              </th>
             </tr>
             </thead>
             <tbody>
@@ -74,6 +82,7 @@
                 <td>{{player.position}}</td>
                 <td>{{player.name}}</td>
                 <td>{{player.team}}</td>
+                <td><a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">Edit</a></td>
               </tr>
             </tbody>
           </table>
