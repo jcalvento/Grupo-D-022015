@@ -1,6 +1,5 @@
 class Team < ActiveRecord::Base
 
-  attr_accessor :name, :logo
   attr_reader :captain
   has_many :players
   has_one :captain, class_name: 'Player'

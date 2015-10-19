@@ -1,6 +1,5 @@
 class Player < ActiveRecord::Base
 
-  attr_accessor :name, :position, :team
   has_one :position
   has_many :goals_counters
   alias_attribute :goals, :goals_counters
@@ -18,4 +17,9 @@ class Player < ActiveRecord::Base
     goals << a_goals_counter
   end
 
+  def as_json(options = nil)
+    json = super options
+    json[:position] = position.name
+    json
+  end
 end

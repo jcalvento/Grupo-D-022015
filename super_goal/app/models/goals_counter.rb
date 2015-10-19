@@ -1,6 +1,5 @@
 class GoalsCounter < ActiveRecord::Base
 
-  attr_accessor :player, :position, :date_match, :number_of_goals
   belongs_to :player
   has_one :position
   belongs_to :date_match

@@ -1,57 +1,22 @@
 'use strict';
 
-angular
-  .module('frontendApp', [
+var app = angular.module('frontendApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/tournament', {
-        templateUrl: 'views/ranking.html',
-        controller: 'TournamentCtrl',
-        controllerAs: 'tournament'
-      })
-      .when('/updateRound', {
-              templateUrl: 'views/updateRound.html',
-              controller: 'UpdateRoundCtrl',
-              controllerAs: 'updateRound'
-      })
-      .when('/updateRoundManually', {
-                    templateUrl: 'views/updateRoundManually.html',
-                    controller: 'UpdateRoundCtrl',
-                    controllerAs: 'updateRound'
-      })
-      .when('/updateRoundFromCSV', {
-                    templateUrl: 'views/updateRoundFromCSV.html',
-                    controller: 'UpdateRoundCtrl',
-                    controllerAs: 'updateRound'
-            })
-      .when('/teams', {
-        templateUrl: 'views/teams.html',
-        controller: 'TeamCtrl',
-        controllerAs: 'team'
-      })
-      .when('/createTeam', {
-                    templateUrl: 'views/createTeam.html',
-                    controller: 'TeamCtrl',
-                    controllerAs: 'team'
-                  })
-      .when('/editTeam', {
-              templateUrl: 'views/editTeam.html',
-              controller: 'TeamCtrl',
-              controllerAs: 'team'
-            })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  ]);
+
+//Controllers
+app.controller('MainController', ['$scope', MainController]);
+app.controller('PlayersController', ['$scope', 'ServerApi', PlayersController]);
+app.controller('TeamsController', ['$scope', 'ServerApi', TeamsController]);
+app.controller('TournamentsController', ['$scope', 'ServerApi', TournamentsController]);
+app.controller('RoundsController', ['$scope', 'ServerApi', RoundsController]);
+
+//Services
+app.service('ServerApi',  ['$http', ServerApi]);
+
+app.config(["$httpProvider", "$routeProvider", configuration]);
