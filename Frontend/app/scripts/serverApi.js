@@ -1,9 +1,10 @@
 function ServerApi($http) {
 
   var mainUrl = 'http://localhost:3000';
+  var options =  { headers: { 'Cache-Control' : 'no-cache' } };
 
   this.getPlayers = function() {
-    return $http.get(getFullUrl('/players'))
+    return $http.get(getFullUrl('/players'), options)
   };
 
   this.createPlayer = function(params) {
@@ -19,7 +20,7 @@ function ServerApi($http) {
   };
 
   this.getTeams = function() {
-    return $http.get(getFullUrl('/teams'))
+    return $http.get(getFullUrl('/teams'), options)
   };
 
   this.createTeam = function(params) {
