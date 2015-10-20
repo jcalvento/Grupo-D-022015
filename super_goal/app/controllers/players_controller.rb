@@ -23,6 +23,13 @@ class PlayersController < ApplicationController
     render json: { }
   end
 
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy
+
+    index
+  end
+
   protected
 
   def player_params

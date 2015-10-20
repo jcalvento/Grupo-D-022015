@@ -1,4 +1,4 @@
-function PlayersController($scope, $location, $routeParams, ServerApi) {
+function PlayersController($scope, $location, $routeParams, $route, ServerApi) {
 
   $scope.positions = ['Forward', 'Midfield', 'Defender', 'Goalkeeper'];
   $scope.player = {position: $scope.positions[0]};
@@ -16,6 +16,12 @@ function PlayersController($scope, $location, $routeParams, ServerApi) {
   $scope.edit = function() {
     ServerApi.editPlayer($routeParams.id).then(function(response) {
       $scope.player = response.data.player;
+    })
+  };
+
+  $scope.delete = function(id) {
+    ServerApi.deletePlayer(id).then(function(response) {
+      $scope.players = response.data.players
     })
   };
 

@@ -15,6 +15,10 @@ function ServerApi($http) {
     return $http.get(getFullUrl('/players/' + id + '/edit'))
   };
 
+  this.deletePlayer = function (id) {
+    return $http.delete(getFullUrl('/players/' + id))
+  };
+
   this.updatePlayer = function(id, params) {
     return $http.put(getFullUrl('/players/' + id), params)
   };

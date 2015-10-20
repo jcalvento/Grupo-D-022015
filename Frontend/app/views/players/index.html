@@ -6,16 +6,12 @@
 
     <div class="bootstrap-table">
       <div class="fixed-table-toolbar">
-        <div class="bars pull-left">
-          <button class="btn btn-danger btn-labeled fa fa-times" disabled="">Delete</button>
-        </div>
         <div class="bars pull-right">
           <a ng-href="#/players/new" class="btn btn-success">New</a>
         </div>
       </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
         <div class="fixed-table-body">
-          <div class="fixed-table-loading" style="top: 37px; display: none;">Loading, please wait…</div>
           <table class="demo-add-niftycheck table table-hover" data-toggle="table"
                  data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
                  data-search="true" data-show-refresh="true" data-show-toggle="true"
@@ -23,16 +19,6 @@
                  data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
             <thead style="display: table-header-group;">
             <tr>
-              <th class="bs-checkbox" style="width: 36px; ">
-                <div class="th-inner">
-                  <label>
-                    <input type="checkbox">
-                  </label>
-                </div>
-                <div class="fht-cell">
-
-                </div>
-              </th>
               <th style="">
                 <div class="th-inner sortable">
                   Position
@@ -74,15 +60,13 @@
             </thead>
             <tbody>
               <tr data-index="0" ng-repeat="player in players">
-                <td class="bs-checkbox">
-                  <label>
-                    <input type="checkbox">
-                  </label>
-                </td>
                 <td>{{player.position}}</td>
                 <td>{{player.name}}</td>
                 <td>{{player.team}}</td>
-                <td><a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">Edit</a></td>
+                <td>
+                  <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">Edit</a>
+                  <button class="btn btn-danger" ng-click="delete(player.id)">Delete</button>
+                </td>
               </tr>
             </tbody>
           </table>

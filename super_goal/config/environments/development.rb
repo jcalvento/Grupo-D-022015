@@ -36,6 +36,7 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.secret_key_base = 'f70ca0b722bc3b9e54aa76bb19a11499b05d496c9f649283870122b9cb3b0767f57c7b1a64b2e6d0e7efb8db1cf44df2c95cccdfde82e826816926c7d6fbe4d7'
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

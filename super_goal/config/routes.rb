@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :players, only: [:index, :edit, :update, :create], defaults: {format: :json}
+  resources :players, only: [:index, :edit, :update, :create, :destroy], defaults: {format: :json}
   match '/players' => 'players#options', via: :options
   match '/players/:id' => 'teams#options', via: :options
 
