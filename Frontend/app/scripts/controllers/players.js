@@ -1,4 +1,4 @@
-function PlayersController($scope, $location, $routeParams, $route, ServerApi) {
+function PlayersController($scope, $location, $routeParams, ServerApi) {
 
   $scope.positions = ['Forward', 'Midfield', 'Defender', 'Goalkeeper'];
   $scope.player = {position: $scope.positions[0]};

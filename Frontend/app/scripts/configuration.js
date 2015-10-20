@@ -32,7 +32,7 @@ function configuration($httpProvider, $routeProvider) {
       templateUrl: 'views/teams/edit.html',
       controller: 'TeamsController'
     })
-    .when('/teams/{{team.id}}/players', {
+    .when('/teams/:id/players', {
       templateUrl: 'views/teams/players.html',
       controller: 'TeamsController'
     })
