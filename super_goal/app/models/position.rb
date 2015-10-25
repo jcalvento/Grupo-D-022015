@@ -1,19 +1,24 @@
 class Position < ActiveRecord::Base
 
   def self.forward
-    find_position_or_create Forward
+    # find_position_or_create Forward
+    Forward.new
   end
 
+
   def self.goalkeeper
-    find_position_or_create GoalKeeper
+    # find_position_or_create GoalKeeper
+    GoalKeeper.new
   end
 
   def self.defender
-    find_position_or_create Defender
+    # find_position_or_create Defender
+    Defender.new
   end
 
   def self.midfield
-    find_position_or_create Midfield
+    # find_position_or_create Midfield
+    Midfield.new
   end
 
   def points_per_goal
@@ -34,14 +39,14 @@ class Position < ActiveRecord::Base
 
   protected
 
-  def self.find_position_or_create(a_position)
-    descendant = self.all_instances.detect { |descendant| descendant.instance_of? a_position }
-    descendant || a_position.new
-  end
+  # def self.find_position_or_create(a_position)
+  #   descendant = self.all_instances.detect { |descendant| descendant.instance_of? a_position }
+  #   descendant || a_position.new
+  # end
 
-  def self.all_instances
-    ObjectSpace.each_object(self).to_a
-  end
+  # def self.all_instances
+  #   ObjectSpace.each_object(self).to_a
+  # end
 
   class Forward < Position
     def points_per_goal

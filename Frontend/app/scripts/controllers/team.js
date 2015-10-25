@@ -20,6 +20,12 @@ function TeamsController($scope, $location, $routeParams, ServerApi) {
     ServerApi.updateTeam($scope.team.id, teamParams()).then(redirectToIndex())
   };
 
+  $scope.deleteTeam = function(id) {
+    ServerApi.deleteTeam(id).then(function(response) {
+      $scope.teams = response.data.teams;
+    })
+  };
+
   function redirectToIndex() {
     $location.path('/teams')
   }

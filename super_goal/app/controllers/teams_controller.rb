@@ -1,13 +1,13 @@
 class TeamsController < ApplicationController
 
   def index
-    render json: { teams: Team.all }
+    render :json => { teams: Team.all }
   end
 
   def create
     Team.create!(team_params)
 
-    render json: { }
+    render :json => { }
   end
 
   def edit
@@ -21,6 +21,13 @@ class TeamsController < ApplicationController
     team.update!(team_params)
 
     render json: { }
+  end
+
+  def destroy
+    team = Team.find(params[:id])
+    team.destroy
+
+    index
   end
 
   protected

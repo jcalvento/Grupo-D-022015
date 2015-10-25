@@ -39,6 +39,10 @@ function ServerApi($http) {
     return $http.put(getFullUrl('/teams/' + id), params)
   };
 
+  this.deleteTeam = function(id) {
+    return $http.delete(getFullUrl('/teams/' + id))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }
