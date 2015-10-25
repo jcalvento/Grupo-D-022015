@@ -1,24 +1,31 @@
-class Position < ActiveRecord::Base
+class Position
 
   def self.forward
     find_position_or_create Forward
-    # Forward.new
   end
-
 
   def self.goalkeeper
     find_position_or_create GoalKeeper
-    # GoalKeeper.new
   end
 
   def self.defender
     find_position_or_create Defender
-    # Defender.new
   end
 
   def self.midfield
     find_position_or_create Midfield
-    # Midfield.new
+  end
+
+  def self.for(a_position_name)
+    subclass = all_subclasses.detect { |subclass|
+      subclass_name = subclass.name
+      subclass_name.slice!('Position::')
+      subclass_name.downcase.eql? a_position_name.downcase
+    }
+
+    raise "Position #{a_position_name} doesn't exist." unless subclass
+
+    find_position_or_create subclass
   end
 
   def points_per_goal
@@ -46,6 +53,10 @@ class Position < ActiveRecord::Base
 
   def self.all_instances
     ObjectSpace.each_object(self).to_a
+  end
+
+  def self.all_subclasses
+    ObjectSpace.each_object(Class).select { |klass| klass < self }
   end
 
   class Forward < Position
@@ -76,7 +87,7 @@ class Position < ActiveRecord::Base
     end
 
     def name
-      'Goalkeeper'
+      'GoalKeeper'
     end
   end
 

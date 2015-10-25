@@ -2,22 +2,23 @@ FactoryGirl.define do
   factory :player do
     name 'Johnny Bravo'
     team 'Test Team'
+    position 'Forward'
   end
 
   factory :forward_player, parent: :player do
-    position Position.forward
+    position Position.forward.name
   end
 
   factory :midfield_player, parent: :player do
-    position Position.midfield
+    position Position.midfield.name
   end
 
   factory :defender_player, parent: :player do
-    position Position.defender
+    position Position.defender.name
   end
 
   factory :goalkeeper_player, parent: :player do
-    position Position.goalkeeper
+    position Position.goalkeeper.name
   end
 
   factory :team do

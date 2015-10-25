@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    Player.create!(name: player_params[:name], team: player_params[:team], position: position)
+    Player.create!(player_params)
 
     render :json => { }
   end
@@ -18,7 +18,7 @@ class PlayersController < ApplicationController
 
   def update
     player = Player.find(params[:id])
-    player.update!(name: player_params[:name], team: player_params[:team], position: position)
+    player.update!(player_params)
 
     render json: { }
   end
@@ -36,7 +36,4 @@ class PlayersController < ApplicationController
     params.require(:player).permit(:name, :team, :position)
   end
 
-  def position
-    Position.send(player_params[:position].downcase.to_sym)
-  end
 end

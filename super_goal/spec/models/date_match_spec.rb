@@ -16,7 +16,7 @@ describe 'DateMatch' do
   it 'should set goals of the given player' do
     player = build :forward_player
 
-    date_match.add_goals_of(player, Position.forward, 2)
+    date_match.add_goals_of(player, Position.forward.name, 2)
 
     expect(player.points_made_in date_match).to eq 2
   end

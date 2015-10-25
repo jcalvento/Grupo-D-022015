@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151017235055) do
 
   create_table "goals_counters", force: :cascade do |t|
     t.integer "number_of_goals"
+    t.string  "position"
     t.integer "player_id"
     t.integer "date_match_id"
   end
@@ -36,17 +37,10 @@ ActiveRecord::Schema.define(version: 20151017235055) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.string   "team"
+    t.string   "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "team_id"
-  end
-
-  create_table "positions", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "player_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "goals_counter_id"
   end
 
   create_table "teams", force: :cascade do |t|

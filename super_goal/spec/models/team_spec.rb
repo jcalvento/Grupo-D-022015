@@ -26,7 +26,7 @@ describe 'Team' do
 
     it 'should fail when adding a forward player and there are already three' do
       player = build :forward_player
-      position = Position.forward
+      position = Position.forward.name
       add_players_with_position team, 3, position
 
       assert_it_fails_when_adding(player, position)
@@ -34,7 +34,7 @@ describe 'Team' do
 
     it 'should fail when adding a midfield player and there are already four' do
       player = build :midfield_player
-      position = Position.midfield
+      position = Position.midfield.name
       add_players_with_position team, 4, position
 
       assert_it_fails_when_adding(player, position)
@@ -42,7 +42,7 @@ describe 'Team' do
 
     it 'should fail when adding a defender player and there are already three' do
       player = build :defender_player
-      position = Position.defender
+      position = Position.defender.name
       add_players_with_position team, 3, position
 
       assert_it_fails_when_adding(player, position)
@@ -50,7 +50,7 @@ describe 'Team' do
 
     it 'should fail when adding a goalkeeper and there is already one' do
       player = build :goalkeeper_player
-      position = Position.goalkeeper
+      position = Position.goalkeeper.name
       add_players_with_position team, 1, position
 
       assert_it_fails_when_adding(player, position)
@@ -65,7 +65,7 @@ describe 'Team' do
     def assert_it_fails_when_adding(player, position)
       expect {
         team.add_player player
-      }.to raise_exception "You must remove a #{position.name} before adding another one"
+      }.to raise_exception "You must remove a #{position} before adding another one"
     end
   end
 

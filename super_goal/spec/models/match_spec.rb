@@ -26,7 +26,7 @@ describe 'Match' do
       player = build :forward_player
       local_team.add_player player
 
-      date_match.add_goals_of(player, Position.forward, 2)
+      date_match.add_goals_of(player, Position.forward.name, 2)
 
       expect(match1.points_of local_team).to eq 3
       expect(match1.points_of visitor_team).to eq 0
@@ -41,7 +41,7 @@ describe 'Match' do
       player = build :goalkeeper_player
       local_team.add_player player
 
-      date_match.add_goals_of(player, Position.goalkeeper, 0)
+      date_match.add_goals_of(player, Position.goalkeeper.name, 0)
 
       expect(match1.points_of local_team).to eq 3
       expect(match1.points_of visitor_team).to eq 0

@@ -1,8 +1,8 @@
 class GoalsCounter < ActiveRecord::Base
 
   belongs_to :player
-  has_one :position
   belongs_to :date_match
+  validates_with PositionValidator, field: :position
 
   def initialize(attributes = nil, options = {})
     super attributes, options
@@ -14,6 +14,8 @@ class GoalsCounter < ActiveRecord::Base
   end
 
   def points
-    position.points_for_goals_amount number_of_goals
+    position_instance = Position.for position
+
+    position_instance.points_for_goals_amount number_of_goals
   end
 end

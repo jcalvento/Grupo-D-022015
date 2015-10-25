@@ -1,8 +1,8 @@
 class Player < ActiveRecord::Base
 
-  has_one :position
   has_many :goals_counters
   alias_attribute :goals, :goals_counters
+  validates_with PositionValidator, field: :position
 
   def has_position?(a_position)
     position.eql? a_position
@@ -22,4 +22,9 @@ class Player < ActiveRecord::Base
     json[:position] = position.name
     json
   end
+
+  def position
+    Position.for self[:position]
+  end
+
 end
