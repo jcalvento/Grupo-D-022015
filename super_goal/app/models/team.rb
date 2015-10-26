@@ -25,6 +25,12 @@ class Team < ActiveRecord::Base
             .sum
   end
 
+  def as_json(options = nil)
+    json = super options
+    json[:players] = players
+    json
+  end
+
   protected
 
   def validate_player_is_in_the_team(a_player)

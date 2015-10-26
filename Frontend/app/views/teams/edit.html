@@ -1,4 +1,4 @@
-<div class="panel" ng-init="editTeam()">
+<div class="panel" ng-init="edit()">
   <form name="teamForm" novalidate>
     <div class="panel-body">
       <hr>
@@ -11,13 +11,16 @@
       <div class="form-group">
         <label for="logo">Logo</label>
         <input type="text" id="logo" name="logo" ng-model="team.logo">
+        <img ng-show="team.logo" ng-src={{team.logo}}  width="50" height="50">
       </div>
       <div>
-        <a ng-href="#/teams/players" class="btn-link">Add players</a>
+        <a ng-href="#/teams/{{team.id}}/players" class="btn-link">Add players</a>
       </div>
-
-
-
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-3">
+          <button class="btn btn-primary" type="button" ng-click="update()">Update</button>
+        </div>
+      </div>
       <div class="panel">
         <div class="panel-body">
           <div class="bootstrap-table">
@@ -75,8 +78,7 @@
                     <td>{{player.name}}</td>
                     <td>{{player.team}}</td>
                     <td>
-                      <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">Edit</a>
-                      <button class="btn btn-danger" ng-click="delete(player.id)">Delete</button>
+                      <button class="btn btn-danger" ng-click="removePlayer(player.id)">Remove</button>
                     </td>
                   </tr>
                   </tbody>
@@ -89,13 +91,6 @@
         </div>
       </div>
 
-    </div>
-    <div class="panel-footer">
-      <div class="row">
-        <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-primary" type="button" ng-click="updateTeam()">Update</button>
-        </div>
-      </div>
     </div>
   </form>
 </div>

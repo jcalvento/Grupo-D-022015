@@ -58,8 +58,14 @@ Rails.application.routes.draw do
   match '/players' => 'players#options', via: :options
   match '/players/:id' => 'teams#options', via: :options
 
-  resources :teams, only: [:index, :edit, :update, :create, :getPlayers, :destroy], defaults: {format: :json}
+  resources :teams, only: [:index, :edit, :update, :create, :destroy], defaults: {format: :json}
+  get '/teams/:id/players' => 'teams#available_players'
+  post '/teams/:id/add_player' => 'teams#add_player'
+  post '/teams/:id/remove_player' => 'teams#remove_player'
   match '/teams' => 'teams#options', via: :options
   match '/teams/:id' => 'teams#options', via: :options
+  match '/teams/:id/players' => 'teams#options', via: :options
+  match '/teams/:id/add_player' => 'teams#options', via: :options
+  match '/teams/:id/remove_player' => 'teams#options', via: :options
 
 end

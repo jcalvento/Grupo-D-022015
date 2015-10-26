@@ -1,4 +1,4 @@
-<div class="panel" ng-init="getTeams()">
+<div class="panel" ng-init="index()">
   <div class="panel-heading">
     <h3 class="panel-title">Teams</h3>
   </div>
@@ -20,14 +20,14 @@
             <tr>
               <th style="">
                 <div class="th-inner sortable">
-                  Name
+                  Logo
                 </div>
                 <div class="fht-cell">
                 </div>
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Logo
+                  Name
                 </div>
                 <div class="fht-cell">
                 </div>
@@ -45,14 +45,13 @@
             </thead>
             <tbody>
             <tr ng-repeat="team in teams">
+              <td>
+                <img ng-src={{team.logo}}  width="50" height="50">
+              </td>
               <td>{{team.name}}</td>
               <td>
-                {{team.logo}}
-                <!--<img src={{team.logo}}  width="50" height="50">-->
-              </td>
-              <td>
                 <a class="btn btn-primary" ng-href="#/teams/{{team.id}}/edit">Edit</a>
-                <button class="btn btn-danger" ng-click="deleteTeam(team.id)">Delete</button>
+                <button class="btn btn-danger" ng-click="delete(team.id)">Delete</button>
               </td>
             </tr>
             </tbody>

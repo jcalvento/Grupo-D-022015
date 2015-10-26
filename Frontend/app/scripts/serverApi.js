@@ -3,12 +3,9 @@ function ServerApi($http) {
   var mainUrl = 'http://localhost:3000';
   var options =  { headers: { 'Cache-Control' : 'no-cache' } };
 
+  //Players
   this.getPlayers = function() {
     return $http.get(getFullUrl('/players'), options)
-  };
-
-  this.getAvailablePlayers = function() {
-    return $http.get(getFullUrl('/teams/players'), options)
   };
 
   this.createPlayer = function(params) {
@@ -27,6 +24,7 @@ function ServerApi($http) {
     return $http.put(getFullUrl('/players/' + id), params)
   };
 
+  //Teams
   this.getTeams = function() {
     return $http.get(getFullUrl('/teams'), options)
   };
@@ -45,6 +43,18 @@ function ServerApi($http) {
 
   this.deleteTeam = function(id) {
     return $http.delete(getFullUrl('/teams/' + id))
+  };
+
+  this.getAvailablePlayers = function(id) {
+    return $http.get(getFullUrl('/teams/' + id + '/players'), options)
+  };
+
+  this.addPlayer = function(playerId, teamId) {
+    return $http.post(getFullUrl('/teams/' + teamId + '/add_player'), { player_id: playerId })
+  };
+
+  this.removePlayer = function(playerId, teamId) {
+    return $http.post(getFullUrl('/teams/' + teamId + '/remove_player'), { player_id: playerId })
   };
 
   function getFullUrl(path) {
