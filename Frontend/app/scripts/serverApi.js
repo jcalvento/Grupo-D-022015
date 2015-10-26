@@ -7,6 +7,10 @@ function ServerApi($http) {
     return $http.get(getFullUrl('/players'), options)
   };
 
+  this.getAvailablePlayers = function() {
+    return $http.get(getFullUrl('/teams/players'), options)
+  };
+
   this.createPlayer = function(params) {
     return $http.post(getFullUrl('/players'), params)
   };

@@ -6,6 +6,12 @@ function TeamsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
+  $scope.getPlayers = function() {
+    ServerApi.getAvailablePlayers().then(function(response) {
+      $scope.players = response.data.players
+    })
+  };
+
   $scope.createTeam = function() {
     ServerApi.createTeam(teamParams()).then(redirectToIndex())
   };

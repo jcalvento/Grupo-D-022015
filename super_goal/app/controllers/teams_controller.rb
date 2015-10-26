@@ -30,6 +30,10 @@ class TeamsController < ApplicationController
     index
   end
 
+  def getPlayers
+    render :json => { players: Player.all }
+  end
+
   protected
 
   def team_params
