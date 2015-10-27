@@ -10,7 +10,8 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
   };
 
   $scope.createPlayer = function() {
-    ServerApi.createPlayer(playerParams()).then($scope.redirectToIndex())
+    if($scope.newForm.$valid)
+      ServerApi.createPlayer(playerParams()).then($scope.redirectToIndex())
   };
 
   $scope.edit = function() {
@@ -26,7 +27,8 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
   };
 
   $scope.update = function() {
-    ServerApi.updatePlayer($scope.player.id, playerParams()).then($scope.redirectToIndex())
+    if($scope.editForm.$valid)
+      ServerApi.updatePlayer($scope.player.id, playerParams()).then($scope.redirectToIndex())
   };
 
   $scope.redirectToIndex = function() {

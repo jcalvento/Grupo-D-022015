@@ -25,7 +25,8 @@ function translations($translateProvider) {
       Goalkeeper: 'Goalkeeper',
       Defender: 'Defender',
       Midfield: 'Midfield',
-      Forward: 'Forward'
+      Forward: 'Forward',
+      REQUIRED_FIELD: 'Please, enter a'
     })
     .translations('es', {
       APP_TITLE: 'SuperGol',
@@ -56,7 +57,8 @@ function translations($translateProvider) {
       Arquero: 'Goalkeeper',
       Defensor: 'Defender',
       Mediocampista: 'Midfield',
-      Delantero: 'Forward'
+      Delantero: 'Forward',
+      REQUIRED_FIELD: 'Por favor, ingrese un'
     });
 
   $translateProvider.preferredLanguage('en');
