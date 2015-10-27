@@ -1,12 +1,13 @@
 <div class="panel">
-  <form name="teamForm" novalidate>
+  <form name="newForm" novalidate>
     <div class="panel-body">
       <hr>
       <h4 class="mar-btm text-thin">{{ 'NEW_TEAM' | translate }}</h4>
       <hr>
       <div class="form-group">
         <label for="name">{{ 'NAME' | translate }}</label>
-        <input type="text" id="name" name="name" ng-model="team.name">
+        <input type="text" id="name" name="name" ng-model="team.name" required>
+        <label ng-show="newForm.name.$invalid && newForm.$submitted">{{'REQUIRED_FIELD' | translate}} {{'NAME' | translate}}.</label>
       </div>
       <div class="form-group">
         <label for="logo">Logo</label>
@@ -18,7 +19,7 @@
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
           <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
-          <button class="btn btn-primary" type="button" ng-click="create()">{{ 'CREATE' | translate }}</button>
+          <button class="btn btn-primary" type="submit" ng-click="create()">{{ 'CREATE' | translate }}</button>
         </div>
       </div>
     </div>
