@@ -1,12 +1,13 @@
 <div class="panel" ng-init="edit()">
-  <form name="teamForm" novalidate>
+  <form name="editForm" novalidate>
     <div class="panel-body">
       <hr>
       <h4 class="mar-btm text-thin">{{ 'EDIT_TEAM' | translate }}</h4>
       <hr>
       <div class="form-group">
         <label for="name">{{ 'NAME' | translate }}</label>
-        <input type="text" id="name" name="name" ng-model="team.name">
+        <input type="text" id="name" name="name" ng-model="team.name" required>
+        <label ng-show="editForm.name.$invalid && editForm.$submitted">{{'REQUIRED_FIELD' | translate}} {{'NAME' | translate}}.</label>
       </div>
       <div class="form-group">
         <label for="logo">Logo</label>
@@ -19,7 +20,7 @@
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
           <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
-          <button class="btn btn-primary" type="button" ng-click="update()">{{ 'UPDATE' | translate }}</button>
+          <button class="btn btn-primary" type="submit" ng-click="update()">{{ 'UPDATE' | translate }}</button>
         </div>
       </div>
       <div class="panel">
