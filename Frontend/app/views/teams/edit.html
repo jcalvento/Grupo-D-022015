@@ -2,10 +2,10 @@
   <form name="teamForm" novalidate>
     <div class="panel-body">
       <hr>
-      <h4 class="mar-btm text-thin">Edit Team</h4>
+      <h4 class="mar-btm text-thin">{{ 'EDIT_TEAM' | translate }}</h4>
       <hr>
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">{{ 'NAME' | translate }}</label>
         <input type="text" id="name" name="name" ng-model="team.name">
       </div>
       <div class="form-group">
@@ -14,12 +14,12 @@
         <img ng-show="team.logo" ng-src={{team.logo}}  width="50" height="50">
       </div>
       <div>
-        <a ng-href="#/teams/{{team.id}}/players" class="btn-link">Add players</a>
+        <a ng-href="#/teams/{{team.id}}/players" class="btn-link">{{ 'ADD_PLAYERS' | translate }}</a>
       </div>
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">Back</button>
-          <button class="btn btn-primary" type="button" ng-click="update()">Update</button>
+          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
+          <button class="btn btn-primary" type="button" ng-click="update()">{{ 'UPDATE' | translate }}</button>
         </div>
       </div>
       <div class="panel">
@@ -36,12 +36,7 @@
                   <tr>
                     <th style="">
                       <div class="th-inner sortable">
-                        Position
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
-
-                    </span>
-                  </span>
+                        {{ 'POSITION' | translate }}
                       </div>
                       <div class="fht-cell">
 
@@ -49,7 +44,7 @@
                     </th>
                     <th style="">
                       <div class="th-inner sortable">
-                        Name
+                        {{ 'NAME' | translate }}
                       </div>
                       <div class="fht-cell">
 
@@ -57,7 +52,7 @@
                     </th>
                     <th style="">
                       <div class="th-inner sortable">
-                        Team
+                        {{ 'TEAM' | translate }}
                       </div>
                       <div class="fht-cell">
 
@@ -65,7 +60,7 @@
                     </th>
                     <th style="">
                       <div class="th-inner sortable">
-                        Actions
+                        {{ 'ACTIONS' | translate }}
                       </div>
                       <div class="fht-cell">
 
@@ -79,7 +74,7 @@
                     <td>{{player.name}}</td>
                     <td>{{player.team}}</td>
                     <td>
-                      <button class="btn btn-danger" ng-click="removePlayer(player.id)">Remove</button>
+                      <button class="btn btn-danger" ng-click="removePlayer(player.id)">{{ 'REMOVE' | translate }}</button>
                     </td>
                   </tr>
                   </tbody>

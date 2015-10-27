@@ -1,6 +1,7 @@
-function PlayersController($scope, $location, $routeParams, ServerApi) {
+function PlayersController($scope, $location, $routeParams, ServerApi, $translate) {
 
   $scope.positions = ['Forward', 'Midfield', 'Defender', 'Goalkeeper'];
+  $scope.player = { position: $scope.positions[0] };
 
   $scope.getPlayers = function() {
     ServerApi.getPlayers().then(function(response) {
@@ -32,16 +33,16 @@ function PlayersController($scope, $location, $routeParams, ServerApi) {
     $location.path('/players')
   };
 
-  $scope.selectFirstPosition = function() {
-    $scope.player.position = $scope.positions[0]
-  };
-
   function playerParams() {
+    var position = $scope.player.position;
+    if($translate.use() == 'es')
+       position = $translate.instant($scope.player.position);
+
     return {
       player: {
         name: $scope.player.name,
         team: $scope.player.team,
-        position: $scope.player.position
+        position: position
       }
     }
   }

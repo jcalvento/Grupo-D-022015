@@ -1,13 +1,13 @@
 <div class="panel" ng-init="getPlayers()">
   <div class="panel-heading">
-    <h3 class="panel-title">Players</h3>
+    <h3 class="panel-title">{{ 'PLAYERS' | translate }}</h3>
   </div>
   <div class="panel-body">
 
     <div class="bootstrap-table">
       <div class="fixed-table-toolbar">
         <div class="bars pull-right">
-          <a ng-href="#/players/new" class="btn btn-success">New</a>
+          <a ng-href="#/players/new" class="btn btn-success">{{ 'NEW' | translate }}</a>
         </div>
       </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
@@ -21,7 +21,7 @@
             <tr>
               <th style="">
                 <div class="th-inner sortable">
-                  Position
+                  {{ 'POSITION' | translate }}
                   <span class="order dropup">
                     <span class="caret" style="margin: 10px 5px;">
 
@@ -34,7 +34,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Name
+                  {{ 'NAME' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -42,7 +42,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Team
+                  {{ 'TEAM' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -50,7 +50,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Actions
+                  {{ 'ACTIONS' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -60,12 +60,12 @@
             </thead>
             <tbody>
               <tr data-index="0" ng-repeat="player in players">
-                <td>{{player.position}}</td>
+                <td>{{player.position | translate}}</td>
                 <td>{{player.name}}</td>
                 <td>{{player.team}}</td>
                 <td>
-                  <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">Edit</a>
-                  <button class="btn btn-danger" ng-click="delete(player.id)">Delete</button>
+                  <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">{{ 'EDIT' | translate }}</a>
+                  <button class="btn btn-danger" ng-click="delete(player.id)">{{ 'DELETE' | translate }}</button>
                 </td>
               </tr>
             </tbody>

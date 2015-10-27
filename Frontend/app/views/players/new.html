@@ -2,28 +2,28 @@
   <form name="playerForm" novalidate>
     <div class="panel-body">
       <hr>
-        <h4 class="mar-btm text-thin">New Player</h4>
+        <h4 class="mar-btm text-thin">{{ 'NEW_PLAYER' | translate }}</h4>
       <hr>
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">{{ 'NAME' | translate }}</label>
         <input type="text" id="name" name="name" ng-model="player.name">
       </div>
       <div class="form-group">
-        <label for="team">Team</label>
+        <label for="team">{{ 'TEAM' | translate }}</label>
         <input type="text" id="team" name="team" ng-model="player.team">
       </div>
       <div class="checkbox">
-        <label for="position">Position</label>
+        <label for="position">{{ 'POSITION' | translate }}</label>
         <select name="position" id="position" ng-model="player.position">
-          <option ng-repeat="position in positions">{{position}}</option>
+          <option ng-repeat="position in positions">{{ position | translate }}</option>
         </select>
       </div>
     </div>
     <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">Back</button>
-          <button class="btn btn-primary" type="button" ng-click="createPlayer()">Create</button>
+          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
+          <button class="btn btn-primary" type="button" ng-click="createPlayer()">{{ 'CREATE' | translate }}</button>
         </div>
       </div>
     </div>

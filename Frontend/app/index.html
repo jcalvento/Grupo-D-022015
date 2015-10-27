@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
     <title>SuperGoal</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
     <link href="./styles/nifty-2.2.1.css" rel="stylesheet">
     <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background-color: #3a3f44;border-radius: 2px;color: white;text-align: right;white-space: nowrap;padding: 7px 14px;z-index: 10000;}.jqsfield { color: white;font-size: 14px;text-align: right;}</style>
   </head>
   <!--TIPS-->
   <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
-  <body class="nifty-ready pace-done" ng-app="frontendApp">
+  <body class="nifty-ready pace-done" ng-app="frontendApp" ng-controller="MainController" ng-cloak>
     <div class="pace pace-inactive">
       <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
         <div class="pace-progress-inner"></div>
@@ -27,7 +27,7 @@
             <a ng-href="#/" class="navbar-brand">
               <img src="images/Soccer-icon.png" class="brand-icon">
               <div class="brand-title">
-                <span class="brand-text"> SuperGoal</span>
+                <span class="brand-text"> {{ 'APP_TITLE' | translate }}</span>
               </div>
             </a>
           </div>
@@ -45,13 +45,18 @@
               <!--Language selector-->
               <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
               <li class="dropdown">
-                <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
-                  <span class="lang-selected">
-                      <img class="lang-flag" src="images/united-kingdom.png" alt="English">
-                      <span class="lang-id">EN</span>
-                      <span class="lang-name">English</span>
-                  </span>
-                </a>
+                <div id="demo-lang-switch" class="lang-selector dropdown-toggle" data-toggle="dropdown">
+                  <button type="button" class="lang-selected" ng-click="changeLanguage('en')">
+                    <img class="lang-flag" src="images/united-kingdom.png" alt="English">
+                    <span class="lang-id">EN</span>
+                    <span class="lang-name">English</span>
+                  </button>
+                  <button type="button" ng-click="changeLanguage('es')">
+                    <img class="lang-flag" src="images/spain.png" alt="Spain">
+                    <span class="lang-id">ES</span>
+                    <span class="lang-name">Español</span>
+                  </button>
+                </div>
 
                 <!--Language selector menu-->
                 <ul class="head-list dropdown-menu with-arrow">
@@ -162,12 +167,12 @@
                     <li class="">
                       <a data-original-title="" title="">
                         <i class="fa fa-table"></i>
-                        <span class="menu-title">Team</span>
+                        <span class="menu-title">{{ 'TEAM' | translate }}</span>
                         <i class="arrow"></i>
                       </a>
 
                       <ul class="collapse" aria-expanded="false" style="height: 0px;">
-                        <li><a ng-href="#/teams">Teams</a></li>
+                        <li><a ng-href="#/teams">{{ 'TEAMS' | translate }}</a></li>
                         <li><a ng-href="#/editTeam">My Team</a></li>
                       </ul>
                     </li>
@@ -175,7 +180,7 @@
                       <a data-original-title="" title="">
                         <a class="menu-title" ng-href="#/players">
                           <i class="fa fa-table"></i>
-                          Players
+                          {{ 'PLAYERS' | translate }}
                           <i class="arrow"></i>
                         </a>
                       </a>
@@ -208,19 +213,22 @@
         <p class="pad-lft">© Grupo D 02/2015</p>
       </footer>
     </div>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts/nifty.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts/serverApi.js"></script>
     <script src="scripts/configuration.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/translations.js"></script>
     <script src="scripts/controllers/players.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/team.js"></script>

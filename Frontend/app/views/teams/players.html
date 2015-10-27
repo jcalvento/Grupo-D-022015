@@ -1,9 +1,9 @@
 <div class="panel" ng-init="getAvailablePlayers()">
   <div class="panel-heading">
-    <h3 class="panel-title">Players</h3>
+    <h3 class="panel-title">{{ 'PLAYERS' | translate }}</h3>
   </div>
   <div>
-    <button class="btn btn-warning" type="button" ng-click="goBackToEdit()">Back</button>
+    <button class="btn btn-warning" type="button" ng-click="goBackToEdit()">{{ 'BACK' | translate }}</button>
   </div>
   <div class="panel-body">
     <div class="bootstrap-table">
@@ -18,12 +18,7 @@
             <tr>
               <th style="">
                 <div class="th-inner sortable">
-                  Position
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
-
-                    </span>
-                  </span>
+                  {{ 'POSITION' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -31,7 +26,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Name
+                  {{ 'NAME' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -39,7 +34,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Team
+                  {{ 'TEAM' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -47,7 +42,7 @@
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  Actions
+                  {{ 'ACTIONS' | translate }}
                 </div>
                 <div class="fht-cell">
 
@@ -61,7 +56,7 @@
               <td>{{player.name}}</td>
               <td>{{player.team}}</td>
               <td>
-                <button type="button" class="btn btn-primary" ng-click="addPlayer(player.id)">Add</button>
+                <button type="button" class="btn btn-primary" ng-click="addPlayer(player.id)">{{ 'ADD' | translate }}</button>
               </td>
             </tr>
             </tbody>
