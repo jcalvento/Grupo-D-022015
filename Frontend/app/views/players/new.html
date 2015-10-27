@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel" ng-init="selectFirstPosition()">
   <form name="playerForm" novalidate>
     <div class="panel-body">
       <hr>
@@ -22,6 +22,7 @@
     <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
+          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">Back</button>
           <button class="btn btn-primary" type="button" ng-click="createPlayer()">Create</button>
         </div>
       </div>

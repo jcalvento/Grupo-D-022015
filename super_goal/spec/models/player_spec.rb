@@ -24,7 +24,7 @@ describe Player do
 
   describe 'validations' do
     it 'should allow only valid positions' do
-      %w(Forward forward Midfield midfield Defender defender GoalKeeper goalkeeper).each {
+      %w(Forward forward Midfield midfield Defender defender Goalkeeper goalkeeper).each {
           |position| expect(player).to allow_value(position).for(:position)
       }
     end

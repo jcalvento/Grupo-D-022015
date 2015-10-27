@@ -1,6 +1,6 @@
 class PositionValidator < ActiveModel::Validator
   def validate(record)
-    valid_positions = %w(Forward forward Midfield midfield Defender defender GoalKeeper goalkeeper)
+    valid_positions = %w(Forward forward Midfield midfield Defender defender Goalkeeper goalkeeper)
     value = record[options[:field]]
 
     unless valid_positions.include? value

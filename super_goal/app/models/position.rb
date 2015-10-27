@@ -87,7 +87,7 @@ class Position
     end
 
     def name
-      'GoalKeeper'
+      'Goalkeeper'
     end
   end
 

@@ -6,7 +6,7 @@ describe 'GoalsCounter' do
     let(:goals_counter) { GoalsCounter.new({player: build(:player)}) }
 
     it 'should allow only valid positions' do
-      %w(Forward forward Midfield midfield Defender defender GoalKeeper goalkeeper).each {
+      %w(Forward forward Midfield midfield Defender defender Goalkeeper goalkeeper).each {
           |position| expect(goals_counter).to allow_value(position).for(:position)
       }
     end

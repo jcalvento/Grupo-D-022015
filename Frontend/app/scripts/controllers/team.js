@@ -7,7 +7,7 @@ function TeamsController($scope, $location, $routeParams, ServerApi) {
   };
 
   $scope.create = function() {
-    ServerApi.createTeam(teamParams()).then(redirectToIndex())
+    ServerApi.createTeam(teamParams()).then($scope.redirectToIndex())
   };
 
   $scope.edit = function() {
@@ -17,7 +17,7 @@ function TeamsController($scope, $location, $routeParams, ServerApi) {
   };
 
   $scope.update = function() {
-    ServerApi.updateTeam($scope.team.id, teamParams()).then(redirectToIndex())
+    ServerApi.updateTeam($scope.team.id, teamParams()).then($scope.redirectToIndex())
   };
 
   $scope.delete = function(id) {
@@ -44,12 +44,16 @@ function TeamsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
+  $scope.redirectToIndex = function() {
+    $location.path('/teams')
+  };
+
+  $scope.goBackToEdit = function() {
+    $location.path('/teams/' + $routeParams.id + '/edit')
+  };
+
   function teamId() {
     return $routeParams.id
-  }
-
-  function redirectToIndex() {
-    $location.path('/teams')
   }
 
   function teamParams() {
