@@ -1,4 +1,4 @@
-<div class="panel" ng-init="editTeam()">
+<div class="panel" ng-init="edit()">
   <form name="teamForm" novalidate>
     <div class="panel-body">
       <hr>
@@ -11,17 +11,86 @@
       <div class="form-group">
         <label for="logo">Logo</label>
         <input type="text" id="logo" name="logo" ng-model="team.logo">
+        <img ng-show="team.logo" ng-src={{team.logo}}  width="50" height="50">
       </div>
       <div>
-        <a ng-href="#/team/{{team.id}}/players" class="btn-link">Add/Remove players</a>
+        <a ng-href="#/teams/{{team.id}}/players" class="btn-link">Add players</a>
       </div>
-    </div>
-    <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-primary" type="button" ng-click="updateTeam()">Update</button>
+          <button class="btn btn-primary" type="button" ng-click="update()">Update</button>
         </div>
       </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="bootstrap-table">
+            <div class="fixed-table-container" style="padding-bottom: 0px;">
+              <div class="fixed-table-body">
+                <table class="demo-add-niftycheck table table-hover" data-toggle="table"
+                       data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
+                       data-search="true" data-show-refresh="true" data-show-toggle="true"
+                       data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
+                       data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+                  <thead style="display: table-header-group;">
+                  <tr>
+                    <th style="">
+                      <div class="th-inner sortable">
+                        Position
+                  <span class="order dropup">
+                    <span class="caret" style="margin: 10px 5px;">
+
+                    </span>
+                  </span>
+                      </div>
+                      <div class="fht-cell">
+
+                      </div>
+                    </th>
+                    <th style="">
+                      <div class="th-inner sortable">
+                        Name
+                      </div>
+                      <div class="fht-cell">
+
+                      </div>
+                    </th>
+                    <th style="">
+                      <div class="th-inner sortable">
+                        Team
+                      </div>
+                      <div class="fht-cell">
+
+                      </div>
+                    </th>
+                    <th style="">
+                      <div class="th-inner sortable">
+                        Actions
+                      </div>
+                      <div class="fht-cell">
+
+                      </div>
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-index="0" ng-repeat="player in team.players">
+                    <td>{{player.position}}</td>
+                    <td>{{player.name}}</td>
+                    <td>{{player.team}}</td>
+                    <td>
+                      <button class="btn btn-danger" ng-click="removePlayer(player.id)">Remove</button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+          </div>
+        </div>
+      </div>
+
     </div>
   </form>
 </div>

@@ -2,7 +2,7 @@
   <form name="teamForm" novalidate>
     <div class="panel-body">
       <hr>
-      <h4 class="mar-btm text-thin">Create Team</h4>
+      <h4 class="mar-btm text-thin">New Team</h4>
       <hr>
       <div class="form-group">
         <label for="name">Name</label>
@@ -11,12 +11,13 @@
       <div class="form-group">
         <label for="logo">Logo</label>
         <input type="text" id="logo" name="logo" ng-model="team.logo">
+        <img ng-show="team.logo" ng-src={{team.logo}}  width="50" height="50">
       </div>
     </div>
     <div class="panel-footer">
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
-          <button class="btn btn-primary" type="button" ng-click="createTeam()">Create</button>
+          <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
         </div>
       </div>
     </div>

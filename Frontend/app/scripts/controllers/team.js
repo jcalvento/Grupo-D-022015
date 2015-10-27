@@ -1,30 +1,52 @@
 function TeamsController($scope, $location, $routeParams, ServerApi) {
 
-  $scope.getTeams = function() {
+  $scope.index = function() {
     ServerApi.getTeams().then(function(response) {
       $scope.teams = response.data.teams
     })
   };
 
-  $scope.createTeam = function() {
+  $scope.create = function() {
     ServerApi.createTeam(teamParams()).then(redirectToIndex())
   };
 
-  $scope.editTeam = function() {
-    ServerApi.editTeam($routeParams.id).then(function(response) {
-      $scope.team = response.data.team;
+  $scope.edit = function() {
+    ServerApi.editTeam(teamId()).then(function(response) {
+      $scope.team = response.data.team
     })
   };
 
-  $scope.updateTeam = function() {
+  $scope.update = function() {
     ServerApi.updateTeam($scope.team.id, teamParams()).then(redirectToIndex())
   };
 
-  $scope.deleteTeam = function(id) {
+  $scope.delete = function(id) {
     ServerApi.deleteTeam(id).then(function(response) {
-      $scope.teams = response.data.teams;
+      $scope.teams = response.data.teams
     })
   };
+
+  $scope.getAvailablePlayers = function() {
+    ServerApi.getAvailablePlayers(teamId()).then(function(response) {
+      $scope.players = response.data.players
+    })
+  };
+
+  $scope.addPlayer = function(id) {
+    ServerApi.addPlayer(id, teamId()).then(function(response) {
+      $scope.players = response.data.players
+    })
+  };
+
+  $scope.removePlayer = function(id) {
+    ServerApi.removePlayer(id, teamId()).then(function(response) {
+      $scope.team = response.data.team
+    })
+  };
+
+  function teamId() {
+    return $routeParams.id
+  }
 
   function redirectToIndex() {
     $location.path('/teams')

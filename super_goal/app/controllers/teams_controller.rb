@@ -30,6 +30,33 @@ class TeamsController < ApplicationController
     index
   end
 
+  def available_players
+    team = Team.find(params[:id])
+    team_players = team.players
+    all_players = Player.all
+    available_players = all_players.reject { |player| team_players.include? player }
+
+    render :json => { players: available_players }
+  end
+
+  def add_player
+    team = Team.find(params[:id])
+    player = Player.find(params[:player_id])
+    team.players << player
+    team.save!
+
+    available_players
+  end
+
+  def remove_player
+    team = Team.find(params[:id])
+    player = Player.find(params[:player_id])
+    team.players.delete player
+    team.save!
+
+    render json: { team: team }
+  end
+
   protected
 
   def team_params
