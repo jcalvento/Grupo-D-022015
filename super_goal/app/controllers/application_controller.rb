@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
 
   before_filter :cors, :set_cache_buster
+  rescue_from Exception, with: :handle_error
 
   def cors
     headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
 
   def options
     render :json => { }
+  end
+
+  def handle_error(exception)
+    render json: { error: exception.message }, status: :internal_server_error
   end
 end

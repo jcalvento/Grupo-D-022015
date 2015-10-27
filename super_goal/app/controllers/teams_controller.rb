@@ -46,9 +46,6 @@ class TeamsController < ApplicationController
     team.save!
 
     available_players
-
-  rescue Exception => e
-    render json: { error: e.message }, status: :internal_server_error
   end
 
   def remove_player
