@@ -59,7 +59,7 @@
             </tr>
             </thead>
             <tbody>
-              <tr data-index="0" ng-repeat="player in players">
+              <tr data-index="0" ng-repeat="player in players | orderBy : 'position' ">
                 <td>{{player.position | translate}}</td>
                 <td>{{player.name}}</td>
                 <td>{{player.team}}</td>

@@ -12,11 +12,11 @@ function routes($routeProvider) {
       templateUrl: 'views/rounds/index.html',
       controller: 'RoundsController'
     })
-    .when('/updateRoundManually', {
+    .when('/:id/updateRoundManually', {
       templateUrl: 'views/rounds/updateRoundManually.html',
       controller: 'RoundsController'
     })
-    .when('/updateRoundFromCSV', {
+    .when('/:id/updateRoundFromCSV', {
       templateUrl: 'views/rounds/updateRoundFromCSV.html',
       controller: 'RoundsController'
     })
