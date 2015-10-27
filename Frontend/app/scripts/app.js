@@ -19,5 +19,6 @@ app.controller('RoundsController', ['$scope', '$location', 'ServerApi', RoundsCo
 
 //Services
 app.service('ServerApi',  ['$http', ServerApi]);
+app.service('SweetAlert',  ['$window', '$q', SweetAlert]);
 
 app.config(["$httpProvider", "$routeProvider", "$translateProvider", configuration]);

@@ -42,10 +42,13 @@ class TeamsController < ApplicationController
   def add_player
     team = Team.find(params[:id])
     player = Player.find(params[:player_id])
-    team.players << player
+    team.add_player player
     team.save!
 
     available_players
+
+  rescue Exception => e
+    render json: { error: e.message }, status: :internal_server_error
   end
 
   def remove_player

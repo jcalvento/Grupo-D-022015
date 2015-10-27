@@ -12,6 +12,7 @@
     "angular-translate": "~2.8.1",
     "bootstrap": "~3.3.5",
     "bootstrap-sass-official": "^3.2.0",
+    "bootstrap-sweetalert": "~0.4.5",
     "components-font-awesome": "~4.4.0",
     "jquery": "~2.1.4"
   },
