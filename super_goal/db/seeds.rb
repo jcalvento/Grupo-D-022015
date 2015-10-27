@@ -55,7 +55,7 @@ team_list_b = [barovero,maidana,mammana,marin,colazo,erbes,kraneviter,pisculichi
 team_list_c = [sara,monzon,peruzzi,batalla,sanchez,perez,gago,kraneviter,driussi,alario,tevez]
 team_list_d = [orion,vangioni,balanta,magallan,gago,meli,sanchez,erbes,chavez,saviola,caleri]
 
-Team.create!(name: 'ricky team' , logo: 'https://pbs.twimg.com/media/B7y4GjNIcAA-DmN.jpg',
+Team.create!(name: 'ricky team', logo: 'https://pbs.twimg.com/media/B7y4GjNIcAA-DmN.jpg',
 players: team_list_b)
 Team.create!(name: 'team 2', logo: 'http://dummyimage.com/80x80/000/fff&text=B',
 players: team_list_a)
