@@ -23,12 +23,6 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
-  $scope.editTournament = function() {
-    ServerApi.editTournament(tournamentId()).then(function(response) {
-      $scope.tournament = response.data.tournament
-    })
-  };
-
   $scope.update = function() {
     if($scope.editForm.$valid)
       ServerApi.updateTournament($scope.tournament.id, tournamentParams()).then($scope.redirectToIndex())
@@ -56,6 +50,10 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
+  $scope.goBackToEdit = function() {
+    $location.path('/tournaments/' + tournamentId() + '/edit')
+  };
+
   function tournamentId() {
     return $routeParams.id
   }
@@ -65,8 +63,8 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
       tournament: {
         name: $scope.tournament.name,
         max_amount_of_teams: $scope.tournament.max_amount_of_teams,
-        application_deadline: $scope.tournament.application_deadline,
-        teams: $scope.tournament.teams
+        application_deadline: $scope.tournament.application_deadline
+        //teams: $scope.tournament.teams
       }
     }
   }
