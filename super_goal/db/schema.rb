@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017235055) do
+ActiveRecord::Schema.define(version: 20151103201805) do
 
   create_table "date_matches", force: :cascade do |t|
     t.date     "date"
