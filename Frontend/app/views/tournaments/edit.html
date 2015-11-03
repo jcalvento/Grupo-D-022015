@@ -1,21 +1,24 @@
-<div class="panel" ng-init="edit()">
+<div class="panel" ng-init="editTournament()">
   <form name="editForm" novalidate>
     <div class="panel-body">
       <hr>
-      <h4 class="mar-btm text-thin">{{ 'EDIT_TEAM' | translate }}</h4>
+      <h4 class="mar-btm text-thin">{{ 'EDIT' | translate }} {{ 'TOURNAMENT' | translate }}</h4>
       <hr>
       <div class="form-group">
         <label for="name">{{ 'NAME' | translate }}</label>
-        <input type="text" id="name" name="name" ng-model="team.name" required>
+        <input type="text" id="name" name="name" ng-model="tournament.name" required>
         <label ng-show="editForm.name.$invalid && editForm.$submitted">{{'REQUIRED_FIELD' | translate}} {{'NAME' | translate}}.</label>
       </div>
       <div class="form-group">
-        <label for="logo">Logo</label>
-        <input type="text" id="logo" name="logo" ng-model="team.logo">
-        <img ng-show="team.logo" ng-src={{team.logo}}  width="50" height="50">
+        <label for="amount-of-teams">{{ 'MAX_AMOUNT_OF_TEAMS' | translate }}</label>
+        <input type="text" id="amount-of-teams" name="amount-of-teams" ng-model="tournament.max_amount_of_teams">
+      </div>
+      <div class="form-group">
+        <label for="application-deadline">{{ 'APPLICATION_DEADLINE' | translate }}</label>
+        <input type="text" id="application-deadline" name="application-deadline" ng-model="tournament.application_deadline">
       </div>
       <div>
-        <a ng-href="#/teams/{{team.id}}/players" class="btn-link">{{ 'ADD_PLAYERS' | translate }}</a>
+        <a ng-href="#/tournaments/{{tournament.id}}/teams" class="btn-link">{{ 'ADD' | translate }} {{ 'TEAMS' | translate }}</a>
       </div>
       <div class="row">
         <div class="col-sm-7 col-sm-offset-3">
@@ -37,10 +40,9 @@
                   <tr>
                     <th style="">
                       <div class="th-inner sortable">
-                        {{ 'POSITION' | translate }}
+                        Logo
                       </div>
                       <div class="fht-cell">
-
                       </div>
                     </th>
                     <th style="">
@@ -48,17 +50,9 @@
                         {{ 'NAME' | translate }}
                       </div>
                       <div class="fht-cell">
-
                       </div>
                     </th>
-                    <th style="">
-                      <div class="th-inner sortable">
-                        {{ 'TEAM' | translate }}
-                      </div>
-                      <div class="fht-cell">
 
-                      </div>
-                    </th>
                     <th style="">
                       <div class="th-inner sortable">
                         {{ 'ACTIONS' | translate }}
@@ -70,12 +64,13 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="player in team.players">
-                      <td>{{player.position}}</td>
-                      <td>{{player.name}}</td>
-                      <td>{{player.team}}</td>
+                    <tr ng-repeat="team in tournaments.teams">
                       <td>
-                        <button class="btn btn-danger" ng-click="removePlayer(player.id)">{{ 'REMOVE' | translate }}</button>
+                        <img ng-src={{team.logo}}  width="50" height="50">
+                      </td>
+                      <td>{{team.name}}</td>
+                      <td>
+                        <button type="button" class="btn btn-primary" ng-click="removeTeam(team.id)">{{ 'REMOVE' | translate }}</button>
                       </td>
                     </tr>
                   </tbody>
@@ -91,4 +86,3 @@
     </div>
   </form>
 </div>
-

@@ -1,2 +1,0 @@
-function TournamentsController($scope, ServerApi) {
-}

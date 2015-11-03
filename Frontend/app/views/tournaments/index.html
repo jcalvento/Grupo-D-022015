@@ -1,13 +1,12 @@
-<div class="panel" ng-init="getPlayers()">
+<div class="panel" ng-init="getTournaments()">
   <div class="panel-heading">
-    <h3 class="panel-title">{{ 'PLAYERS' | translate }}</h3>
+    <h3 class="panel-title">{{ 'TOURNAMENTS' | translate }}</h3>
   </div>
   <div class="panel-body">
-
     <div class="bootstrap-table">
       <div class="fixed-table-toolbar">
         <div class="bars pull-right">
-          <a ng-href="#/players/new" class="btn btn-success">{{ 'NEW' | translate }}</a>
+          <a ng-href="#/tournaments/new" class="btn btn-success">{{ 'NEW' | translate }}</a>
         </div>
       </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
@@ -21,33 +20,26 @@
             <tr>
               <th style="">
                 <div class="th-inner sortable">
-                  {{ 'POSITION' | translate }}
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
-
-                    </span>
-                  </span>
-                </div>
-                <div class="fht-cell">
-
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
                   {{ 'NAME' | translate }}
                 </div>
                 <div class="fht-cell">
-
                 </div>
               </th>
               <th style="">
                 <div class="th-inner sortable">
-                  {{ 'TEAM' | translate }}
+                  {{ 'MAX_AMOUNT_OF_TEAMS' | translate }}
                 </div>
                 <div class="fht-cell">
-
                 </div>
               </th>
+              <th style="">
+                <div class="th-inner sortable">
+                  {{ 'APPLICATION_DEADLINE' | translate }}
+                </div>
+                <div class="fht-cell">
+                </div>
+              </th>
+
               <th style="">
                 <div class="th-inner sortable">
                   {{ 'ACTIONS' | translate }}
@@ -59,13 +51,13 @@
             </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="player in players | orderBy : 'position' ">
-                <td>{{player.position | translate}}</td>
-                <td>{{player.name}}</td>
-                <td>{{player.team}}</td>
+              <tr ng-repeat="t in tournaments">
+                <td>{{t.name}}</td>
+                <td>{{t.max_amount_of_teams}}</td>
+                <td>{{t.application_deadline}}</td>
                 <td>
-                  <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">{{ 'EDIT' | translate }}</a>
-                  <button class="btn btn-danger" ng-click="delete(player.id)">{{ 'DELETE' | translate }}</button>
+                  <a class="btn btn-primary" ng-href="#/tournaments/{{t.id}}/edit">{{ 'EDIT' | translate }}</a>
+                  <button class="btn btn-danger" ng-click="delete(t.id)">{{ 'DELETE' | translate }}</button>
                 </td>
               </tr>
             </tbody>
@@ -78,4 +70,3 @@
     </div>
   </div>
 </div>
-

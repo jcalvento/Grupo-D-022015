@@ -1,0 +1,30 @@
+<div class="panel">
+  <form name="newForm" novalidate>
+    <div class="panel-body">
+      <hr>
+      <h4 class="mar-btm text-thin">{{ 'NEW' | translate }} {{ 'TOURNAMENT' | translate }}</h4>
+      <hr>
+      <div class="form-group">
+        <label for="name">{{ 'NAME' | translate }}</label>
+        <input type="text" id="name" name="name" ng-model="team.name" required>
+        <label ng-show="newForm.name.$invalid && newForm.$submitted">{{'REQUIRED_FIELD' | translate}} {{'NAME' | translate}}.</label>
+      </div>
+      <div class="form-group">
+        <label for="amount-of-teams">{{ 'MAX_AMOUNT_OF_TEAMS' | translate }}</label>
+        <input type="text" id="amount-of-teams" name="amount-of-teams" ng-model="tournament.max_amount_of_teams">
+      </div>
+      <div class="form-group">
+        <label for="application-deadline">{{ 'APPLICATION_DEADLINE' | translate }}</label>
+        <input type="text" id="application-deadline" name="application-deadline" ng-model="tournament.application_deadline">
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-3">
+          <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
+          <button class="btn btn-primary" type="submit" ng-click="create()">{{ 'CREATE' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
