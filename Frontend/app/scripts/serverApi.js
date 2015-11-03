@@ -83,7 +83,7 @@ function ServerApi($http) {
   };
 
   this.removeTeam = function(teamId, tournamentId) {
-    return $http.post(getFullUrl('/teams/' + tournamentId + '/remove_team'), { team_id: teamId })
+    return $http.post(getFullUrl('/tournaments/' + tournamentId + '/remove_team'), { team_id: teamId })
   };
 
   this.deleteTournament = function(id) {

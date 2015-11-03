@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   match '/tournaments' => 'tournaments#options', via: :options
   match '/tournaments/:id' => 'tournaments#options', via: :options
   match '/tournaments/:id/teams' => 'tournaments#options', via: :options
-  match '/tournaments/:id/add_team' => 'tournaments#add_team', via: :options
-  match '/tournaments/:id/remove_team' => 'tournaments#remove_team', via: :options
+  match '/tournaments/:id/add_team' => 'tournaments#options', via: :options
+  match '/tournaments/:id/remove_team' => 'tournaments#options', via: :options
 
 end

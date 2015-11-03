@@ -67,5 +67,5 @@ team_d = Team.create!(name: 'team 4', logo: 'http://dummyimage.com/80x80/000/fff
 teams = [team_a, team_b, team_c, team_d]
 teamsb = [team_a, team_b, team_c]
 
-Tournament.create!(name: 'tournamentTest', max_amount_of_teams: 4, application_deadline:'', teams: teams)
-Tournament.create!(name: 'tournamentTestB', max_amount_of_teams: 4, application_deadline:'', teams: teamsb)
+Tournament.create!(name: 'tournamentTest', max_amount_of_teams: 4, application_deadline: Date.today + 2.days, teams: teams)
+Tournament.create!(name: 'tournamentTestB', max_amount_of_teams: 4, application_deadline: Date.today + 2.days, teams: teamsb)
