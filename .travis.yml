@@ -6,7 +6,7 @@ before_install:
   - cd super_goal
 bundler_args: --without development production
 before_script:
-  - rake db:migrate
+  - rake db:migrate RAILS_ENV=test
   - rake db:test:prepare
 script:
   - bundle exec rspec spec
