@@ -26,6 +26,8 @@ function translations($translateProvider) {
       Defender: 'Defender',
       Midfield: 'Midfield',
       Forward: 'Forward',
+      MAX_AMOUNT_OF_TEAMS: 'Max amount of teams',
+      APPLICATION_DEADLINE: 'Application deadline',
       REQUIRED_FIELD: 'Please, enter a'
     })
     .translations('es', {
@@ -58,6 +60,8 @@ function translations($translateProvider) {
       Defensor: 'Defender',
       Mediocampista: 'Midfield',
       Delantero: 'Forward',
+      MAX_AMOUNT_OF_TEAMS: 'Cantidad maxima de jugadores',
+      APPLICATION_DEADLINE: 'Fecha limite',
       REQUIRED_FIELD: 'Por favor, ingrese un'
     });
 

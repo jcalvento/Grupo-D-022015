@@ -12,6 +12,12 @@ class Tournament < ActiveRecord::Base
     teams.include? a_team
   end
 
+  def as_json(options = nil)
+    json = super options
+    json[:teams] = teams
+    json
+  end
+
   protected
 
   def validate_i_can_add_a_new_team

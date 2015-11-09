@@ -57,6 +57,39 @@ function ServerApi($http) {
     return $http.post(getFullUrl('/teams/' + teamId + '/remove_player'), { player_id: playerId })
   };
 
+  //Tournaments
+  this.getTournaments = function() {
+    return $http.get(getFullUrl('/tournaments'), options)
+  };
+
+  this.createTournament = function(params) {
+    return $http.post(getFullUrl('/tournaments'), params)
+  };
+
+  this.editTournament = function(id) {
+    return $http.get(getFullUrl('/tournaments/' + id + '/edit'))
+  };
+
+  this.updateTournament = function(id, params) {
+    return $http.put(getFullUrl('/tournaments/' + id), params)
+  };
+
+  this.getAvailableTeams = function(id) {
+    return $http.get(getFullUrl('/tournaments/' + id + '/teams'), options)
+  };
+
+  this.addTeam = function(teamId, tournamentId) {
+    return $http.post(getFullUrl('/tournaments/' + tournamentId + '/add_team'), { team_id: teamId })
+  };
+
+  this.removeTeam = function(teamId, tournamentId) {
+    return $http.post(getFullUrl('/tournaments/' + tournamentId + '/remove_team'), { team_id: teamId })
+  };
+
+  this.deleteTournament = function(id) {
+    return $http.delete(getFullUrl('/tournaments/' + id))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }

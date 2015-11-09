@@ -55,11 +55,17 @@ team_list_b = [barovero,maidana,mammana,marin,colazo,erbes,kraneviter,pisculichi
 team_list_c = [sara,monzon,peruzzi,batalla,sanchez,perez,gago,kraneviter,driussi,alario,tevez]
 team_list_d = [orion,vangioni,balanta,magallan,gago,meli,sanchez,erbes,chavez,saviola,caleri]
 
-Team.create!(name: 'ricky team', logo: 'https://pbs.twimg.com/media/B7y4GjNIcAA-DmN.jpg',
-players: team_list_b)
-Team.create!(name: 'team 2', logo: 'http://dummyimage.com/80x80/000/fff&text=B',
-players: team_list_a)
-Team.create!(name: 'team 3', logo: 'http://dummyimage.com/80x80/000/fff&text=C',
-players: team_list_c)
-Team.create!(name: 'team 4', logo: 'http://dummyimage.com/80x80/000/fff&text=D',
-players: team_list_d)
+team_a = Team.create!(name: 'ricky team', logo: 'https://pbs.twimg.com/media/B7y4GjNIcAA-DmN.jpg',
+                      players: team_list_b)
+team_b = Team.create!(name: 'team 2', logo: 'http://dummyimage.com/80x80/000/fff&text=B',
+                      players: team_list_a)
+team_c = Team.create!(name: 'team 3', logo: 'http://dummyimage.com/80x80/000/fff&text=C',
+                      players: team_list_c)
+team_d = Team.create!(name: 'team 4', logo: 'http://dummyimage.com/80x80/000/fff&text=D',
+                      players: team_list_d)
+
+teams = [team_a, team_b, team_c, team_d]
+teamsb = [team_a, team_b, team_c]
+
+Tournament.create!(name: 'tournamentTest', max_amount_of_teams: 4, application_deadline: Date.today + 2.days, teams: teams)
+Tournament.create!(name: 'tournamentTestB', max_amount_of_teams: 4, application_deadline: Date.today + 2.days, teams: teamsb)

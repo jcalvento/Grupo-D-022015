@@ -1,15 +1,12 @@
-<div class="panel" ng-init="getPlayers()">
+<div class="panel" ng-init="getAvailableTeams()">
   <div class="panel-heading">
-    <h3 class="panel-title">{{ 'PLAYERS' | translate }}</h3>
+    <h3 class="panel-title">{{ 'TEAMS' | translate }}</h3>
+  </div>
+  <div>
+    <button class="btn btn-warning" type="button" ng-click="goBackToEdit()">{{ 'BACK' | translate }}</button>
   </div>
   <div class="panel-body">
-
     <div class="bootstrap-table">
-      <div class="fixed-table-toolbar">
-        <div class="bars pull-right">
-          <a ng-href="#/players/new" class="btn btn-success">{{ 'NEW' | translate }}</a>
-        </div>
-      </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
         <div class="fixed-table-body">
           <table class="demo-add-niftycheck table table-hover" data-toggle="table"
@@ -21,15 +18,9 @@
             <tr>
               <th style="">
                 <div class="th-inner sortable">
-                  {{ 'POSITION' | translate }}
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
-
-                    </span>
-                  </span>
+                  Logo
                 </div>
                 <div class="fht-cell">
-
                 </div>
               </th>
               <th style="">
@@ -37,17 +28,9 @@
                   {{ 'NAME' | translate }}
                 </div>
                 <div class="fht-cell">
-
                 </div>
               </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'TEAM' | translate }}
-                </div>
-                <div class="fht-cell">
 
-                </div>
-              </th>
               <th style="">
                 <div class="th-inner sortable">
                   {{ 'ACTIONS' | translate }}
@@ -59,22 +42,21 @@
             </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="player in players | orderBy : 'position' ">
-                <td>{{player.position | translate}}</td>
-                <td>{{player.name}}</td>
-                <td>{{player.team}}</td>
-                <td>
-                  <a class="btn btn-primary" ng-href="#/players/{{player.id}}/edit">{{ 'EDIT' | translate }}</a>
-                  <button class="btn btn-danger" ng-click="delete(player.id)">{{ 'DELETE' | translate }}</button>
-                </td>
-              </tr>
+            <tr ng-repeat="team in teams">
+              <td>
+                <img ng-src={{team.logo}}  width="50" height="50">
+              </td>
+              <td>{{team.name}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" ng-click="addTeam(team.id)">{{ 'ADD' | translate }}</button>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
     <div class="clearfix">
-
     </div>
   </div>
 </div>

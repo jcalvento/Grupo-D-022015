@@ -8,6 +8,22 @@ function routes($routeProvider) {
       templateUrl: 'views/ranking.html',
       controller: 'TournamentsController'
     })
+    .when('/tournaments', {
+      templateUrl: 'views/tournaments/index.html',
+      controller: 'TournamentsController'
+    })
+    .when('/tournaments/new', {
+      templateUrl: 'views/tournaments/new.html',
+      controller: 'TournamentsController'
+    })
+    .when('/tournaments/:id/edit', {
+      templateUrl: 'views/tournaments/edit.html',
+      controller: 'TournamentsController'
+    })
+    .when('/tournaments/:id/teams', {
+      templateUrl: 'views/tournaments/teams.html',
+      controller: 'TournamentsController'
+    })
     .when('/updateRound', {
       templateUrl: 'views/rounds/index.html',
       controller: 'RoundsController'
