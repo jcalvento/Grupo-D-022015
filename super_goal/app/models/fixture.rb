@@ -14,7 +14,7 @@ class Fixture < ActiveRecord::Base
     a_number_of_date_matches.times do |index|
       create_round index, teams
       teams.unshift teams.last
-      teams.delete_at(teams.size - 1)
+      teams.to_a.delete_at(teams.size - 1)
     end
   end
 
