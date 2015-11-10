@@ -57,6 +57,7 @@
                 <td>{{tournament.application_deadline}}</td>
                 <td>
                   <button class="btn btn-success" ng-show="!tournament.fixture" ng-click="generateFixture(tournament)">Generate Fixture</button>
+                  <button class="btn btn-success" ng-show="tournament.fixture" ng-href="#/tournaments/{{tournament.id}}/fixture">See Fixture</button>
                   <a class="btn btn-primary" ng-href="#/tournaments/{{tournament.id}}/edit">{{ 'EDIT' | translate }}</a>
                   <button class="btn btn-danger" ng-click="delete(tournament.id)">{{ 'DELETE' | translate }}</button>
                 </td>

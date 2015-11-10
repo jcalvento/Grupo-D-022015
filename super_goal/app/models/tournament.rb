@@ -16,6 +16,7 @@ class Tournament < ActiveRecord::Base
   def as_json(options = nil)
     json = super options
     json[:teams] = teams
+    json[:fixture] = fixture
     json
   end
 
