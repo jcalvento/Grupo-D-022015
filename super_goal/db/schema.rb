@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108185642) do
+ActiveRecord::Schema.define(version: 20151110231406) do
 
   create_table "date_matches", force: :cascade do |t|
     t.date     "date"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151108185642) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "date_match_id"
+    t.integer "local_id"
+    t.integer "visitor_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -44,13 +46,25 @@ ActiveRecord::Schema.define(version: 20151108185642) do
     t.integer  "team_id"
   end
 
+  create_table "players_teams", id: false, force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "team_id"
+  end
+
+  add_index "players_teams", ["player_id", "team_id"], name: "index_players_teams_on_player_id_and_team_id"
+
   create_table "teams", force: :cascade do |t|
     t.string  "name"
     t.string  "logo"
     t.integer "captain_id"
-    t.integer "match_id"
+  end
+
+  create_table "teams_tournaments", id: false, force: :cascade do |t|
+    t.integer "team_id"
     t.integer "tournament_id"
   end
+
+  add_index "teams_tournaments", ["team_id", "tournament_id"], name: "index_teams_tournaments_on_team_id_and_tournament_id"
 
   create_table "tournaments", force: :cascade do |t|
     t.string  "name"

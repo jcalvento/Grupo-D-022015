@@ -19,4 +19,11 @@ class Match < ActiveRecord::Base
   def rival_of(a_team)
     [local, visitor].detect { |team| !team.equal? a_team }
   end
+
+  def as_json(options = nil)
+    json = super options
+    json[:local] = local
+    json[:visitor] = visitor
+    json
+  end
 end

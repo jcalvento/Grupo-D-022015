@@ -1,7 +1,8 @@
 class Team < ActiveRecord::Base
 
   attr_reader :captain
-  has_many :players
+  has_and_belongs_to_many :players
+  has_and_belongs_to_many :tournaments
   has_one :captain, class_name: 'Player'
 
   def add_player(a_player)

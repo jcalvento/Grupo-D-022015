@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   post '/tournaments/:id/add_team' => 'tournaments#add_team'
   post '/tournaments/:id/remove_team' => 'tournaments#remove_team'
   get '/tournaments/:id/generate_fixture' => 'tournaments#generate_fixture'
+  get '/tournaments/:id/fixture' => 'tournaments#fixture'
   match '/tournaments' => 'tournaments#options', via: :options
   match '/tournaments/:id' => 'tournaments#options', via: :options
   match '/tournaments/:id/teams' => 'tournaments#options', via: :options

@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
 
   has_many :goals_counters
+  has_and_belongs_to_many :teams
   alias_attribute :goals, :goals_counters
   validates_with PositionValidator, field: :position
 

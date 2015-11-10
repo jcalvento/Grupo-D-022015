@@ -7,6 +7,8 @@ class CreateMatch < ActiveRecord::Migration
 
     create_table :matches do |t|
       t.belongs_to :date_match
+      t.integer :local_id
+      t.integer :visitor_id
     end
 
   end

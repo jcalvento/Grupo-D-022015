@@ -68,7 +68,9 @@ class TournamentsController < ApplicationController
   end
 
   def fixture
+    fixture = Fixture.where(:tournament_id => params[:id]).first
 
+    render json: { fixture: fixture}
   end
 
   protected
