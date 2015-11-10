@@ -24,6 +24,10 @@ function routes($routeProvider) {
       templateUrl: 'views/tournaments/teams.html',
       controller: 'TournamentsController'
     })
+    .when('/tournaments/fixtures', {
+      templateUrl: 'views/tournaments/fixtures.html',
+      controller: 'TournamentsController'
+    })
     .when('/updateRound', {
       templateUrl: 'views/rounds/index.html',
       controller: 'RoundsController'

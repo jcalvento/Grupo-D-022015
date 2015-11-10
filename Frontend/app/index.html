@@ -28,7 +28,7 @@
             <a ng-href="#/" class="navbar-brand">
               <img src="images/Soccer-icon.png" class="brand-icon">
               <div class="brand-title">
-                <span class="brand-text"> {{ 'APP_TITLE' | translate }}</span>
+                <span class="brand-text"> SuperGoal</span>
               </div>
             </a>
           </div>
@@ -154,15 +154,14 @@
                     <li class="">
                       <a data-original-title="" title="">
                         <i class="fa fa-edit"></i>
-                        <span class="menu-title">Tournament</span>
+                        <span class="menu-title">{{ 'TOURNAMENT' | translate }}</span>
                         <i class="arrow"></i>
                       </a>
                       <ul class="collapse" aria-expanded="false" style="height: 0px;">
-                        <li><a ng-href="#/tournaments">Tournaments</a></li>
-                        <li><a ng-href="#/tournament">General</a></li>
-                        <li><a ng-href="#/createTeam">Create Team</a></li>
-                        <li><a ng-href="#/updateRound">Update Round</a></li>
-
+                        <li><a ng-href="#/tournaments">{{ 'TOURNAMENT' | translate }}s</a></li>
+                        <!--<li><a ng-href="#/tournament">General</a></li>-->
+                        <li><a ng-href="#/createTeam">{{ 'CREATE_TEAM' | translate }}</a></li>
+                        <li><a ng-href="#/updateRound">{{ 'UPDATE_ROUND' | translate }}</a></li>
                       </ul>
                     </li>
 

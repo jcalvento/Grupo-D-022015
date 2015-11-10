@@ -51,13 +51,14 @@
             </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="t in tournaments">
-                <td>{{t.name}}</td>
-                <td>{{t.max_amount_of_teams}}</td>
-                <td>{{t.application_deadline}}</td>
+              <tr ng-repeat="tournament in tournaments">
+                <td>{{tournament.name}}</td>
+                <td>{{tournament.max_amount_of_teams}}</td>
+                <td>{{tournament.application_deadline}}</td>
                 <td>
-                  <a class="btn btn-primary" ng-href="#/tournaments/{{t.id}}/edit">{{ 'EDIT' | translate }}</a>
-                  <button class="btn btn-danger" ng-click="delete(t.id)">{{ 'DELETE' | translate }}</button>
+                  <button class="btn btn-success" ng-show="!tournament.fixture" ng-click="generateFixture(tournament)">Generate Fixture</button>
+                  <a class="btn btn-primary" ng-href="#/tournaments/{{tournament.id}}/edit">{{ 'EDIT' | translate }}</a>
+                  <button class="btn btn-danger" ng-click="delete(tournament.id)">{{ 'DELETE' | translate }}</button>
                 </td>
               </tr>
             </tbody>

@@ -1,6 +1,7 @@
 class Tournament < ActiveRecord::Base
 
   has_many :teams
+  has_one :fixture
 
   def add_team(a_team)
     validate_i_can_add_a_new_team

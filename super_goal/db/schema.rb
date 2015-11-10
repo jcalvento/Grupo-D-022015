@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151108185642) do
   end
 
   create_table "fixtures", force: :cascade do |t|
+    t.integer "tournament_id"
   end
 
   create_table "goals_counters", force: :cascade do |t|
