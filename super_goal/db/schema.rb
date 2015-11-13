@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110231406) do
+ActiveRecord::Schema.define(version: 20151108185642) do
 
   create_table "date_matches", force: :cascade do |t|
     t.date     "date"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20151110231406) do
     t.string   "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "team_id"
   end
 
   create_table "players_teams", id: false, force: :cascade do |t|

@@ -4,10 +4,13 @@ class AddRelationBetweenTournamentAndTeams < ActiveRecord::Migration
       t.integer :team_id
       t.integer :tournament_id
     end
+
     add_index :teams_tournaments, [:team_id, :tournament_id]
   end
 
   def down
+    remove_index :teams_tournaments
+
     drop_table :teams_tournaments
   end
 end

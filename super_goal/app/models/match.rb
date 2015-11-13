@@ -1,8 +1,8 @@
 class Match < ActiveRecord::Base
 
   belongs_to :date_match
-  has_one :local, class_name: 'Team'
-  has_one :visitor, class_name: 'Team'
+  belongs_to :local, class_name: 'Team'
+  belongs_to :visitor, class_name: 'Team'
 
   def points_of(a_team)
     points = a_team.points_made_in(date_match)
