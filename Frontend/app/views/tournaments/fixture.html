@@ -12,25 +12,24 @@
                    cellspacing="0" width="100%" role="grid" aria-describedby="demo-dt-basic_info"
                    style="width: 100%;">
               <thead>
-              <tr role="row">
-                <th class="sorting_asc" tabindex="0" aria-controls="demo-dt-basic"
-                    rowspan="1" colspan="1" aria-sort="ascending"
-                    aria-label="Name: activate to sort column descending"
-                    style="width: 169px;">Round</th>
-                <th class="sorting" tabindex="0" aria-controls="demo-dt-basic"
-                    rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
-                    style="width: 212px;">Local</th>
-                <th class="min-tablet sorting" tabindex="0" aria-controls="demo-dt-basic"
-                    rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending"
-                    style="width: 98px;">Visitor</th>
-              </tr>
+                <tr role="row">
+                  <th style="width: 10%;">Round</th>
+                  <th class="sorting" tabindex="0" aria-controls="demo-dt-basic"
+                      rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
+                      style="width: 90%;">Matches (Local - Visitor)</th>
+                </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="date_match in fixture.date_matches" role="row" class="odd parent">
-                <td class="sorting_1"> {{date_match.id}}</td>
-                <td ng-repeat="match in date_match">{{match.local.name}}</td>
-                <td ng-repeat="match in date_match">{{match.visitor.name}}</td>
-              </tr>
+                <tr ng-repeat="date_match in fixture.date_matches" role="row" class="odd parent">
+                  <td>{{date_match.id}}</td>
+                  <td>
+                    <ul>
+                      <li ng-repeat="match in date_match.matches">
+                        {{match.local.name}} - {{match.visitor.name}}
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
