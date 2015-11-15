@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151108185642) do
 
   create_table "date_matches", force: :cascade do |t|
+    t.integer  "round"
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

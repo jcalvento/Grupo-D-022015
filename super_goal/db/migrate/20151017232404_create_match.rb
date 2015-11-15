@@ -1,6 +1,7 @@
 class CreateMatch < ActiveRecord::Migration
   def up
     create_table :date_matches do |t|
+      t.integer :round
       t.date :date
       t.timestamps null: false
     end

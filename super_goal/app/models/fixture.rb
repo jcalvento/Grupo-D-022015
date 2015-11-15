@@ -28,7 +28,7 @@ class Fixture < ActiveRecord::Base
     middle = teams.size / 2
     l1 = teams[0..(middle-1)]
     l2 = teams[middle..teams.size]
-    current_date_match = DateMatch.new
+    current_date_match = DateMatch.new(:round => number_of_round+1)
     date_matches << current_date_match
 
     l1.size.times do |index|
