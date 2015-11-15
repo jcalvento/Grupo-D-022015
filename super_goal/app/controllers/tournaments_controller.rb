@@ -57,6 +57,22 @@ class TournamentsController < ApplicationController
     render json: { tournament: tournament }
   end
 
+  def generate_fixture
+    puts "GENERATING FIXTURE FOR #{params[:id]}"
+    tournament = Tournament.find(params[:id])
+    amount_of_teams = tournament.teams.length
+    tournament.fixture = Fixture.for(tournament.teams,((amount_of_teams*(amount_of_teams-1))/2))
+    tournament.save!
+
+    render json: { fixture: tournament.fixture }
+  end
+
+  def fixture
+    fixture = Fixture.where(:tournament_id => params[:id]).first
+
+    render json: { fixture: fixture}
+  end
+
   protected
 
   def tournament_params

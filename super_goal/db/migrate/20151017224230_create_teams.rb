@@ -4,7 +4,6 @@ class CreateTeams < ActiveRecord::Migration
       t.string :name
       t.string :logo
       t.integer :captain_id
-      t.belongs_to :match
     end
   end
 

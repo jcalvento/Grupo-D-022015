@@ -90,6 +90,14 @@ function ServerApi($http) {
     return $http.delete(getFullUrl('/tournaments/' + id))
   };
 
+  this.generateFixture = function(id) {
+    return $http.get(getFullUrl('/tournaments/' + id + '/generate_fixture'), options)
+  };
+
+  this.getFixture = function(tournamentId) {
+    return $http.get(getFullUrl('/tournaments/'+ tournamentId + '/fixture'))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }

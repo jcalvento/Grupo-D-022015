@@ -8,21 +8,27 @@ class Fixture < ActiveRecord::Base
     fixture
   end
 
+  def as_json(options = nil)
+    json = super options
+    json[:date_matches] = date_matches
+    json
+  end
+
   protected
 
   def create_fixture_with(teams, a_number_of_date_matches)
     a_number_of_date_matches.times do |index|
       create_round index, teams
       teams.unshift teams.last
-      teams.delete_at(teams.size - 1)
+      teams.to_a.delete_at(teams.size - 1)
     end
   end
 
   def create_round(number_of_round, teams)
     middle = teams.size / 2
-    l1 = teams[0..middle]
+    l1 = teams[0..(middle-1)]
     l2 = teams[middle..teams.size]
-    current_date_match = DateMatch.new
+    current_date_match = DateMatch.new(:round => number_of_round+1)
     date_matches << current_date_match
 
     l1.size.times do |index|
@@ -33,8 +39,10 @@ class Fixture < ActiveRecord::Base
         local = l2[index]
         visitor = l1[index]
       end
-
-      current_date_match.add_match(Match.new(local: local, visitor: visitor))
+      if local!=nil || visitor!=nil
+        match = Match.new(local: local, visitor: visitor)
+        current_date_match.add_match(match)
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 class Tournament < ActiveRecord::Base
 
-  has_many :teams
+  has_and_belongs_to_many :teams
+  has_one :fixture
 
   def add_team(a_team)
     validate_i_can_add_a_new_team
@@ -15,6 +16,7 @@ class Tournament < ActiveRecord::Base
   def as_json(options = nil)
     json = super options
     json[:teams] = teams
+    json[:fixture] = fixture
     json
   end
 

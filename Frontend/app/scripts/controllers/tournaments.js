@@ -50,6 +50,18 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
+  $scope.generateFixture = function(tournament) {
+    ServerApi.generateFixture(tournament.id).then(function(response) {
+      tournament.fixture = response.data.fixture
+    })
+  };
+
+  $scope.getFixture = function() {
+    ServerApi.getFixture(tournamentId()).then(function(response) {
+      $scope.fixture = response.data.fixture
+    })
+  };
+
   $scope.goBackToEdit = function() {
     $location.path('/tournaments/' + tournamentId() + '/edit')
   };
@@ -64,7 +76,6 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
         name: $scope.tournament.name,
         max_amount_of_teams: $scope.tournament.max_amount_of_teams,
         application_deadline: $scope.tournament.application_deadline
-        //teams: $scope.tournament.teams
       }
     }
   }

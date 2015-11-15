@@ -17,47 +17,60 @@
                  data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
                  data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
             <thead style="display: table-header-group;">
-            <tr>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'NAME' | translate }}
-                </div>
-                <div class="fht-cell">
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'MAX_AMOUNT_OF_TEAMS' | translate }}
-                </div>
-                <div class="fht-cell">
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'APPLICATION_DEADLINE' | translate }}
-                </div>
-                <div class="fht-cell">
-                </div>
-              </th>
+              <tr>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'NAME' | translate }}
+                  </div>
+                  <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'MAX_AMOUNT_OF_TEAMS' | translate }}
+                  </div>
+                  <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'APPLICATION_DEADLINE' | translate }}
+                  </div>
+                  <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'AMOUNT_OF_TEAMS' | translate }}
+                  </div>
+                  <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'ACTIONS' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'ACTIONS' | translate }}
-                </div>
-                <div class="fht-cell">
-
-                </div>
-              </th>
-            </tr>
+                  </div>
+                </th>
+              </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="t in tournaments">
-                <td>{{t.name}}</td>
-                <td>{{t.max_amount_of_teams}}</td>
-                <td>{{t.application_deadline}}</td>
+              <tr ng-repeat="tournament in tournaments">
+                <td>{{tournament.name}}</td>
+                <td>{{tournament.max_amount_of_teams}}</td>
+                <td>{{tournament.application_deadline}}</td>
+                <td>{{tournament.teams.length}}</td>
                 <td>
-                  <a class="btn btn-primary" ng-href="#/tournaments/{{t.id}}/edit">{{ 'EDIT' | translate }}</a>
-                  <button class="btn btn-danger" ng-click="delete(t.id)">{{ 'DELETE' | translate }}</button>
+                  <button class="btn btn-success" ng-show="!tournament.fixture" ng-click="generateFixture(tournament)">
+                    Generate Fixture
+                  </button>
+                  <a class="btn btn-success" ng-show="tournament.fixture" ng-href="#/tournaments/{{tournament.id}}/fixture">
+                    See Fixture
+                  </a>
+                  <a class="btn btn-primary" ng-href="#/tournaments/{{tournament.id}}/edit">{{ 'EDIT' | translate }}</a>
+                  <button class="btn btn-danger" ng-click="delete(tournament.id)">{{ 'DELETE' | translate }}</button>
                 </td>
               </tr>
             </tbody>
@@ -65,8 +78,6 @@
         </div>
       </div>
     </div>
-    <div class="clearfix">
-
-    </div>
+    <div class="clearfix"></div>
   </div>
 </div>

@@ -15,4 +15,10 @@ class DateMatch < ActiveRecord::Base
     GoalsCounter.new(player: a_player, position: a_position, date_match: self, number_of_goals: a_number_of_goals)
   end
 
+  def as_json(options = nil)
+    json = super options
+    json[:matches] = matches
+    json
+  end
+
 end

@@ -1,9 +1,16 @@
 class AddRelationBetweenTournamentAndTeams < ActiveRecord::Migration
   def up
-    add_belongs_to :teams, :tournament
+    create_table :teams_tournaments, :id => false do |t|
+      t.integer :team_id
+      t.integer :tournament_id
+    end
+
+    add_index :teams_tournaments, [:team_id, :tournament_id]
   end
 
   def down
-    remove_belongs_to :teams, :tournament
+    remove_index :teams_tournaments
+
+    drop_table :teams_tournaments
   end
 end
