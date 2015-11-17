@@ -9,58 +9,63 @@
     <div class="bootstrap-table">
       <div class="fixed-table-container" style="padding-bottom: 0px;">
         <div class="fixed-table-body">
-          <table class="demo-add-niftycheck table table-hover" data-toggle="table"
-                 data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
-                 data-search="true" data-show-refresh="true" data-show-toggle="true"
-                 data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
-                 data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
-            <thead style="display: table-header-group;">
-            <tr>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'POSITION' | translate }}
-                </div>
-                <div class="fht-cell">
+          <div class="willPaginate"
+               data-params="willPaginateCollection"
+               data-on-click="getPage"
+               data-config="willPaginateConfig">
+            <table class="demo-add-niftycheck table table-hover" data-toggle="table"
+                   data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
+                   data-search="true" data-show-refresh="true" data-show-toggle="true"
+                   data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
+                   data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+              <thead style="display: table-header-group;">
+              <tr>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'POSITION' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'NAME' | translate }}
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'NAME' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'TEAM' | translate }}
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'TEAM' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'ACTIONS' | translate }}
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'ACTIONS' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr data-index="0" ng-repeat="player in players | orderBy: 'position' ">
-              <td>{{player.position | translate}}</td>
-              <td>{{player.name}}</td>
-              <td>{{player.team}}</td>
-              <td>
-                <button type="button" class="btn btn-primary" ng-click="addPlayer(player.id)">{{ 'ADD' | translate }}</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  </div>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr data-index="0" ng-repeat="player in players | orderBy: 'position' ">
+                <td>{{player.position | translate}}</td>
+                <td>{{player.name}}</td>
+                <td>{{player.team}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary" ng-click="addPlayer(player.id)">{{ 'ADD' | translate }}</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

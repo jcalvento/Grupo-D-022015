@@ -1,7 +1,8 @@
 class PlayersController < ApplicationController
 
   def index
-    render :json => { players: Player.all }
+    players = Player.all.paginate(page: params[:page], per_page: 5)
+    render :json => { players: players }
   end
 
   def create
