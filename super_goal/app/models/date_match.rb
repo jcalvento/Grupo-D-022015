@@ -1,6 +1,7 @@
 class DateMatch < ActiveRecord::Base
 
   has_many :matches
+  belongs_to :fixture
 
   def add_match(a_match)
     matches << a_match

@@ -20,6 +20,10 @@ class Tournament < ActiveRecord::Base
     json
   end
 
+  def players
+    teams.collect(&:players).flatten.uniq
+  end
+
   protected
 
   def validate_i_can_add_a_new_team

@@ -1,0 +1,28 @@
+<div id="page-content" ng-init="getDateMatchGoals()">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Update Date Match Manually</h3>
+    </div>
+    <div class="panel-body">
+      <form name="goalsForm" novalidate>
+        <label for="goals">Number of Goals</label>
+        <input id="goals" type="number" name="goals" ng-model="goal.numberOfGoals" required>
+        <label for="player">Player</label>
+        <select id="player" name="player" ng-model="goal.player" required>
+          <option ng-repeat="player in players" value="{{player.id}}">{{player.name}}</option>
+        </select>
+        <label for="position">Position</label>
+        <select id="position" name="position" ng-model="goal.position" required>
+          <option ng-repeat="position in positions">{{position}}</option>
+        </select>
+        <button type="submit" ng-click="updateDateMatchResult()">Submit</button>
+      </form>
+      <div ng-repeat="goal in goals">
+        <label>{{goal.player.name}}</label>
+        <label>{{goal.position}}</label>
+        <label>{{goal.number_of_goals}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+

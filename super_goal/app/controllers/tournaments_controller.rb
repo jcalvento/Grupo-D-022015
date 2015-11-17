@@ -73,9 +73,30 @@ class TournamentsController < ApplicationController
     render json: { fixture: fixture}
   end
 
+  def date_match_goals
+    date_match = DateMatch.find(params[:date_match_id])
+    goals = GoalsCounter.where(date_match_id: date_match.id)
+    players = date_match.fixture.tournament.players
+
+    render json: { goals: goals, players: players }
+  end
+
+  def add_date_match_goal
+    date_match = DateMatch.find(params[:date_match_id])
+    player = Player.find(goal_params[:player_id])
+    date_match.add_goals_of(player, goal_params[:position], goal_params[:number_of_goals]).save!
+
+    date_match_goals
+  end
+
   protected
 
   def tournament_params
     params.require(:tournament).permit(:name, :max_amount_of_teams, :application_deadline)
   end
+
+  def goal_params
+    params.require(:goal).permit(:number_of_goals, :player_id, :position)
+  end
+
 end

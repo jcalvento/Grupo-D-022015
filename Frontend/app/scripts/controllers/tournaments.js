@@ -66,6 +66,36 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     $location.path('/tournaments/' + tournamentId() + '/edit')
   };
 
+  $scope.getDateMatchGoals = function() {
+    ServerApi.getDateMatchGoals(dateMatchId()).then(processDateMatchResponse)
+  };
+
+  $scope.positions = ['Forward', 'Midfield', 'Defender', 'Goalkeeper'];
+
+  $scope.updateDateMatchResult = function() {
+    if($scope.goalsForm.$valid)
+      ServerApi.postDateMatchResult(dateMatchId(), dateMatchParams()).then(processDateMatchResponse)
+  };
+
+  function processDateMatchResponse(response) {
+    $scope.goals = response.data.goals;
+    $scope.players = response.data.players;
+  }
+
+  function dateMatchId() {
+    return $routeParams.dateMatchId
+  }
+
+  function dateMatchParams() {
+    return {
+      goal: {
+        player_id: $scope.goal.player,
+        number_of_goals: $scope.goal.numberOfGoals,
+        position: $scope.goal.position
+      }
+    }
+  }
+
   function tournamentId() {
     return $routeParams.id
   }
