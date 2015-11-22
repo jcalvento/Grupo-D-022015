@@ -61,7 +61,7 @@ class TournamentsController < ApplicationController
     puts "GENERATING FIXTURE FOR #{params[:id]}"
     tournament = Tournament.find(params[:id])
     amount_of_teams = tournament.teams.length
-    tournament.fixture = Fixture.for(tournament.teams,((amount_of_teams*(amount_of_teams-1))/2))
+    tournament.fixture = Fixture.for(tournament.teams,tournament.teams.size-1)
     tournament.save!
 
     render json: { fixture: tournament.fixture }
