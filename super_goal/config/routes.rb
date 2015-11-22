@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   match '/tournaments/:id/add_team' => 'tournaments#options', via: :options
   match '/tournaments/:id/remove_team' => 'tournaments#options', via: :options
   match '/tournaments/:id/generate_fixture' => 'tournaments#options', via: :options
+  match '/tournaments/:id/fixture' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/date_match_goals' => 'tournaments#options', via: :options
 
 end
