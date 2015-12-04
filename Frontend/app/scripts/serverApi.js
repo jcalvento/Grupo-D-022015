@@ -106,6 +106,10 @@ function ServerApi($http) {
     return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/date_match_goals'), params)
   };
 
+  this.endDateMatch = function(dateMatchId) {
+    return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/end_date_match'))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }

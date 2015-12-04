@@ -70,7 +70,7 @@ class TournamentsController < ApplicationController
   def fixture
     fixture = Fixture.where(:tournament_id => params[:id]).first
 
-    render json: { fixture: fixture}
+    render json: { fixture: fixture }
   end
 
   def date_match_goals
@@ -87,6 +87,13 @@ class TournamentsController < ApplicationController
     date_match.add_goals_of(player, goal_params[:position], goal_params[:number_of_goals]).save!
 
     date_match_goals
+  end
+
+  def end_date_match
+    date_match = DateMatch.find(params[:date_match_id])
+    date_match.update_attributes! ended: true
+
+    render json: { date_match: date_match }
   end
 
   protected

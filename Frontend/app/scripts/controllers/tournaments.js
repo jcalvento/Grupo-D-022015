@@ -77,6 +77,15 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
       ServerApi.postDateMatchResult(dateMatchId(), dateMatchParams()).then(processDateMatchResponse)
   };
 
+  $scope.endDateMatch = function(dateMatchId) {
+    ServerApi.endDateMatch(dateMatchId).then(function(response) {
+      var updatedDateMatch = response.data.date_match;
+      $scope.fixture.date_matches.find(function(dateMatch) {
+        return dateMatch.id == dateMatchId
+      }).ended = updatedDateMatch.ended
+    })
+  };
+
   function processDateMatchResponse(response) {
     $scope.goals = response.data.goals;
     $scope.players = response.data.players;

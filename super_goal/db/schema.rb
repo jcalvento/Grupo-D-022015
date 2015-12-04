@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108185642) do
+ActiveRecord::Schema.define(version: 20151204183534) do
 
   create_table "date_matches", force: :cascade do |t|
     t.integer  "round"
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "fixture_id"
+    t.boolean  "ended",      default: false
   end
 
   create_table "fixtures", force: :cascade do |t|
