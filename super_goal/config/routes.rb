@@ -75,11 +75,17 @@ Rails.application.routes.draw do
   post '/tournaments/:id/remove_team' => 'tournaments#remove_team'
   get '/tournaments/:id/generate_fixture' => 'tournaments#generate_fixture'
   get '/tournaments/:id/fixture' => 'tournaments#fixture'
+  get '/tournaments/:date_match_id/date_match_goals' => 'tournaments#date_match_goals'
+  post '/tournaments/:date_match_id/date_match_goals' => 'tournaments#add_date_match_goal'
+  post '/tournaments/:date_match_id/end_date_match' => 'tournaments#end_date_match'
   match '/tournaments' => 'tournaments#options', via: :options
   match '/tournaments/:id' => 'tournaments#options', via: :options
   match '/tournaments/:id/teams' => 'tournaments#options', via: :options
   match '/tournaments/:id/add_team' => 'tournaments#options', via: :options
   match '/tournaments/:id/remove_team' => 'tournaments#options', via: :options
   match '/tournaments/:id/generate_fixture' => 'tournaments#options', via: :options
-  
+  match '/tournaments/:id/fixture' => 'tournaments#options', via: :options
+  match '/tournaments/:date_match_id/date_match_goals' => 'tournaments#options', via: :options
+  match '/tournaments/:date_match_id/end_date_match' => 'tournaments#options', via: :options
+
 end

@@ -32,7 +32,9 @@ function translations($translateProvider) {
       MAX_AMOUNT_OF_TEAMS: 'Max amount of teams',
       AMOUNT_OF_TEAMS: 'Participants',
       APPLICATION_DEADLINE: 'Application deadline',
-      REQUIRED_FIELD: 'Please, enter a'
+      REQUIRED_FIELD: 'Please, enter the',
+      NUMBER_OF_GOALS: 'Number of goals',
+      PLAYER: 'Player'
     })
     .translations('es', {
       APP_TITLE: 'SuperGol',
@@ -70,7 +72,9 @@ function translations($translateProvider) {
       MAX_AMOUNT_OF_TEAMS: 'Cantidad maxima de equipos',
       AMOUNT_OF_TEAMS: 'Inscriptos',
       APPLICATION_DEADLINE: 'Fecha limite',
-      REQUIRED_FIELD: 'Por favor, ingrese un'
+      REQUIRED_FIELD: 'Por favor, ingrese un',
+      NUMBER_OF_GOALS: 'Numero de goles',
+      PLAYER: 'Jugador'
     });
 
   $translateProvider.preferredLanguage('en');

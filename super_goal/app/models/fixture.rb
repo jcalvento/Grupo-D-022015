@@ -1,6 +1,7 @@
 class Fixture < ActiveRecord::Base
 
   has_many :date_matches
+  belongs_to :tournament
 
   def self.for(teams, a_number_of_date_matches)
     fixture = self.new

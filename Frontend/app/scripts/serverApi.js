@@ -95,7 +95,19 @@ function ServerApi($http) {
   };
 
   this.getFixture = function(tournamentId) {
-    return $http.get(getFullUrl('/tournaments/'+ tournamentId + '/fixture'))
+    return $http.get(getFullUrl('/tournaments/' + tournamentId + '/fixture'), options)
+  };
+
+  this.getDateMatchGoals = function(dateMatchId) {
+    return $http.get(getFullUrl('/tournaments/' + dateMatchId + '/date_match_goals'), options)
+  };
+
+  this.postDateMatchResult = function(dateMatchId, params) {
+    return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/date_match_goals'), params)
+  };
+
+  this.endDateMatch = function(dateMatchId) {
+    return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/end_date_match'))
   };
 
   function getFullUrl(path) {

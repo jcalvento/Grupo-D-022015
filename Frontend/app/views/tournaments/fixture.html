@@ -17,6 +17,7 @@
                   <th class="sorting" tabindex="0" aria-controls="demo-dt-basic"
                       rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
                       style="width: 90%;">Matches (Local - Visitor)</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -28,6 +29,14 @@
                         {{match.local.name}} - {{match.visitor.name}}
                       </li>
                     </ul>
+                  </td>
+                  <td>
+                    <a class="btn btn-primary" ng-hide="date_match.ended" ng-href="#/tournaments/{{date_match.id}}/results">
+                      Update Results
+                    </a>
+                    <button class="btn btn-warning" ng-hide="date_match.ended" ng-click="endDateMatch(date_match.id)">
+                      End Date
+                    </button>
                   </td>
                 </tr>
               </tbody>

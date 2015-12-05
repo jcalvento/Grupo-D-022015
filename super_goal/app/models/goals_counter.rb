@@ -18,4 +18,11 @@ class GoalsCounter < ActiveRecord::Base
 
     position_instance.points_for_goals_amount number_of_goals
   end
+
+  def as_json(options=nil)
+    json = super options
+    json[:player] = player
+    json
+  end
+
 end
