@@ -110,6 +110,10 @@ function ServerApi($http) {
     return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/end_date_match'))
   };
 
+  this.getDateMatchDetails = function(dateMatchId) {
+    return $http.get(getFullUrl('/tournaments/' + dateMatchId + '/date_match_details'))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }

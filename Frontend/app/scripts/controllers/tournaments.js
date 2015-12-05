@@ -86,6 +86,38 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     })
   };
 
+  $scope.getDateMatchDetails = function() {
+    ServerApi.getDateMatchDetails(dateMatchId()).then(function(response) {
+      $scope.matches = response.data.matches;
+      $scope.teams = [];
+      $scope.matches.map(function(match) {
+        $scope.teams.push(match.local);
+        $scope.teams.push(match.visitor);
+      });
+      $scope.playersPoints = response.data.players_points
+    })
+  };
+
+  $scope.pointsMadeBy = function(aPlayer) {
+    return $scope.playersPoints[aPlayer.id]
+  };
+
+  function matchWherePlayed(aTeam) {
+    return $scope.matches.find(function (match) {
+      return match.visitor.id == aTeam.id || match.local.id == aTeam.id
+    });
+  }
+
+  $scope.pointsFor = function(aTeam) {
+    var match = matchWherePlayed(aTeam);
+    return (match.local.id == aTeam.id) ? match.local_points : match.visitor_points
+  };
+
+  $scope.rivalOf = function(aTeam) {
+    var match = matchWherePlayed(aTeam);
+    return (match.local.id != aTeam.id) ? match.local : match.visitor
+  };
+
   function processDateMatchResponse(response) {
     $scope.goals = response.data.goals;
     $scope.players = response.data.players;

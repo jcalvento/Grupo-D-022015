@@ -34,7 +34,8 @@ function translations($translateProvider) {
       APPLICATION_DEADLINE: 'Application deadline',
       REQUIRED_FIELD: 'Please, enter the',
       NUMBER_OF_GOALS: 'Number of goals',
-      PLAYER: 'Player'
+      PLAYER: 'Player',
+      POINTS: 'Points'
     })
     .translations('es', {
       APP_TITLE: 'SuperGol',
@@ -74,7 +75,8 @@ function translations($translateProvider) {
       APPLICATION_DEADLINE: 'Fecha limite',
       REQUIRED_FIELD: 'Por favor, ingrese un',
       NUMBER_OF_GOALS: 'Numero de goles',
-      PLAYER: 'Jugador'
+      PLAYER: 'Jugador',
+      POINTS: 'Puntos'
     });
 
   $translateProvider.preferredLanguage('en');

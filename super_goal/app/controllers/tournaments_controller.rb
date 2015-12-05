@@ -96,6 +96,15 @@ class TournamentsController < ApplicationController
     render json: { date_match: date_match }
   end
 
+  def date_match_details
+    date_match = DateMatch.find(params[:date_match_id])
+
+    render json: {
+        matches: date_match.matches,
+        players_points: date_match.matches.inject({}) { |memo, match| memo.merge match.players_points }
+    }
+  end
+
   protected
 
   def tournament_params
