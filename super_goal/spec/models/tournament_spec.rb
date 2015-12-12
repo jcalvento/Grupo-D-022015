@@ -31,4 +31,27 @@ describe 'Tournament' do
     end
   end
 
+  describe 'ranking' do
+
+    let(:tournament) { build :tournament }
+
+    before :each do
+      team1 = build :team, name: 'Team1'
+      team2 = build :team, name: 'Team2'
+      team3 = build :team, name: 'Team3'
+      team4 = build :team, name: 'Team4'
+      [team1, team2, team3, team4].map { |team| tournament.add_team team }
+      tournament.fixture = Fixture.for tournament.teams, 2
+    end
+
+    it 'xxx' do
+      tournament.ranking.map{ |ranking_position|
+        expect(ranking_position[1]).to eq 0
+      }
+    end
+
+    it 'xxx1' do
+
+    end
+  end
 end

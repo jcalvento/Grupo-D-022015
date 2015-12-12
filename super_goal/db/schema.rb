@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204183534) do
+ActiveRecord::Schema.define(version: 20151212191808) do
 
   create_table "date_matches", force: :cascade do |t|
     t.integer  "round"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20151204183534) do
     t.string  "name"
     t.integer "max_amount_of_teams"
     t.date    "application_deadline"
+    t.text    "ranking"
   end
 
   create_table "users", force: :cascade do |t|

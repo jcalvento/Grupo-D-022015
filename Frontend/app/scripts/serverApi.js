@@ -114,6 +114,10 @@ function ServerApi($http) {
     return $http.get(getFullUrl('/tournaments/' + dateMatchId + '/date_match_details'))
   };
 
+  this.getRanking = function(tournamentId) {
+    return $http.get(getFullUrl('/tournaments/' + tournamentId + '/ranking'))
+  };
+
   function getFullUrl(path) {
     return mainUrl + path
   }
