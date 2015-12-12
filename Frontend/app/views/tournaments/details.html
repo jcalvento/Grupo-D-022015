@@ -1,0 +1,60 @@
+<div id="page-content" ng-init="getDateMatchDetails()">
+  <div class="panel">
+    <div class="panel-body fixed-table-container" style="padding-bottom: 0px;">
+      <div class="fixed-table-body">
+        <table class="demo-add-niftycheck table table-hover" data-toggle="table"
+               data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
+               data-search="true" data-show-refresh="true" data-show-toggle="true"
+               data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
+               data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+          <thead style="display: table-header-group;">
+          <tr>
+            <th style="">
+              <div class="th-inner sortable">
+                {{ 'TEAM' | translate }}
+              </div>
+              <div class="fht-cell">
+              </div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable">
+                {{ 'PLAYER' | translate }} ({{ 'POINTS' | translate }})
+              </div>
+              <div class="fht-cell">
+              </div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable">
+                {{ 'POINTS' | translate }}
+              </div>
+              <div class="fht-cell">
+              </div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable">
+                Rival
+              </div>
+              <div class="fht-cell">
+              </div>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="team in teams">
+            <td>{{team.name}}</td>
+            <td>
+              <ul>
+                <li ng-repeat="player in team.players">
+                  {{player.name}} ({{pointsMadeBy(player)}})
+                </li>
+              </ul>
+            </td>
+            <td>{{pointsFor(team)}}</td>
+            <td>{{rivalOf(team).name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

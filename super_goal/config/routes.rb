@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get '/teams/:id/players' => 'teams#available_players'
   post '/teams/:id/add_player' => 'teams#add_player'
   post '/teams/:id/remove_player' => 'teams#remove_player'
+
   match '/teams' => 'teams#options', via: :options
   match '/teams/:id' => 'teams#options', via: :options
   match '/teams/:id/players' => 'teams#options', via: :options
@@ -70,14 +71,16 @@ Rails.application.routes.draw do
   match '/teams/:id/remove_player' => 'teams#options', via: :options
 
   resources :tournaments, only: [:index, :edit, :update, :create, :destroy], defaults: {format: :json}
-  get '/tournaments/:id/teams' => 'tournaments#available_teams'
+  get  '/tournaments/:id/teams' => 'tournaments#available_teams'
   post '/tournaments/:id/add_team' => 'tournaments#add_team'
   post '/tournaments/:id/remove_team' => 'tournaments#remove_team'
-  get '/tournaments/:id/generate_fixture' => 'tournaments#generate_fixture'
-  get '/tournaments/:id/fixture' => 'tournaments#fixture'
-  get '/tournaments/:date_match_id/date_match_goals' => 'tournaments#date_match_goals'
+  get  '/tournaments/:id/generate_fixture' => 'tournaments#generate_fixture'
+  get  '/tournaments/:id/fixture' => 'tournaments#fixture'
+  get  '/tournaments/:date_match_id/date_match_goals' => 'tournaments#date_match_goals'
   post '/tournaments/:date_match_id/date_match_goals' => 'tournaments#add_date_match_goal'
   post '/tournaments/:date_match_id/end_date_match' => 'tournaments#end_date_match'
+  get  '/tournaments/:date_match_id/date_match_details' => 'tournaments#date_match_details'
+
   match '/tournaments' => 'tournaments#options', via: :options
   match '/tournaments/:id' => 'tournaments#options', via: :options
   match '/tournaments/:id/teams' => 'tournaments#options', via: :options
@@ -87,5 +90,6 @@ Rails.application.routes.draw do
   match '/tournaments/:id/fixture' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/date_match_goals' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/end_date_match' => 'tournaments#options', via: :options
+  match '/tournaments/:date_match_id/date_match_details' => 'tournaments#options', via: :options
 
 end

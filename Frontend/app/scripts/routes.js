@@ -32,17 +32,9 @@ function routes($routeProvider) {
       templateUrl: 'views/tournaments/update_results_manually.html',
       controller: 'TournamentsController'
     })
-    .when('/updateRound', {
-      templateUrl: 'views/rounds/index.html',
-      controller: 'RoundsController'
-    })
-    .when('/:id/updateRoundManually', {
-      templateUrl: 'views/rounds/updateRoundManually.html',
-      controller: 'RoundsController'
-    })
-    .when('/:id/updateRoundFromCSV', {
-      templateUrl: 'views/rounds/updateRoundFromCSV.html',
-      controller: 'RoundsController'
+    .when('/tournaments/:dateMatchId/details', {
+      templateUrl: 'views/tournaments/details.html',
+      controller: 'TournamentsController'
     })
     .when('/teams', {
       templateUrl: 'views/teams/index.html',
