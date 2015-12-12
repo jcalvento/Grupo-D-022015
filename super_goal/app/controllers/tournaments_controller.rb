@@ -84,7 +84,6 @@ class TournamentsController < ApplicationController
     date_match = DateMatch.find(params[:date_match_id])
     player = Player.find(goal_params[:player_id])
     date_match.add_goals_of(player, goal_params[:position], goal_params[:number_of_goals]).save!
-    date_match.fixture.tournament.update_ranking
 
     date_match_goals
   end
@@ -92,6 +91,9 @@ class TournamentsController < ApplicationController
   def end_date_match
     date_match = DateMatch.find(params[:date_match_id])
     date_match.update_attributes! ended: true
+    tournament = date_match.fixture.tournament
+    tournament.update_ranking
+    tournament.save!
 
     render json: { date_match: date_match }
   end

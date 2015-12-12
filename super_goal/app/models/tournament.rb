@@ -38,7 +38,7 @@ class Tournament < ActiveRecord::Base
   def ranking
     rank = {}
     self[:ranking].map { |key, value| rank[Team.find(key).name] = value }
-    rank.sort_by { |name, points| points }
+    rank.sort_by{ |name, points| points }.reverse
   end
 
   protected
