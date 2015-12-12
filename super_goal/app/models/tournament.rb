@@ -30,8 +30,8 @@ class Tournament < ActiveRecord::Base
     fixture.ended_date_matches.collect(&:matches).flatten.map { |match|
       local_team = match.local
       visitor_team = match.visitor
-      rank[local_team.id] = rank[local_team.id] + points_of(local_team)
-      rank[visitor_team.id] = rank[visitor_team.id] + points_of(visitor_team)
+      self[:ranking][local_team.id] = self[:ranking][local_team.id] + match.points_of(local_team)
+      self[:ranking][visitor_team.id] = self[:ranking][visitor_team.id] + match.points_of(visitor_team)
     }
   end
 
