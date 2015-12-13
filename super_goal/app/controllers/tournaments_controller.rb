@@ -58,7 +58,6 @@ class TournamentsController < ApplicationController
   end
 
   def generate_fixture
-    puts "GENERATING FIXTURE FOR #{params[:id]}"
     tournament = Tournament.find(params[:id])
     amount_of_teams = tournament.teams.length
     tournament.fixture = Fixture.for(tournament.teams,((amount_of_teams*(amount_of_teams-1))/2))
@@ -92,6 +91,9 @@ class TournamentsController < ApplicationController
   def end_date_match
     date_match = DateMatch.find(params[:date_match_id])
     date_match.update_attributes! ended: true
+    tournament = date_match.fixture.tournament
+    tournament.update_ranking
+    tournament.save!
 
     render json: { date_match: date_match }
   end
@@ -101,8 +103,16 @@ class TournamentsController < ApplicationController
 
     render json: {
         matches: date_match.matches,
-        players_points: date_match.matches.inject({}) { |memo, match| memo.merge match.players_points }
+        players_points: date_match.matches.inject({}) {
+            |memo, match| memo.merge match.players_points
+        }
     }
+  end
+
+  def ranking
+    tournament = Tournament.find(params[:id])
+
+    render json: { ranking: tournament.ranking }
   end
 
   protected

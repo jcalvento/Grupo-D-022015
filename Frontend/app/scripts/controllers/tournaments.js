@@ -102,12 +102,6 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     return $scope.playersPoints[aPlayer.id]
   };
 
-  function matchWherePlayed(aTeam) {
-    return $scope.matches.find(function (match) {
-      return match.visitor.id == aTeam.id || match.local.id == aTeam.id
-    });
-  }
-
   $scope.pointsFor = function(aTeam) {
     var match = matchWherePlayed(aTeam);
     return (match.local.id == aTeam.id) ? match.local_points : match.visitor_points
@@ -117,6 +111,21 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
     var match = matchWherePlayed(aTeam);
     return (match.local.id != aTeam.id) ? match.local : match.visitor
   };
+
+  $scope.getRanking = function() {
+    ServerApi.getRanking(tournamentId()).then(function(response) {
+      $scope.ranking = [];
+      response.data.ranking.map(function(teamData) {
+        $scope.ranking.push({name: teamData[0], points: teamData[1]})
+      })
+    })
+  };
+
+  function matchWherePlayed(aTeam) {
+    return $scope.matches.find(function (match) {
+      return match.visitor.id == aTeam.id || match.local.id == aTeam.id
+    });
+  }
 
   function processDateMatchResponse(response) {
     $scope.goals = response.data.goals;
@@ -138,6 +147,7 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
   }
 
   function tournamentId() {
+
     return $routeParams.id
   }
 

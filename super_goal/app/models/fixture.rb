@@ -15,6 +15,10 @@ class Fixture < ActiveRecord::Base
     json
   end
 
+  def ended_date_matches
+    date_matches.select { |date_match| date_match.ended? }
+  end
+
   protected
 
   def create_fixture_with(teams, a_number_of_date_matches)

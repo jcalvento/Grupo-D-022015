@@ -66,6 +66,9 @@
                   <button class="btn btn-success" ng-show="!tournament.fixture" ng-click="generateFixture(tournament)">
                     Generate Fixture
                   </button>
+                  <a class="btn btn-default" ng-show="tournament.fixture" ng-href="#/tournaments/{{tournament.id}}/ranking">
+                    Ranking
+                  </a>
                   <a class="btn btn-success" ng-show="tournament.fixture" ng-href="#/tournaments/{{tournament.id}}/fixture">
                     See Fixture
                   </a>

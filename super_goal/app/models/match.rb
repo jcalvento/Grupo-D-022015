@@ -17,7 +17,7 @@ class Match < ActiveRecord::Base
   end
 
   def rival_of(a_team)
-    [local, visitor].detect { |team| !team.equal? a_team }
+    [local, visitor].detect { |team| team != a_team }
   end
 
   def players_points

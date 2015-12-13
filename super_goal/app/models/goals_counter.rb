@@ -10,7 +10,7 @@ class GoalsCounter < ActiveRecord::Base
   end
 
   def was_scored_in?(a_date_match)
-    date_match.equal? a_date_match
+    date_match == a_date_match
   end
 
   def points
