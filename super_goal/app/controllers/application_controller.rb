@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
 
   before_filter :cors, :set_cache_buster
-  # rescue_from Exception, with: :handle_error
+  rescue_from ActiveRecord::RecordNotFound,
+              ActiveRecord::ActiveRecordError,
+              with: :handle_error
+  rescue_from Exception, with: :log_error
 
   def cors
     headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
@@ -25,5 +28,21 @@ class ApplicationController < ActionController::Base
 
   def handle_error(exception)
     render json: { error: exception.message }, status: :internal_server_error
+  end
+
+  def log_error(exception)
+    logger.info 'Exception caught:'
+    logger.error "Class: #{exception.class}, Message: #{exception.message}"
+    logger.info 'Backtrace:'
+    logger.error exception.backtrace.join("\n")
+    logger << "\n"
+
+    render json: { }, status: :internal_server_error
+  end
+
+  protected
+
+  def logger
+    @logger ||= Logger.new("#{Rails.root}/log/#{Rails.env}_errors.log")
   end
 end
