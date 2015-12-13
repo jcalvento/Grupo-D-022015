@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
               ActiveRecord::ActiveRecordError,
               with: :handle_error
   rescue_from Exception, with: :log_error
+  around_filter :global_request_logging
 
   def cors
     headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
@@ -31,18 +32,32 @@ class ApplicationController < ActionController::Base
   end
 
   def log_error(exception)
-    logger.info 'Exception caught:'
-    logger.error "Class: #{exception.class}, Message: #{exception.message}"
-    logger.info 'Backtrace:'
-    logger.error exception.backtrace.join("\n")
-    logger << "\n"
+    errors_logger.info 'Exception caught:'
+    errors_logger.error "Class: #{exception.class}, Message: #{exception.message}"
+    errors_logger.info 'Backtrace:'
+    errors_logger.error exception.backtrace.join("\n")
+    errors_logger << "\n"
 
     render json: { }, status: :internal_server_error
   end
 
+  def global_request_logging
+    audit_logger.info "REQUEST: #{Time.now}, #{request.method}, #{request.request_parameters}"
+    begin
+      yield
+    ensure
+      audit_logger.info "Response status: #{response.status}"
+      audit_logger << "\n"
+    end
+  end
+
   protected
 
-  def logger
-    @logger ||= Logger.new("#{Rails.root}/log/#{Rails.env}_errors.log")
+  def audit_logger
+    @audit_logger ||= Logger.new("#{Rails.root}/log/#{Rails.env}_audit.log")
+  end
+
+  def errors_logger
+    @errors_logger ||= Logger.new("#{Rails.root}/log/#{Rails.env}_errors.log")
   end
 end
