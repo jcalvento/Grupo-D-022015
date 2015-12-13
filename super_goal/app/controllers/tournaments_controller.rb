@@ -103,17 +103,16 @@ class TournamentsController < ApplicationController
 
     render json: {
         matches: date_match.matches,
-        players_points: date_match.matches.inject({}) { |memo, match| memo.merge match.players_points }
+        players_points: date_match.matches.inject({}) {
+            |memo, match| memo.merge match.players_points
+        }
     }
   end
 
   def ranking
     tournament = Tournament.find(params[:id])
 
-    render json: {
-        ranking: tournament.ranking,
-        teams: tournament.teams.collect(&:name)
-    }
+    render json: { ranking: tournament.ranking }
   end
 
   protected

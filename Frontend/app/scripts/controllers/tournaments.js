@@ -114,21 +114,11 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
 
   $scope.getRanking = function() {
     ServerApi.getRanking(tournamentId()).then(function(response) {
-      $scope.teams = response.data.teams;
-      $scope.ranking = response.data.ranking
+      $scope.ranking = [];
+      response.data.ranking.map(function(teamData) {
+        $scope.ranking.push({name: teamData[0], points: teamData[1]})
+      })
     })
-  };
-
-  $scope.teamPoints = function(aTeamName) {
-    return $scope.ranking.find(function(teamData) {
-      return teamData[0] == aTeamName
-    })[1]
-  };
-
-  $scope.indexInRanking = function(aTeamName) {
-    return $scope.ranking.findIndex(function(teamData) {
-      return teamData[0] == aTeamName
-    }) + 1
   };
 
   function matchWherePlayed(aTeam) {

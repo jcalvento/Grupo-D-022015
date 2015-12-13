@@ -13,10 +13,6 @@
                    style="width: 100%;">
               <thead>
                 <tr role="row">
-                  <th class="sorting_asc" tabindex="0" aria-controls="demo-dt-basic"
-                      rowspan="1" colspan="1" aria-sort="ascending"
-                      aria-label="Name: activate to sort column descending"
-                      style="width: 10%;">Position</th>
                   <th class="sorting" tabindex="0" aria-controls="demo-dt-basic"
                       rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
                       style="width: 212px;">Team</th>
@@ -26,10 +22,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="team in teams" role="row" class="odd parent">
-                  <td class="sorting_1">{{indexInRanking(team)}}</td>
-                  <td>{{team}}</td>
-                  <td>{{teamPoints(team)}}</td>
+                <tr ng-repeat="team in ranking | orderBy:'team.points'" role="row" class="odd parent">
+                  <td>{{team.name}}</td>
+                  <td>{{team.points}}</td>
                 </tr>
               </tbody>
             </table>
