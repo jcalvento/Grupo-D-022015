@@ -48,4 +48,37 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
       }
     }
   }
+
+  //Pagination
+  $scope.$watch('players', function() {
+    setNumberOfPages()
+  });
+
+  $scope.goToPage = function(pageNumber) {
+    var start = pageNumber * 10;
+    var end = (start) + 10;
+    $scope.filteredPlayers = $scope.players.slice(start, end);
+    $scope.currentPage = pageNumber;
+  };
+
+  $scope.goToNextPage = function() {
+    if($scope.currentPage != $scope.numberOfPages)
+      $scope.goToPage($scope.currentPage + 1)
+  };
+
+  $scope.goToPreviousPage = function() {
+    if($scope.currentPage != 0)
+      $scope.goToPage($scope.currentPage - 1)
+  };
+
+  function setNumberOfPages() {
+    $scope.numberOfPages = Math.floor($scope.players.length / 10);
+    if($scope.numberOfPages == 0)
+      return;
+    $scope.pages = [];
+    for (var i = 0; i <= $scope.numberOfPages; i++)
+      $scope.pages.push(i)
+    $scope.filteredPlayers = $scope.players.slice(0, 10);
+    $scope.currentPage = 0;
+  }
 }
