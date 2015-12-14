@@ -24,6 +24,7 @@
           <input id="goals" type="number" name="goals" ng-model="goal.numberOfGoals" required>
           <label ng-show="goalsForm.goals.$invalid && goalsForm.$submitted">{{'REQUIRED_FIELD' | translate}} {{'NUMBER_OF_GOALS' | translate}}.</label>
         </div>
+        <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
         <button type="submit" class="btn btn-success" ng-click="updateDateMatchResult()">Submit</button>
       </form>
       <div class="fixed-table-container" style="padding-bottom: 0px;">

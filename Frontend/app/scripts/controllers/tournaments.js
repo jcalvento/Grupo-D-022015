@@ -147,7 +147,6 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
   }
 
   function tournamentId() {
-
     return $routeParams.id
   }
 
