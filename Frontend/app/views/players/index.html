@@ -12,54 +12,45 @@
       </div>
       <div class="fixed-table-container" style="padding-bottom: 0px;">
         <div class="fixed-table-body">
-          <table class="demo-add-niftycheck table table-hover" data-toggle="table"
-                 data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
-                 data-search="true" data-show-refresh="true" data-show-toggle="true"
-                 data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
-                 data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+          <table class="table table-hover">
             <thead style="display: table-header-group;">
-            <tr>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'POSITION' | translate }}
-                  <span class="order dropup">
-                    <span class="caret" style="margin: 10px 5px;">
+              <tr>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'POSITION' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                    </span>
-                  </span>
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'NAME' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'NAME' | translate }}
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'TEAM' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'TEAM' | translate }}
-                </div>
-                <div class="fht-cell">
+                  </div>
+                </th>
+                <th style="">
+                  <div class="th-inner sortable">
+                    {{ 'ACTIONS' | translate }}
+                  </div>
+                  <div class="fht-cell">
 
-                </div>
-              </th>
-              <th style="">
-                <div class="th-inner sortable">
-                  {{ 'ACTIONS' | translate }}
-                </div>
-                <div class="fht-cell">
-
-                </div>
-              </th>
-            </tr>
+                  </div>
+                </th>
+              </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="player in players | orderBy : 'position' ">
+              <tr ng-repeat="player in filteredPlayers | orderBy : 'position' ">
                 <td>{{player.position | translate}}</td>
                 <td>{{player.name}}</td>
                 <td>{{player.team}}</td>
@@ -68,6 +59,23 @@
                   <button class="btn btn-danger" ng-click="delete(player.id)">{{ 'DELETE' | translate }}</button>
                 </td>
               </tr>
+              <nav>
+                <ul class="pagination" ng-show="pages">
+                  <li>
+                    <a href="" ng-click="goToPreviousPage()">
+                      <span>&laquo;</span>
+                    </a>
+                  </li>
+                  <li ng-repeat="page in pages" ng-class="{ 'active' : currentPage == page }">
+                    <a href="" ng-click="goToPage(page)">{{page}}</a>
+                  </li>
+                  <li>
+                    <a href="" ng-click="goToNextPage()">
+                      <span>&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </tbody>
           </table>
         </div>
