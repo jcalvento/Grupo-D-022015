@@ -5,8 +5,7 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
 
   $scope.getPlayers = function() {
     ServerApi.getPlayers().then(function(response) {
-      $scope.players = response.data.players;
-      setNumberOfPages();
+      $scope.players = response.data.players
     })
   };
 
@@ -51,6 +50,10 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
   }
 
   //Pagination
+  $scope.$watch('players', function() {
+    setNumberOfPages()
+  });
+
   $scope.goToPage = function(pageNumber) {
     var start = pageNumber * 10;
     var end = (start) + 10;
@@ -70,6 +73,8 @@ function PlayersController($scope, $location, $routeParams, ServerApi, $translat
 
   function setNumberOfPages() {
     $scope.numberOfPages = Math.floor($scope.players.length / 10);
+    if($scope.numberOfPages == 0)
+      return;
     $scope.pages = [];
     for (var i = 0; i <= $scope.numberOfPages; i++)
       $scope.pages.push(i)
