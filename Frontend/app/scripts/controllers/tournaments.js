@@ -1,8 +1,10 @@
 function TournamentsController($scope, $location, $routeParams, ServerApi) {
 
   $scope.getTournaments = function() {
+    $scope.loading = true;
     ServerApi.getTournaments().then(function(response) {
-      $scope.tournaments = response.data.tournaments
+      $scope.tournaments = response.data.tournaments;
+      $scope.loading = false;
     })
   };
 
