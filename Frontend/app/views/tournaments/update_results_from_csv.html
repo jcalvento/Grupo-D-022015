@@ -16,7 +16,8 @@
           <button class="btn btn-warning" type="button" ng-click="redirectToIndex()">{{ 'BACK' | translate }}</button>
         </div>
       </div>
-      <div class="fixed-table-container" style="padding-bottom: 0px;">
+      <img src="images/giphy.gif" ng-show="loading" style="padding-left: 40%">
+      <div ng-show="!loading" class="fixed-table-container" style="padding-bottom: 0px;">
         <div class="fixed-table-body">
           <table class="demo-add-niftycheck table table-hover" data-toggle="table"
                  data-url="data/bs-table.json" data-toolbar="#demo-delete-row"

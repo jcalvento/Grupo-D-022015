@@ -94,6 +94,7 @@ function TournamentsController($scope, $location, $routeParams, ServerApi, $pars
   };
 
   $scope.updateDateMatchResultFromCsv = function() {
+    $scope.loading = true;
     ServerApi.postDateMatchResultFromCsv(dateMatchId(), $scope.csv.result).then(processDateMatchResponse)
   };
 
@@ -150,6 +151,7 @@ function TournamentsController($scope, $location, $routeParams, ServerApi, $pars
   function processDateMatchResponse(response) {
     $scope.goals = response.data.goals;
     $scope.players = response.data.players;
+    $scope.loading = false;
   }
 
   function dateMatchId() {
