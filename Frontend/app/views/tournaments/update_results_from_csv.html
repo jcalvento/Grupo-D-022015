@@ -1,0 +1,63 @@
+<div id="page-content" ng-init="getDateMatchGoals()">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Update Date Match From CSV</h3>
+    </div>
+    <div class="panel-body">
+      <div class="block row">
+        <div class="title"><h4>Select your CSV file: </h4></div>
+        <div class="block right">
+          <ng-csv-import content="csv.content"
+                         header="csv.header"
+                         separator="csv.separator"
+                         result="csv.result"
+                         accept="csv.accept"></ng-csv-import>
+          <button type="submit" class="btn btn-success" ng-click="updateDateMatchResultFromCsv()">submit</button>
+        </div>
+      </div>
+      <div class="fixed-table-container" style="padding-bottom: 0px;">
+        <div class="fixed-table-body">
+          <table class="demo-add-niftycheck table table-hover" data-toggle="table"
+                 data-url="data/bs-table.json" data-toolbar="#demo-delete-row"
+                 data-search="true" data-show-refresh="true" data-show-toggle="true"
+                 data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
+                 data-page-size="5" data-pagination="true" data-show-pagination-switch="true">
+            <thead style="display: table-header-group;">
+            <tr>
+              <th style="">
+                <div class="th-inner sortable">
+                  {{ 'PLAYER' | translate }}
+                </div>
+                <div class="fht-cell">
+                </div>
+              </th>
+              <th style="">
+                <div class="th-inner sortable">
+                  {{ 'POSITION' | translate }}
+                </div>
+                <div class="fht-cell">
+                </div>
+              </th>
+              <th style="">
+                <div class="th-inner sortable">
+                  {{ 'NUMBER_OF_GOALS' | translate }}
+                </div>
+                <div class="fht-cell">
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="goal in goals">
+              <td>{{goal.player.name}}</td>
+              <td>{{goal.position}}</td>
+              <td>{{goal.number_of_goals}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

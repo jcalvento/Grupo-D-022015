@@ -36,6 +36,10 @@ function routes($routeProvider) {
       templateUrl: 'views/tournaments/update_results_manually.html',
       controller: 'TournamentsController'
     })
+    .when('/tournaments/:dateMatchId/resultsFromCsv', {
+      templateUrl: 'views/tournaments/update_results_from_csv.html',
+      controller: 'TournamentsController'
+    })
     .when('/tournaments/:dateMatchId/details', {
       templateUrl: 'views/tournaments/details.html',
       controller: 'TournamentsController'

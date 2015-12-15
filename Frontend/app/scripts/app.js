@@ -7,14 +7,15 @@ var app = angular.module('frontendApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ngCsvImport'
   ]);
 
 //Controllers
 app.controller('MainController', ['$scope', '$translate', MainController]);
 app.controller('PlayersController', ['$scope', '$location', '$routeParams', 'ServerApi', '$translate', PlayersController]);
 app.controller('TeamsController', ['$scope', '$location', '$routeParams', 'ServerApi', TeamsController]);
-app.controller('TournamentsController', ['$scope', '$location', '$routeParams', 'ServerApi', TournamentsController]);
+app.controller('TournamentsController', ['$scope', '$location', '$routeParams', 'ServerApi', '$parse', TournamentsController]);
 
 //Services
 app.service('ServerApi',  ['$http', ServerApi]);

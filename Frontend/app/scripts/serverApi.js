@@ -106,6 +106,10 @@ function ServerApi($http) {
     return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/date_match_goals'), params)
   };
 
+  this.postDateMatchResultFromCsv = function(dateMatchId, csvFile) {
+    return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/date_match_goals_from_csv'),{ csv_file: csvFile })
+  };
+
   this.endDateMatch = function(dateMatchId) {
     return $http.post(getFullUrl('/tournaments/' + dateMatchId + '/end_date_match'))
   };

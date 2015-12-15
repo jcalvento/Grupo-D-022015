@@ -1,4 +1,15 @@
-function TournamentsController($scope, $location, $routeParams, ServerApi) {
+function TournamentsController($scope, $location, $routeParams, ServerApi, $parse) {
+
+  $scope.csv = {
+    content: null,
+    header: true,
+    headerVisible: true,
+    separator: ',',
+    separatorVisible: true,
+    result: null,
+    encoding: 'ISO-8859-1',
+    encodingVisible: true,
+  };
 
   $scope.getTournaments = function() {
     $scope.loading = true;
@@ -77,6 +88,11 @@ function TournamentsController($scope, $location, $routeParams, ServerApi) {
   $scope.updateDateMatchResult = function() {
     if($scope.goalsForm.$valid)
       ServerApi.postDateMatchResult(dateMatchId(), dateMatchParams()).then(processDateMatchResponse)
+  };
+
+  $scope.updateDateMatchResultFromCsv = function() {
+    console.log('entre al medoto js');
+    ServerApi.postDateMatchResultFromCsv(dateMatchId(), $scope.csv.result).then(processDateMatchResponse)
   };
 
   $scope.endDateMatch = function(dateMatchId) {

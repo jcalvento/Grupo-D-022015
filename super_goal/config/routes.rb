@@ -78,6 +78,7 @@ Rails.application.routes.draw do
   get  '/tournaments/:id/fixture' => 'tournaments#fixture'
   get  '/tournaments/:date_match_id/date_match_goals' => 'tournaments#date_match_goals'
   post '/tournaments/:date_match_id/date_match_goals' => 'tournaments#add_date_match_goal'
+  post '/tournaments/:date_match_id/date_match_goals_from_csv' => 'tournaments#add_date_match_from_csv'
   post '/tournaments/:date_match_id/end_date_match' => 'tournaments#end_date_match'
   get  '/tournaments/:date_match_id/date_match_details' => 'tournaments#date_match_details'
   get  '/tournaments/:id/ranking' => 'tournaments#ranking'
@@ -90,6 +91,7 @@ Rails.application.routes.draw do
   match '/tournaments/:id/generate_fixture' => 'tournaments#options', via: :options
   match '/tournaments/:id/fixture' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/date_match_goals' => 'tournaments#options', via: :options
+  match '/tournaments/:date_match_id/date_match_goals_from_csv' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/end_date_match' => 'tournaments#options', via: :options
   match '/tournaments/:date_match_id/date_match_details' => 'tournaments#options', via: :options
   match '/tournaments/:id/ranking' => 'tournaments#options', via: :options

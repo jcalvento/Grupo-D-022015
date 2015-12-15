@@ -32,8 +32,11 @@
                     </ul>
                   </td>
                   <td>
-                    <a class="btn btn-primary" ng-hide="date_match.ended" ng-href="#/tournaments/{{date_match.id}}/results">
+                    <a class="btn btn-primary" id="updateManual" ng-hide="date_match.ended" ng-href="#/tournaments/{{date_match.id}}/results">
                       Update Results
+                    </a>
+                    <a class="btn btn-primary" id="updateCsv" ng-hide="date_match.ended" ng-href="#/tournaments/{{date_match.id}}/resultsFromCsv">
+                      Update Results From CSV
                     </a>
                     <button class="btn btn-warning" ng-hide="date_match.ended" ng-click="endDateMatch(date_match.id)">
                       End Date
