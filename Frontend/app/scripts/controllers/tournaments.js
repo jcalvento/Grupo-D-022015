@@ -70,9 +70,12 @@ function TournamentsController($scope, $location, $routeParams, ServerApi, $pars
   };
 
   $scope.getFixture = function() {
+    $scope.loading = true;
     ServerApi.getFixture(tournamentId()).then(function(response) {
       $scope.fixture = response.data.fixture
+      $scope.loading = false;
     })
+
   };
 
   $scope.goBackToEdit = function() {
@@ -91,7 +94,6 @@ function TournamentsController($scope, $location, $routeParams, ServerApi, $pars
   };
 
   $scope.updateDateMatchResultFromCsv = function() {
-    console.log('entre al medoto js');
     ServerApi.postDateMatchResultFromCsv(dateMatchId(), $scope.csv.result).then(processDateMatchResponse)
   };
 

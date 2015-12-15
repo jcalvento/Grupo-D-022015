@@ -99,14 +99,11 @@ class TournamentsController < ApplicationController
   end
 
   def add_date_match_from_csv
-    puts 'entre al csv controller'
     date_match = DateMatch.find(params[:date_match_id])
     csv_text = params[:csv_file]
     csv_text.each do |row|
-      puts Player.find_by_name(row['name'])
       player = Player.find_by_name(row['name'])
       date_match.add_goals_of(player, row['position'], row['goal']).save!
-      puts row.inspect
     end
 
     date_match_goals
